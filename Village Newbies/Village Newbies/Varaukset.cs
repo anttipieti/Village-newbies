@@ -30,6 +30,8 @@ namespace Village_Newbies
             // TODO: This line of code loads data into the 'villageNewbiesDataSet.varaus' table. You can move, or remove it, as needed.
             this.varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
 
+            CustomTimeFormat();
+
         }
 
         OdbcConnection connection = new OdbcConnection("DSN=Village Newbies;MultipleActiveResultSets=True");
@@ -46,6 +48,7 @@ namespace Village_Newbies
             varausBindingSource.EndEdit();
             varausTableAdapter.Update(villageNewbiesDataSet);
             varausTableAdapter.Insert(int.Parse(txtasiakasid.Text), int.Parse(txtmokkiid.Text),dtpvarattu.Value, dtpvahvistus.Value, dtpalku.Value,dtploppu.Value);
+            varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
             //varausTableAdapter.Update(villageNewbiesDataSet);
         }
 
@@ -202,12 +205,24 @@ namespace Village_Newbies
 
         }
 
+        private void CustomTimeFormat()
+        {
+            dtpvarattu.Format = DateTimePickerFormat.Custom;
+            dtpvarattu.CustomFormat = "ddd dd/MM/yyyy  HH:mm";
+            dtpvahvistus.Format = DateTimePickerFormat.Custom;
+            dtpvahvistus.CustomFormat = "ddd dd/MM/yyyy  HH:mm";
+            dtpalku.Format = DateTimePickerFormat.Custom;
+            dtpalku.CustomFormat = "ddd dd/MM/yyyy  HH:mm";
+            dtploppu.Format = DateTimePickerFormat.Custom;
+            dtploppu.CustomFormat = "ddd dd/MM/yyyy  HH:mm";
+        }
+
         
 
         private void dtgVarausTaulu_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             int index = dtgVarausTaulu.CurrentRow.Index;
-            if (dtgVarausTaulu.Rows[index].Cells[1].Value != null)//Jos datagridistä valitaan varaus sen id menee tekstikenttään
+            if (dtgVarausTaulu.ColumnCount>0)//Jos datagridistä valitaan varaus sen id menee tekstikenttään
             {
                 txtvarausid.Text = dtgVarausTaulu.Rows[index].Cells[0].Value.ToString();
                 txtasiakasid.Text = dtgVarausTaulu.Rows[index].Cells[1].Value.ToString();
@@ -228,6 +243,14 @@ namespace Village_Newbies
             {
                 tbVarausMokki.Text = dtgVarausMokit.Rows[index].Cells[1].Value.ToString();
             }
+        }
+
+        private void btnMuuta_Click(object sender, EventArgs e)
+        {
+            Validate();
+            varausBindingSource.EndEdit();
+            varausTableAdapter.Update(villageNewbiesDataSet);
+            varausTableAdapter.Insert(int.Parse(txtasiakasid.Text), int.Parse(txtmokkiid.Text), dtpvarattu.Value, dtpvahvistus.Value, dtpalku.Value, dtploppu.Value);
         }
     }
 }

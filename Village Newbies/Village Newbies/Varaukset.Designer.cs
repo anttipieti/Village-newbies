@@ -33,11 +33,11 @@
             this.tabPageVaraus = new System.Windows.Forms.TabPage();
             this.txtmokkiid = new System.Windows.Forms.TextBox();
             this.btnmokki = new System.Windows.Forms.Button();
-            this.btnPoista = new System.Windows.Forms.Button();
+            this.btnVarausPoista = new System.Windows.Forms.Button();
             this.btnasiakas = new System.Windows.Forms.Button();
-            this.btnMuuta = new System.Windows.Forms.Button();
+            this.btnVarausMuuta = new System.Windows.Forms.Button();
             this.txtvarausid = new System.Windows.Forms.TextBox();
-            this.btnUusi = new System.Windows.Forms.Button();
+            this.btnVarausUusi = new System.Windows.Forms.Button();
             this.lblmokkiid = new System.Windows.Forms.Label();
             this.lblvarausid = new System.Windows.Forms.Label();
             this.txtasiakasid = new System.Windows.Forms.TextBox();
@@ -135,11 +135,11 @@
             // 
             this.tabPageVaraus.Controls.Add(this.txtmokkiid);
             this.tabPageVaraus.Controls.Add(this.btnmokki);
-            this.tabPageVaraus.Controls.Add(this.btnPoista);
+            this.tabPageVaraus.Controls.Add(this.btnVarausPoista);
             this.tabPageVaraus.Controls.Add(this.btnasiakas);
-            this.tabPageVaraus.Controls.Add(this.btnMuuta);
+            this.tabPageVaraus.Controls.Add(this.btnVarausMuuta);
             this.tabPageVaraus.Controls.Add(this.txtvarausid);
-            this.tabPageVaraus.Controls.Add(this.btnUusi);
+            this.tabPageVaraus.Controls.Add(this.btnVarausUusi);
             this.tabPageVaraus.Controls.Add(this.lblmokkiid);
             this.tabPageVaraus.Controls.Add(this.lblvarausid);
             this.tabPageVaraus.Controls.Add(this.txtasiakasid);
@@ -177,14 +177,14 @@
             this.btnmokki.UseVisualStyleBackColor = true;
             this.btnmokki.Click += new System.EventHandler(this.btnmokki_Click);
             // 
-            // btnPoista
+            // btnVarausPoista
             // 
-            this.btnPoista.Location = new System.Drawing.Point(726, 166);
-            this.btnPoista.Name = "btnPoista";
-            this.btnPoista.Size = new System.Drawing.Size(153, 43);
-            this.btnPoista.TabIndex = 31;
-            this.btnPoista.Text = "Poista varaus";
-            this.btnPoista.UseVisualStyleBackColor = true;
+            this.btnVarausPoista.Location = new System.Drawing.Point(726, 166);
+            this.btnVarausPoista.Name = "btnVarausPoista";
+            this.btnVarausPoista.Size = new System.Drawing.Size(153, 43);
+            this.btnVarausPoista.TabIndex = 31;
+            this.btnVarausPoista.Text = "Poista varaus";
+            this.btnVarausPoista.UseVisualStyleBackColor = true;
             // 
             // btnasiakas
             // 
@@ -196,14 +196,15 @@
             this.btnasiakas.UseVisualStyleBackColor = true;
             this.btnasiakas.Click += new System.EventHandler(this.btnasiakas_Click);
             // 
-            // btnMuuta
+            // btnVarausMuuta
             // 
-            this.btnMuuta.Location = new System.Drawing.Point(726, 105);
-            this.btnMuuta.Name = "btnMuuta";
-            this.btnMuuta.Size = new System.Drawing.Size(153, 50);
-            this.btnMuuta.TabIndex = 30;
-            this.btnMuuta.Text = "Muutos varaukseen";
-            this.btnMuuta.UseVisualStyleBackColor = true;
+            this.btnVarausMuuta.Location = new System.Drawing.Point(726, 105);
+            this.btnVarausMuuta.Name = "btnVarausMuuta";
+            this.btnVarausMuuta.Size = new System.Drawing.Size(153, 50);
+            this.btnVarausMuuta.TabIndex = 30;
+            this.btnVarausMuuta.Text = "Muutos varaukseen";
+            this.btnVarausMuuta.UseVisualStyleBackColor = true;
+            this.btnVarausMuuta.Click += new System.EventHandler(this.btnMuuta_Click);
             // 
             // txtvarausid
             // 
@@ -212,15 +213,15 @@
             this.txtvarausid.Size = new System.Drawing.Size(117, 22);
             this.txtvarausid.TabIndex = 22;
             // 
-            // btnUusi
+            // btnVarausUusi
             // 
-            this.btnUusi.Location = new System.Drawing.Point(726, 52);
-            this.btnUusi.Name = "btnUusi";
-            this.btnUusi.Size = new System.Drawing.Size(153, 42);
-            this.btnUusi.TabIndex = 29;
-            this.btnUusi.Text = "Uusi varaus";
-            this.btnUusi.UseVisualStyleBackColor = true;
-            this.btnUusi.Click += new System.EventHandler(this.btnUusi_Click);
+            this.btnVarausUusi.Location = new System.Drawing.Point(726, 52);
+            this.btnVarausUusi.Name = "btnVarausUusi";
+            this.btnVarausUusi.Size = new System.Drawing.Size(153, 42);
+            this.btnVarausUusi.TabIndex = 29;
+            this.btnVarausUusi.Text = "Uusi varaus";
+            this.btnVarausUusi.UseVisualStyleBackColor = true;
+            this.btnVarausUusi.Click += new System.EventHandler(this.btnUusi_Click);
             // 
             // lblmokkiid
             // 
@@ -336,6 +337,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -349,6 +352,7 @@
             this.dataGridView1.DataSource = this.asiakasBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(28, 99);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(851, 229);
@@ -360,6 +364,7 @@
             this.asiakasidDataGridViewTextBoxColumn1.HeaderText = "asiakas_id";
             this.asiakasidDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.asiakasidDataGridViewTextBoxColumn1.Name = "asiakasidDataGridViewTextBoxColumn1";
+            this.asiakasidDataGridViewTextBoxColumn1.ReadOnly = true;
             this.asiakasidDataGridViewTextBoxColumn1.Width = 125;
             // 
             // postinroDataGridViewTextBoxColumn
@@ -368,6 +373,7 @@
             this.postinroDataGridViewTextBoxColumn.HeaderText = "postinro";
             this.postinroDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.postinroDataGridViewTextBoxColumn.Name = "postinroDataGridViewTextBoxColumn";
+            this.postinroDataGridViewTextBoxColumn.ReadOnly = true;
             this.postinroDataGridViewTextBoxColumn.Width = 125;
             // 
             // etunimiDataGridViewTextBoxColumn
@@ -376,6 +382,7 @@
             this.etunimiDataGridViewTextBoxColumn.HeaderText = "etunimi";
             this.etunimiDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.etunimiDataGridViewTextBoxColumn.Name = "etunimiDataGridViewTextBoxColumn";
+            this.etunimiDataGridViewTextBoxColumn.ReadOnly = true;
             this.etunimiDataGridViewTextBoxColumn.Width = 125;
             // 
             // sukunimiDataGridViewTextBoxColumn
@@ -384,6 +391,7 @@
             this.sukunimiDataGridViewTextBoxColumn.HeaderText = "sukunimi";
             this.sukunimiDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.sukunimiDataGridViewTextBoxColumn.Name = "sukunimiDataGridViewTextBoxColumn";
+            this.sukunimiDataGridViewTextBoxColumn.ReadOnly = true;
             this.sukunimiDataGridViewTextBoxColumn.Width = 125;
             // 
             // lahiosoiteDataGridViewTextBoxColumn
@@ -392,6 +400,7 @@
             this.lahiosoiteDataGridViewTextBoxColumn.HeaderText = "lahiosoite";
             this.lahiosoiteDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.lahiosoiteDataGridViewTextBoxColumn.Name = "lahiosoiteDataGridViewTextBoxColumn";
+            this.lahiosoiteDataGridViewTextBoxColumn.ReadOnly = true;
             this.lahiosoiteDataGridViewTextBoxColumn.Width = 125;
             // 
             // emailDataGridViewTextBoxColumn
@@ -400,6 +409,7 @@
             this.emailDataGridViewTextBoxColumn.HeaderText = "email";
             this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
             this.emailDataGridViewTextBoxColumn.Width = 125;
             // 
             // puhelinnroDataGridViewTextBoxColumn
@@ -408,6 +418,7 @@
             this.puhelinnroDataGridViewTextBoxColumn.HeaderText = "puhelinnro";
             this.puhelinnroDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.puhelinnroDataGridViewTextBoxColumn.Name = "puhelinnroDataGridViewTextBoxColumn";
+            this.puhelinnroDataGridViewTextBoxColumn.ReadOnly = true;
             this.puhelinnroDataGridViewTextBoxColumn.Width = 125;
             // 
             // asiakasBindingSource
@@ -491,9 +502,12 @@
             // 
             // dtgVarausMokit
             // 
+            this.dtgVarausMokit.AllowUserToAddRows = false;
+            this.dtgVarausMokit.AllowUserToDeleteRows = false;
             this.dtgVarausMokit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgVarausMokit.Location = new System.Drawing.Point(35, 115);
             this.dtgVarausMokit.Name = "dtgVarausMokit";
+            this.dtgVarausMokit.ReadOnly = true;
             this.dtgVarausMokit.RowHeadersWidth = 51;
             this.dtgVarausMokit.RowTemplate.Height = 24;
             this.dtgVarausMokit.Size = new System.Drawing.Size(848, 244);
@@ -544,9 +558,12 @@
             // 
             // dtgVarauksenPalvelut
             // 
+            this.dtgVarauksenPalvelut.AllowUserToAddRows = false;
+            this.dtgVarauksenPalvelut.AllowUserToDeleteRows = false;
             this.dtgVarauksenPalvelut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgVarauksenPalvelut.Location = new System.Drawing.Point(36, 106);
             this.dtgVarauksenPalvelut.Name = "dtgVarauksenPalvelut";
+            this.dtgVarauksenPalvelut.ReadOnly = true;
             this.dtgVarauksenPalvelut.RowHeadersWidth = 51;
             this.dtgVarauksenPalvelut.RowTemplate.Height = 24;
             this.dtgVarauksenPalvelut.Size = new System.Drawing.Size(642, 221);
@@ -824,11 +841,11 @@
         private System.Windows.Forms.TabPage tabPageVaraus;
         private System.Windows.Forms.TextBox txtmokkiid;
         private System.Windows.Forms.Button btnmokki;
-        private System.Windows.Forms.Button btnPoista;
+        private System.Windows.Forms.Button btnVarausPoista;
         private System.Windows.Forms.Button btnasiakas;
-        private System.Windows.Forms.Button btnMuuta;
+        private System.Windows.Forms.Button btnVarausMuuta;
         private System.Windows.Forms.TextBox txtvarausid;
-        private System.Windows.Forms.Button btnUusi;
+        private System.Windows.Forms.Button btnVarausUusi;
         private System.Windows.Forms.Label lblmokkiid;
         private System.Windows.Forms.Label lblvarausid;
         private System.Windows.Forms.TextBox txtasiakasid;
