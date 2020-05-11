@@ -61,7 +61,21 @@ namespace Village_Newbies
             try
             {
                 openConnection();
-                command = new OdbcCommand(query, connection);
+                using(connection)
+                {
+                    command = new OdbcCommand(query, connection);
+
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        MessageBox.Show("Query Executed");
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Query Not Executed");
+                    }
+                }
+                /*command = new OdbcCommand(query, connection);
 
                 if (command.ExecuteNonQuery() == 1)
                 {
@@ -71,7 +85,7 @@ namespace Village_Newbies
                 else
                 {
                     MessageBox.Show("Query Not Executed");
-                }
+                }*/
 
             }
             catch (Exception ex)
@@ -233,10 +247,7 @@ namespace Village_Newbies
             try
             {
 
-                
-
-
-                using(connection)
+                /*using (connection)
                 {
                   OdbcCommand cmd = new OdbcCommand();
                   connection.Open();
@@ -247,7 +258,7 @@ namespace Village_Newbies
                   cmd.ExecuteNonQuery();//Ei jostain syystä toimi
                   MessageBox.Show("Palvelu lisätty", "Ilmoitus");
                   connection.Close();
-                }
+                }*/
                  
                 
             }
