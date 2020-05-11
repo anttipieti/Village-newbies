@@ -330,5 +330,11 @@ namespace Village_Newbies
         {
             
         }
+
+        private void Varaukset_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            mainform.Show();
+            //Avataan päävalikko uudelleen
+        }
     }
 }

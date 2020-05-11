@@ -10,3 +10,14 @@ C:\Users\Antti\Documents\GitHub\Village-newbies\Village Newbies\Village Newbies\
 C:\Users\Antti\Documents\GitHub\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.pdb
 C:\Users\Antti\Documents\GitHub\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Asiakkaat.resources
 C:\Users\Antti\Documents\GitHub\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.MainMenu.resources
+C:\Users\Meri\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\bin\Debug\Village Newbies.exe.config
+C:\Users\Meri\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\bin\Debug\Village Newbies.exe
+C:\Users\Meri\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\bin\Debug\Village Newbies.pdb
+C:\Users\Meri\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.csprojAssemblyReference.cache
+C:\Users\Meri\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Asiakkaat.resources
+C:\Users\Meri\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.MainMenu.resources
+C:\Users\Meri\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Properties.Resources.resources
+C:\Users\Meri\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Varaukset.resources
+C:\Users\Meri\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.csproj.GenerateResource.cache
+C:\Users\Meri\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.exe
+C:\Users\Meri\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.pdb
