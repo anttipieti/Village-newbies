@@ -297,5 +297,10 @@ namespace Village_Newbies
             varausTableAdapter.Delete(Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[0].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[1].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[2].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[3].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[4].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[5].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[6].Value));
             varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
         }
+
+        private void btnPoistaVarausPalvelu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
