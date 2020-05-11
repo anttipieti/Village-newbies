@@ -101,7 +101,6 @@
             this.toimintaalueTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.toimintaalueTableAdapter();
             this.palveluBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.palveluTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.palveluTableAdapter();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabVarausNakyma.SuspendLayout();
             this.tabPageVaraus.SuspendLayout();
             this.tabPageAsiakas.SuspendLayout();
@@ -186,7 +185,6 @@
             this.btnVarausPoista.TabIndex = 31;
             this.btnVarausPoista.Text = "Poista varaus";
             this.btnVarausPoista.UseVisualStyleBackColor = true;
-            this.btnVarausPoista.Click += new System.EventHandler(this.btnVarausPoista_Click);
             // 
             // btnasiakas
             // 
@@ -261,7 +259,6 @@
             // 
             // dtploppu
             // 
-            this.dtploppu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtploppu.Location = new System.Drawing.Point(298, 255);
             this.dtploppu.Name = "dtploppu";
             this.dtploppu.Size = new System.Drawing.Size(244, 22);
@@ -269,7 +266,6 @@
             // 
             // dtpvarattu
             // 
-            this.dtpvarattu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpvarattu.Location = new System.Drawing.Point(299, 72);
             this.dtpvarattu.Name = "dtpvarattu";
             this.dtpvarattu.Size = new System.Drawing.Size(243, 22);
@@ -277,7 +273,6 @@
             // 
             // dtpalku
             // 
-            this.dtpalku.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpalku.Location = new System.Drawing.Point(298, 194);
             this.dtpalku.Name = "dtpalku";
             this.dtpalku.Size = new System.Drawing.Size(244, 22);
@@ -294,7 +289,6 @@
             // 
             // dtpvahvistus
             // 
-            this.dtpvahvistus.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpvahvistus.Location = new System.Drawing.Point(298, 133);
             this.dtpvahvistus.Name = "dtpvahvistus";
             this.dtpvahvistus.Size = new System.Drawing.Size(244, 22);
@@ -548,7 +542,6 @@
             // 
             // tabPagePalvelut
             // 
-            this.tabPagePalvelut.Controls.Add(this.button1);
             this.tabPagePalvelut.Controls.Add(this.dtgVarauksenPalvelut);
             this.tabPagePalvelut.Controls.Add(this.btnLisaaVarausPalvelu);
             this.tabPagePalvelut.Controls.Add(this.tbVarausPalveluLkm);
@@ -808,15 +801,6 @@
             // 
             this.palveluTableAdapter.ClearBeforeFill = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(438, 60);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(240, 28);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Poista varauksen palvelu";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Varaukset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -925,7 +909,6 @@
         private VillageNewbiesDataSetTableAdapters.toimintaalueTableAdapter toimintaalueTableAdapter;
         private System.Windows.Forms.BindingSource palveluBindingSource;
         private VillageNewbiesDataSetTableAdapters.palveluTableAdapter palveluTableAdapter;
-        private System.Windows.Forms.Button button1;
     }
 }
 
