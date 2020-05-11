@@ -73,6 +73,7 @@
             this.btnVarausMokkiLisays = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tabPagePalvelut = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.dtgVarauksenPalvelut = new System.Windows.Forms.DataGridView();
             this.btnLisaaVarausPalvelu = new System.Windows.Forms.Button();
             this.tbVarausPalveluLkm = new System.Windows.Forms.TextBox();
@@ -101,7 +102,6 @@
             this.toimintaalueTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.toimintaalueTableAdapter();
             this.palveluBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.palveluTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.palveluTableAdapter();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabVarausNakyma.SuspendLayout();
             this.tabPageVaraus.SuspendLayout();
             this.tabPageAsiakas.SuspendLayout();
@@ -563,6 +563,15 @@
             this.tabPagePalvelut.Text = "Palvelut";
             this.tabPagePalvelut.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(438, 60);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(240, 28);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "Poista varauksen palvelu";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // dtgVarauksenPalvelut
             // 
             this.dtgVarauksenPalvelut.AllowUserToAddRows = false;
@@ -808,15 +817,6 @@
             // 
             this.palveluTableAdapter.ClearBeforeFill = true;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(438, 60);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(240, 28);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Poista varauksen palvelu";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // Varaukset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -826,6 +826,7 @@
             this.Controls.Add(this.tabVarausNakyma);
             this.Name = "Varaukset";
             this.Text = "Varaukset";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Varaukset_FormClosing);
             this.Load += new System.EventHandler(this.Varaukset_Load);
             this.tabVarausNakyma.ResumeLayout(false);
             this.tabPageVaraus.ResumeLayout(false);
