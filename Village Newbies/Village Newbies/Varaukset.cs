@@ -36,14 +36,57 @@ namespace Village_Newbies
         }
 
         OdbcConnection connection = new OdbcConnection("DSN=Village Newbies;MultipleActiveResultSets=True");
+        OdbcCommand command;
+
+        public void openConnection()
+        {
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+        }
+
+        public void closeConnection()
+        {
+            if (connection.State == ConnectionState.Open)
+            {
+                connection.Close();
+            }
+        }
+
+        public void executeMyQuery(string query)
+        {
+            try
+            {
+                openConnection();
+                command = new OdbcCommand(query, connection);
+
+                if (command.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Query Executed");
+                }
+
+                else
+                {
+                    MessageBox.Show("Query Not Executed");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                closeConnection();
+            }
+        }
 
 
-        
-    
 
 
 
-    private void btnUusi_Click(object sender, EventArgs e)
+        private void btnUusi_Click(object sender, EventArgs e)
         {
             Validate();
             varausBindingSource.EndEdit();
@@ -175,34 +218,17 @@ namespace Village_Newbies
 
         private void btnLisaaVarausPalvelu_Click(object sender, EventArgs e)//lisää varauksen palvelut tietokantaan
         {
-            string varausid = txtvarausid.Text;
+            /*string varausid = txtvarausid.Text;
             string palveluid = cmbVarausPalveluValinta.SelectedValue.ToString();
             string palvelulkm = tbVarausPalveluLkm.Text;
 
+            string insertQuery = "INSERT INTO varauksen_palvelut VALUES (" + int.Parse(txtvarausid.Text) + ", " + cmbVarausPalveluValinta.SelectedValue + ", " + int.Parse(tbVarausPalveluLkm.Text) + ")";
+            executeMyQuery(insertQuery);
+            VarausPalveluTauluPaivitys();*/
+
+
+
             try
-            {
-                String query = "INSERT INTO varauksen_palvelut VALUES (" + int.Parse(txtvarausid.Text) + ", " + cmbVarausPalveluValinta.SelectedValue + ", " + int.Parse(tbVarausPalveluLkm.Text) + ")";
-                //openConnection();
-                using (connection)
-                {
-                    OdbcCommand command = new OdbcCommand(query, connection);
-
-                    if (command.ExecuteNonQuery() == 1)
-                    {
-                        MessageBox.Show("Query Executed");
-                    }
-
-                    else
-                    {
-                        MessageBox.Show("Query Not Executed");
-                    }
-                }
-            }
-            catch
-            {
-
-            }
-            /*try
             {
 
                 
@@ -226,7 +252,7 @@ namespace Village_Newbies
             catch
             {
 
-            }*/
+            }
 
             VarausPalveluTauluPaivitys();
 
@@ -300,7 +326,7 @@ namespace Village_Newbies
 
         private void btnPoistaVarausPalvelu_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
