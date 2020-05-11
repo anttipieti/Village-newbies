@@ -236,7 +236,7 @@ namespace Village_Newbies
                 
 
 
-            using(connection)
+                using(connection)
                 {
                   OdbcCommand cmd = new OdbcCommand();
                   connection.Open();
@@ -257,9 +257,6 @@ namespace Village_Newbies
             }
 
             VarausPalveluTauluPaivitys();
-
-
-
         }
 
         private void CustomTimeFormat()

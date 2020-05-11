@@ -102,6 +102,7 @@
             this.toimintaalueTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.toimintaalueTableAdapter();
             this.palveluBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.palveluTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.palveluTableAdapter();
+            this.lblvarauspalvelu = new System.Windows.Forms.Label();
             this.tabVarausNakyma.SuspendLayout();
             this.tabPageVaraus.SuspendLayout();
             this.tabPageAsiakas.SuspendLayout();
@@ -548,6 +549,7 @@
             // 
             // tabPagePalvelut
             // 
+            this.tabPagePalvelut.Controls.Add(this.lblvarauspalvelu);
             this.tabPagePalvelut.Controls.Add(this.button1);
             this.tabPagePalvelut.Controls.Add(this.dtgVarauksenPalvelut);
             this.tabPagePalvelut.Controls.Add(this.btnLisaaVarausPalvelu);
@@ -565,7 +567,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(438, 60);
+            this.button1.Location = new System.Drawing.Point(439, 89);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(240, 28);
             this.button1.TabIndex = 12;
@@ -577,7 +579,7 @@
             this.dtgVarauksenPalvelut.AllowUserToAddRows = false;
             this.dtgVarauksenPalvelut.AllowUserToDeleteRows = false;
             this.dtgVarauksenPalvelut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgVarauksenPalvelut.Location = new System.Drawing.Point(36, 106);
+            this.dtgVarauksenPalvelut.Location = new System.Drawing.Point(37, 135);
             this.dtgVarauksenPalvelut.Name = "dtgVarauksenPalvelut";
             this.dtgVarauksenPalvelut.ReadOnly = true;
             this.dtgVarauksenPalvelut.RowHeadersWidth = 51;
@@ -587,7 +589,7 @@
             // 
             // btnLisaaVarausPalvelu
             // 
-            this.btnLisaaVarausPalvelu.Location = new System.Drawing.Point(438, 26);
+            this.btnLisaaVarausPalvelu.Location = new System.Drawing.Point(439, 55);
             this.btnLisaaVarausPalvelu.Name = "btnLisaaVarausPalvelu";
             this.btnLisaaVarausPalvelu.Size = new System.Drawing.Size(240, 28);
             this.btnLisaaVarausPalvelu.TabIndex = 10;
@@ -597,7 +599,7 @@
             // 
             // tbVarausPalveluLkm
             // 
-            this.tbVarausPalveluLkm.Location = new System.Drawing.Point(152, 64);
+            this.tbVarausPalveluLkm.Location = new System.Drawing.Point(153, 93);
             this.tbVarausPalveluLkm.Name = "tbVarausPalveluLkm";
             this.tbVarausPalveluLkm.Size = new System.Drawing.Size(200, 22);
             this.tbVarausPalveluLkm.TabIndex = 9;
@@ -605,7 +607,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(36, 64);
+            this.label5.Location = new System.Drawing.Point(37, 93);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(79, 17);
             this.label5.TabIndex = 8;
@@ -615,7 +617,7 @@
             // 
             this.cmbVarausPalveluValinta.DisplayMember = "palvelu_id";
             this.cmbVarausPalveluValinta.FormattingEnabled = true;
-            this.cmbVarausPalveluValinta.Location = new System.Drawing.Point(152, 29);
+            this.cmbVarausPalveluValinta.Location = new System.Drawing.Point(153, 58);
             this.cmbVarausPalveluValinta.Name = "cmbVarausPalveluValinta";
             this.cmbVarausPalveluValinta.Size = new System.Drawing.Size(200, 24);
             this.cmbVarausPalveluValinta.TabIndex = 7;
@@ -625,7 +627,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(33, 29);
+            this.label4.Location = new System.Drawing.Point(34, 58);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(99, 17);
             this.label4.TabIndex = 6;
@@ -817,6 +819,15 @@
             // 
             this.palveluTableAdapter.ClearBeforeFill = true;
             // 
+            // lblvarauspalvelu
+            // 
+            this.lblvarauspalvelu.AutoSize = true;
+            this.lblvarauspalvelu.Location = new System.Drawing.Point(37, 16);
+            this.lblvarauspalvelu.Name = "lblvarauspalvelu";
+            this.lblvarauspalvelu.Size = new System.Drawing.Size(203, 17);
+            this.lblvarauspalvelu.TabIndex = 13;
+            this.lblvarauspalvelu.Text = "Valitse ensin toimialue ja mökki";
+            // 
             // Varaukset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -927,6 +938,7 @@
         private System.Windows.Forms.BindingSource palveluBindingSource;
         private VillageNewbiesDataSetTableAdapters.palveluTableAdapter palveluTableAdapter;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblvarauspalvelu;
     }
 }
 
