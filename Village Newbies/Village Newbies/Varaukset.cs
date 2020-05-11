@@ -15,9 +15,11 @@ namespace Village_Newbies
 {
     public partial class Varaukset : Form
     {
-        public Varaukset()
+        MainMenu mainform;
+        public Varaukset(MainMenu f1)
         {
             InitializeComponent();
+            mainform = f1;
         }
 
         private void Varaukset_Load(object sender, EventArgs e)
