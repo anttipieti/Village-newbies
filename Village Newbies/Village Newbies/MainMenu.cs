@@ -20,9 +20,9 @@ namespace Village_Newbies
         private void btnMenuVaraukset_Click(object sender, EventArgs e)
         {
             //Avaa varaukset-lomake
-            Varaukset newform = new Varaukset(this);
+            /*Varaukset newform = new Varaukset(this);
             newform.Show();
-            this.Hide();
+            this.Hide();*/
         }
 
         private void MainMenu_FormClosing(object sender, FormClosingEventArgs e)

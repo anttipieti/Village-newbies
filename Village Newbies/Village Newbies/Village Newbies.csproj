@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Asiakkaat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Asiakkaat.Designer.cs">
+      <DependentUpon>Asiakkaat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenu.Designer.cs">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Varaukset.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +71,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>VillageNewbiesDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Asiakkaat.resx">
+      <DependentUpon>Asiakkaat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenu.resx">
+      <DependentUpon>MainMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
