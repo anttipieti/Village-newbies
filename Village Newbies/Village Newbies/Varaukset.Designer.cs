@@ -83,7 +83,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabPageHaku = new System.Windows.Forms.TabPage();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbVarausHakuEhto = new System.Windows.Forms.ComboBox();
             this.lblhakuteksti = new System.Windows.Forms.Label();
             this.dtphakualku = new System.Windows.Forms.DateTimePicker();
             this.dtphakupaattyy = new System.Windows.Forms.DateTimePicker();
@@ -106,6 +106,7 @@
             this.btnTabVarausPalvelut = new System.Windows.Forms.Button();
             this.lblValitutPalvelut = new System.Windows.Forms.Label();
             this.tbPalvelulkm = new System.Windows.Forms.TextBox();
+            this.btnHaku = new System.Windows.Forms.Button();
             this.tabVarausNakyma.SuspendLayout();
             this.tabPageVaraus.SuspendLayout();
             this.tabPageAsiakas.SuspendLayout();
@@ -663,8 +664,9 @@
             // 
             // tabPageHaku
             // 
+            this.tabPageHaku.Controls.Add(this.btnHaku);
             this.tabPageHaku.Controls.Add(this.checkBox1);
-            this.tabPageHaku.Controls.Add(this.comboBox2);
+            this.tabPageHaku.Controls.Add(this.cmbVarausHakuEhto);
             this.tabPageHaku.Controls.Add(this.lblhakuteksti);
             this.tabPageHaku.Controls.Add(this.dtphakualku);
             this.tabPageHaku.Controls.Add(this.dtphakupaattyy);
@@ -688,16 +690,16 @@
             this.checkBox1.Text = "Vain vahvistetut varaukset";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // cmbVarausHakuEhto
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cmbVarausHakuEhto.FormattingEnabled = true;
+            this.cmbVarausHakuEhto.Items.AddRange(new object[] {
             "Varauspäivämäärän mukaan",
             "Voimassaolevat varaukset"});
-            this.comboBox2.Location = new System.Drawing.Point(146, 131);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(170, 24);
-            this.comboBox2.TabIndex = 12;
+            this.cmbVarausHakuEhto.Location = new System.Drawing.Point(146, 131);
+            this.cmbVarausHakuEhto.Name = "cmbVarausHakuEhto";
+            this.cmbVarausHakuEhto.Size = new System.Drawing.Size(170, 24);
+            this.cmbVarausHakuEhto.TabIndex = 12;
             // 
             // lblhakuteksti
             // 
@@ -710,14 +712,16 @@
             // 
             // dtphakualku
             // 
-            this.dtphakualku.Location = new System.Drawing.Point(391, 207);
+            this.dtphakualku.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtphakualku.Location = new System.Drawing.Point(91, 216);
             this.dtphakualku.Name = "dtphakualku";
             this.dtphakualku.Size = new System.Drawing.Size(228, 22);
             this.dtphakualku.TabIndex = 10;
             // 
             // dtphakupaattyy
             // 
-            this.dtphakupaattyy.Location = new System.Drawing.Point(91, 207);
+            this.dtphakupaattyy.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtphakupaattyy.Location = new System.Drawing.Point(391, 216);
             this.dtphakupaattyy.Name = "dtphakupaattyy";
             this.dtphakupaattyy.Size = new System.Drawing.Size(225, 22);
             this.dtphakupaattyy.TabIndex = 11;
@@ -725,7 +729,7 @@
             // lblhakualkaen
             // 
             this.lblhakualkaen.AutoSize = true;
-            this.lblhakualkaen.Location = new System.Drawing.Point(388, 183);
+            this.lblhakualkaen.Location = new System.Drawing.Point(88, 192);
             this.lblhakualkaen.Name = "lblhakualkaen";
             this.lblhakualkaen.Size = new System.Drawing.Size(51, 17);
             this.lblhakualkaen.TabIndex = 8;
@@ -734,7 +738,7 @@
             // lblhakupaattyen
             // 
             this.lblhakupaattyen.AutoSize = true;
-            this.lblhakupaattyen.Location = new System.Drawing.Point(88, 183);
+            this.lblhakupaattyen.Location = new System.Drawing.Point(388, 192);
             this.lblhakupaattyen.Name = "lblhakupaattyen";
             this.lblhakupaattyen.Size = new System.Drawing.Size(64, 17);
             this.lblhakupaattyen.TabIndex = 9;
@@ -877,6 +881,16 @@
             this.tbPalvelulkm.Size = new System.Drawing.Size(117, 22);
             this.tbPalvelulkm.TabIndex = 42;
             // 
+            // btnHaku
+            // 
+            this.btnHaku.Location = new System.Drawing.Point(300, 329);
+            this.btnHaku.Name = "btnHaku";
+            this.btnHaku.Size = new System.Drawing.Size(220, 23);
+            this.btnHaku.TabIndex = 14;
+            this.btnHaku.Text = "Hae";
+            this.btnHaku.UseVisualStyleBackColor = true;
+            this.btnHaku.Click += new System.EventHandler(this.btnHaku_Click);
+            // 
             // Varaukset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -956,7 +970,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage tabPageHaku;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbVarausHakuEhto;
         private System.Windows.Forms.Label lblhakuteksti;
         private System.Windows.Forms.DateTimePicker dtphakualku;
         private System.Windows.Forms.DateTimePicker dtphakupaattyy;
@@ -991,6 +1005,7 @@
         private System.Windows.Forms.Button btnTabVarausPalvelut;
         private System.Windows.Forms.TextBox tbPalvelulkm;
         private System.Windows.Forms.Label lblValitutPalvelut;
+        private System.Windows.Forms.Button btnHaku;
     }
 }
 

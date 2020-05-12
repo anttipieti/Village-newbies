@@ -232,6 +232,10 @@ namespace Village_Newbies
             dtpalku.CustomFormat = "ddd dd/MM/yyyy  HH:mm";
             dtploppu.Format = DateTimePickerFormat.Custom;
             dtploppu.CustomFormat = "ddd dd/MM/yyyy  HH:mm";
+            dtphakualku.Format = DateTimePickerFormat.Custom;
+            dtphakualku.CustomFormat = "ddd dd/MM/yyyy  HH:mm";
+            dtphakupaattyy.Format = DateTimePickerFormat.Custom;
+            dtphakupaattyy.CustomFormat = "ddd dd/MM/yyyy  HH:mm";
         }
 
         
@@ -239,7 +243,7 @@ namespace Village_Newbies
         private void dtgVarausTaulu_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             int index = dtgVarausTaulu.CurrentRow.Index;
-            if (dtgVarausTaulu.ColumnCount>0)//Jos datagridistä valitaan varaus sen id menee tekstikenttään
+            if (dtgVarausTaulu.RowCount>0)//Jos datagridistä valitaan varaus sen id menee tekstikenttään
             {
                 txtvarausid.Text = dtgVarausTaulu.Rows[index].Cells[0].Value.ToString();
                 txtasiakasid.Text = dtgVarausTaulu.Rows[index].Cells[1].Value.ToString();
@@ -267,7 +271,7 @@ namespace Village_Newbies
 
         private void btnMuuta_Click(object sender, EventArgs e)//muuttaa valitun varauksen tietoja
         {
-            if (dtgVarausTaulu.ColumnCount > 0)
+            if (dtgVarausTaulu.RowCount > 0)
             {
                 int index = dtgVarausTaulu.CurrentRow.Index;
                 //String Sqlupdate = "UPDATE varaus SET asiakas_id = "+ int.Parse(txtasiakasid.Text) +", mokki_mokki_id = " + int.Parse(txtmokkiid.Text) + ", varattu_pvm = " + dtpvarattu.Value +", vahvistus_pvm = "+ dtpvahvistus.Value + ", varattu_alkupvm = " + dtpalku.Value +", varattu_loppupvm = "+ dtploppu.Value + " WHERE varaus_id = "+ txtvarausid.Text;
@@ -283,7 +287,7 @@ namespace Village_Newbies
 
         private void btnVarausPoista_Click(object sender, EventArgs e)//poistaa varauksen JA siihen liittyvät palvelut
         {
-            if (dtgVarausTaulu.ColumnCount > 0)
+            if (dtgVarausTaulu.RowCount > 0)
             {
                 int index = dtgVarausTaulu.CurrentRow.Index;
 
@@ -303,7 +307,7 @@ namespace Village_Newbies
 
         private void btnPoistaVarausPalvelu_Click(object sender, EventArgs e)
         {
-            if (dtgVarauksenPalvelut.ColumnCount > 0)
+            if (dtgVarauksenPalvelut.RowCount > 0)
             {
                 int index = dtgVarauksenPalvelut.CurrentRow.Index;
                 try
@@ -345,6 +349,29 @@ namespace Village_Newbies
             }
         }
 
-        
+        private void btnHaku_Click(object sender, EventArgs e)
+        {
+            DateTime alku = dtphakualku.Value;
+            DateTime loppu = dtphakupaattyy.Value;
+
+            if(cmbVarausHakuEhto.Text == "Voimassaolevat varaukset")
+            {//ongelma hakusanassa , datetime ei oikeasssa muodossa
+                string hakusana = "SELECT * FROM varaus WHERE(varattu_alkupvm BETWEEN " + alku + " AND " + loppu + ") OR (varattu_loppupvm between " + alku + " AND " + loppu + ")";
+                try
+                {
+                    connection.ConnectionString = conString;
+                    DataTable table = new DataTable();
+                    OdbcDataAdapter adapter = new OdbcDataAdapter(hakusana, connection);
+                    adapter.Fill(table);
+                    dtgVarausTaulu.DataSource = table;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
+            }
+            
+        }
     }
 }
