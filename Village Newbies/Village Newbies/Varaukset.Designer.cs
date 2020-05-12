@@ -83,7 +83,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabPageHaku = new System.Windows.Forms.TabPage();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbVarausHakuEhto = new System.Windows.Forms.ComboBox();
             this.lblhakuteksti = new System.Windows.Forms.Label();
             this.dtphakualku = new System.Windows.Forms.DateTimePicker();
             this.dtphakupaattyy = new System.Windows.Forms.DateTimePicker();
@@ -103,6 +103,10 @@
             this.toimintaalueTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.toimintaalueTableAdapter();
             this.palveluBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.palveluTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.palveluTableAdapter();
+            this.btnTabVarausPalvelut = new System.Windows.Forms.Button();
+            this.lblValitutPalvelut = new System.Windows.Forms.Label();
+            this.tbPalvelulkm = new System.Windows.Forms.TextBox();
+            this.btnHaku = new System.Windows.Forms.Button();
             this.tabVarausNakyma.SuspendLayout();
             this.tabPageVaraus.SuspendLayout();
             this.tabPageAsiakas.SuspendLayout();
@@ -138,6 +142,9 @@
             // 
             // tabPageVaraus
             // 
+            this.tabPageVaraus.Controls.Add(this.tbPalvelulkm);
+            this.tabPageVaraus.Controls.Add(this.lblValitutPalvelut);
+            this.tabPageVaraus.Controls.Add(this.btnTabVarausPalvelut);
             this.tabPageVaraus.Controls.Add(this.txtmokkiid);
             this.tabPageVaraus.Controls.Add(this.btnmokki);
             this.tabPageVaraus.Controls.Add(this.btnVarausPoista);
@@ -167,18 +174,18 @@
             // 
             // txtmokkiid
             // 
-            this.txtmokkiid.Location = new System.Drawing.Point(48, 245);
+            this.txtmokkiid.Location = new System.Drawing.Point(115, 173);
             this.txtmokkiid.Name = "txtmokkiid";
             this.txtmokkiid.Size = new System.Drawing.Size(117, 22);
             this.txtmokkiid.TabIndex = 27;
             // 
             // btnmokki
             // 
-            this.btnmokki.Location = new System.Drawing.Point(48, 273);
+            this.btnmokki.Location = new System.Drawing.Point(115, 208);
             this.btnmokki.Name = "btnmokki";
             this.btnmokki.Size = new System.Drawing.Size(117, 28);
             this.btnmokki.TabIndex = 28;
-            this.btnmokki.Text = "Lisää Mökki";
+            this.btnmokki.Text = "Valitse Mökki";
             this.btnmokki.UseVisualStyleBackColor = true;
             this.btnmokki.Click += new System.EventHandler(this.btnmokki_Click);
             // 
@@ -194,11 +201,11 @@
             // 
             // btnasiakas
             // 
-            this.btnasiakas.Location = new System.Drawing.Point(48, 178);
+            this.btnasiakas.Location = new System.Drawing.Point(115, 132);
             this.btnasiakas.Name = "btnasiakas";
             this.btnasiakas.Size = new System.Drawing.Size(117, 28);
             this.btnasiakas.TabIndex = 25;
-            this.btnasiakas.Text = "Lisää Asiakas";
+            this.btnasiakas.Text = "Valitse Asiakas";
             this.btnasiakas.UseVisualStyleBackColor = true;
             this.btnasiakas.Click += new System.EventHandler(this.btnasiakas_Click);
             // 
@@ -214,7 +221,7 @@
             // 
             // txtvarausid
             // 
-            this.txtvarausid.Location = new System.Drawing.Point(48, 82);
+            this.txtvarausid.Location = new System.Drawing.Point(115, 32);
             this.txtvarausid.Name = "txtvarausid";
             this.txtvarausid.Size = new System.Drawing.Size(117, 22);
             this.txtvarausid.TabIndex = 22;
@@ -232,7 +239,7 @@
             // lblmokkiid
             // 
             this.lblmokkiid.AutoSize = true;
-            this.lblmokkiid.Location = new System.Drawing.Point(45, 219);
+            this.lblmokkiid.Location = new System.Drawing.Point(45, 176);
             this.lblmokkiid.Name = "lblmokkiid";
             this.lblmokkiid.Size = new System.Drawing.Size(57, 17);
             this.lblmokkiid.TabIndex = 26;
@@ -241,7 +248,7 @@
             // lblvarausid
             // 
             this.lblvarausid.AutoSize = true;
-            this.lblvarausid.Location = new System.Drawing.Point(45, 52);
+            this.lblvarausid.Location = new System.Drawing.Point(45, 32);
             this.lblvarausid.Name = "lblvarausid";
             this.lblvarausid.Size = new System.Drawing.Size(64, 17);
             this.lblvarausid.TabIndex = 21;
@@ -249,7 +256,7 @@
             // 
             // txtasiakasid
             // 
-            this.txtasiakasid.Location = new System.Drawing.Point(48, 145);
+            this.txtasiakasid.Location = new System.Drawing.Point(115, 97);
             this.txtasiakasid.Name = "txtasiakasid";
             this.txtasiakasid.Size = new System.Drawing.Size(117, 22);
             this.txtasiakasid.TabIndex = 24;
@@ -257,7 +264,7 @@
             // lblasiakasID
             // 
             this.lblasiakasID.AutoSize = true;
-            this.lblasiakasID.Location = new System.Drawing.Point(45, 123);
+            this.lblasiakasID.Location = new System.Drawing.Point(40, 100);
             this.lblasiakasID.Name = "lblasiakasID";
             this.lblasiakasID.Size = new System.Drawing.Size(69, 17);
             this.lblasiakasID.TabIndex = 23;
@@ -266,7 +273,7 @@
             // dtploppu
             // 
             this.dtploppu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtploppu.Location = new System.Drawing.Point(298, 255);
+            this.dtploppu.Location = new System.Drawing.Point(355, 243);
             this.dtploppu.Name = "dtploppu";
             this.dtploppu.Size = new System.Drawing.Size(244, 22);
             this.dtploppu.TabIndex = 39;
@@ -274,7 +281,7 @@
             // dtpvarattu
             // 
             this.dtpvarattu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpvarattu.Location = new System.Drawing.Point(299, 72);
+            this.dtpvarattu.Location = new System.Drawing.Point(356, 60);
             this.dtpvarattu.Name = "dtpvarattu";
             this.dtpvarattu.Size = new System.Drawing.Size(243, 22);
             this.dtpvarattu.TabIndex = 36;
@@ -282,7 +289,7 @@
             // dtpalku
             // 
             this.dtpalku.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpalku.Location = new System.Drawing.Point(298, 194);
+            this.dtpalku.Location = new System.Drawing.Point(355, 182);
             this.dtpalku.Name = "dtpalku";
             this.dtpalku.Size = new System.Drawing.Size(244, 22);
             this.dtpalku.TabIndex = 38;
@@ -290,7 +297,7 @@
             // lblvarattu
             // 
             this.lblvarattu.AutoSize = true;
-            this.lblvarattu.Location = new System.Drawing.Point(296, 52);
+            this.lblvarattu.Location = new System.Drawing.Point(353, 40);
             this.lblvarattu.Name = "lblvarattu";
             this.lblvarattu.Size = new System.Drawing.Size(54, 17);
             this.lblvarattu.TabIndex = 32;
@@ -299,7 +306,7 @@
             // dtpvahvistus
             // 
             this.dtpvahvistus.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpvahvistus.Location = new System.Drawing.Point(298, 133);
+            this.dtpvahvistus.Location = new System.Drawing.Point(355, 121);
             this.dtpvahvistus.Name = "dtpvahvistus";
             this.dtpvahvistus.Size = new System.Drawing.Size(244, 22);
             this.dtpvahvistus.TabIndex = 37;
@@ -307,7 +314,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(296, 113);
+            this.label1.Location = new System.Drawing.Point(353, 101);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 17);
             this.label1.TabIndex = 33;
@@ -316,7 +323,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(296, 174);
+            this.label2.Location = new System.Drawing.Point(353, 162);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 17);
             this.label2.TabIndex = 34;
@@ -325,7 +332,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(296, 235);
+            this.label3.Location = new System.Drawing.Point(353, 223);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 17);
             this.label3.TabIndex = 35;
@@ -536,7 +543,6 @@
             this.tbVarausMokki.Name = "tbVarausMokki";
             this.tbVarausMokki.Size = new System.Drawing.Size(185, 22);
             this.tbVarausMokki.TabIndex = 30;
-            this.tbVarausMokki.TextChanged += new System.EventHandler(this.tbVarausMokki_TextChanged);
             // 
             // btnVarausMokkiLisays
             // 
@@ -658,8 +664,9 @@
             // 
             // tabPageHaku
             // 
+            this.tabPageHaku.Controls.Add(this.btnHaku);
             this.tabPageHaku.Controls.Add(this.checkBox1);
-            this.tabPageHaku.Controls.Add(this.comboBox2);
+            this.tabPageHaku.Controls.Add(this.cmbVarausHakuEhto);
             this.tabPageHaku.Controls.Add(this.lblhakuteksti);
             this.tabPageHaku.Controls.Add(this.dtphakualku);
             this.tabPageHaku.Controls.Add(this.dtphakupaattyy);
@@ -683,16 +690,16 @@
             this.checkBox1.Text = "Vain vahvistetut varaukset";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // cmbVarausHakuEhto
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cmbVarausHakuEhto.FormattingEnabled = true;
+            this.cmbVarausHakuEhto.Items.AddRange(new object[] {
             "Varauspäivämäärän mukaan",
             "Voimassaolevat varaukset"});
-            this.comboBox2.Location = new System.Drawing.Point(146, 131);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(170, 24);
-            this.comboBox2.TabIndex = 12;
+            this.cmbVarausHakuEhto.Location = new System.Drawing.Point(146, 131);
+            this.cmbVarausHakuEhto.Name = "cmbVarausHakuEhto";
+            this.cmbVarausHakuEhto.Size = new System.Drawing.Size(170, 24);
+            this.cmbVarausHakuEhto.TabIndex = 12;
             // 
             // lblhakuteksti
             // 
@@ -705,14 +712,16 @@
             // 
             // dtphakualku
             // 
-            this.dtphakualku.Location = new System.Drawing.Point(391, 207);
+            this.dtphakualku.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtphakualku.Location = new System.Drawing.Point(91, 216);
             this.dtphakualku.Name = "dtphakualku";
             this.dtphakualku.Size = new System.Drawing.Size(228, 22);
             this.dtphakualku.TabIndex = 10;
             // 
             // dtphakupaattyy
             // 
-            this.dtphakupaattyy.Location = new System.Drawing.Point(91, 207);
+            this.dtphakupaattyy.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtphakupaattyy.Location = new System.Drawing.Point(391, 216);
             this.dtphakupaattyy.Name = "dtphakupaattyy";
             this.dtphakupaattyy.Size = new System.Drawing.Size(225, 22);
             this.dtphakupaattyy.TabIndex = 11;
@@ -720,7 +729,7 @@
             // lblhakualkaen
             // 
             this.lblhakualkaen.AutoSize = true;
-            this.lblhakualkaen.Location = new System.Drawing.Point(388, 183);
+            this.lblhakualkaen.Location = new System.Drawing.Point(88, 192);
             this.lblhakualkaen.Name = "lblhakualkaen";
             this.lblhakualkaen.Size = new System.Drawing.Size(51, 17);
             this.lblhakualkaen.TabIndex = 8;
@@ -729,7 +738,7 @@
             // lblhakupaattyen
             // 
             this.lblhakupaattyen.AutoSize = true;
-            this.lblhakupaattyen.Location = new System.Drawing.Point(88, 183);
+            this.lblhakupaattyen.Location = new System.Drawing.Point(388, 192);
             this.lblhakupaattyen.Name = "lblhakupaattyen";
             this.lblhakupaattyen.Size = new System.Drawing.Size(64, 17);
             this.lblhakupaattyen.TabIndex = 9;
@@ -845,6 +854,43 @@
             // 
             this.palveluTableAdapter.ClearBeforeFill = true;
             // 
+            // btnTabVarausPalvelut
+            // 
+            this.btnTabVarausPalvelut.Location = new System.Drawing.Point(115, 284);
+            this.btnTabVarausPalvelut.Name = "btnTabVarausPalvelut";
+            this.btnTabVarausPalvelut.Size = new System.Drawing.Size(117, 30);
+            this.btnTabVarausPalvelut.TabIndex = 40;
+            this.btnTabVarausPalvelut.Text = "Valitse Palvelut";
+            this.btnTabVarausPalvelut.UseVisualStyleBackColor = true;
+            this.btnTabVarausPalvelut.Click += new System.EventHandler(this.btnTabVarausPalvelut_Click);
+            // 
+            // lblValitutPalvelut
+            // 
+            this.lblValitutPalvelut.AutoSize = true;
+            this.lblValitutPalvelut.Location = new System.Drawing.Point(45, 252);
+            this.lblValitutPalvelut.Name = "lblValitutPalvelut";
+            this.lblValitutPalvelut.Size = new System.Drawing.Size(62, 17);
+            this.lblValitutPalvelut.TabIndex = 41;
+            this.lblValitutPalvelut.Text = "Palvelut:";
+            // 
+            // tbPalvelulkm
+            // 
+            this.tbPalvelulkm.Location = new System.Drawing.Point(115, 249);
+            this.tbPalvelulkm.Name = "tbPalvelulkm";
+            this.tbPalvelulkm.ReadOnly = true;
+            this.tbPalvelulkm.Size = new System.Drawing.Size(117, 22);
+            this.tbPalvelulkm.TabIndex = 42;
+            // 
+            // btnHaku
+            // 
+            this.btnHaku.Location = new System.Drawing.Point(300, 329);
+            this.btnHaku.Name = "btnHaku";
+            this.btnHaku.Size = new System.Drawing.Size(220, 23);
+            this.btnHaku.TabIndex = 14;
+            this.btnHaku.Text = "Hae";
+            this.btnHaku.UseVisualStyleBackColor = true;
+            this.btnHaku.Click += new System.EventHandler(this.btnHaku_Click);
+            // 
             // Varaukset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -924,7 +970,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabPage tabPageHaku;
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbVarausHakuEhto;
         private System.Windows.Forms.Label lblhakuteksti;
         private System.Windows.Forms.DateTimePicker dtphakualku;
         private System.Windows.Forms.DateTimePicker dtphakupaattyy;
@@ -956,6 +1002,10 @@
         private VillageNewbiesDataSetTableAdapters.palveluTableAdapter palveluTableAdapter;
         private System.Windows.Forms.Button btnPoistaVarausPalvelu;
         private System.Windows.Forms.Label lblvarauspalvelu;
+        private System.Windows.Forms.Button btnTabVarausPalvelut;
+        private System.Windows.Forms.TextBox tbPalvelulkm;
+        private System.Windows.Forms.Label lblValitutPalvelut;
+        private System.Windows.Forms.Button btnHaku;
     }
 }
 
