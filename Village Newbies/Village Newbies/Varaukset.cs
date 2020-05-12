@@ -37,13 +37,15 @@ namespace Village_Newbies
 
         }
 
-        OdbcConnection connection = new OdbcConnection("DSN=Village Newbies;MultipleActiveResultSets=True");
+        OdbcConnection connection = new OdbcConnection(@"DSN=Village Newbies;MultipleActiveResultSets=True");
         OdbcCommand command;
+        string conString = "DSN=Village Newbies;MultipleActiveResultSets=True";
 
         public void openConnection()
         {
             if (connection.State == ConnectionState.Closed)
             {
+                connection.ConnectionString = conString;
                 connection.Open();
             }
         }
@@ -63,7 +65,8 @@ namespace Village_Newbies
                 openConnection();
                 using(connection)
                 {
-                    command = new OdbcCommand(query, connection);
+                    command = connection.CreateCommand();
+                    command.CommandText = query;
 
                     if (command.ExecuteNonQuery() == 1)
                     {
@@ -246,18 +249,11 @@ namespace Village_Newbies
 
             try
             {
-                string strCon = "DSN=Village Newbies;MultipleActiveResultSets=True";
-                using (OdbcConnection con = new OdbcConnection(strCon))
-                {
-                  OdbcCommand cmd = new OdbcCommand();
-                  cmd.Connection= con;
-                  cmd.CommandText = "INSERT INTO varauksen_palvelut VALUES (" + int.Parse(txtvarausid.Text) + ", " + cmbVarausPalveluValinta.SelectedValue + ", " + int.Parse(tbVarausPalveluLkm.Text) + ")";
-                  cmd.CommandType = CommandType.Text;
-                  cmd.ExecuteNonQuery();//Ei jostain syystä toimi
-                  MessageBox.Show("Palvelu lisätty", "Ilmoitus");
-                }
-                 
-                
+
+                string insertQuery = "INSERT INTO varauksen_palvelut VALUES (" + int.Parse(txtvarausid.Text) + ", " + cmbVarausPalveluValinta.SelectedValue + ", " + int.Parse(tbVarausPalveluLkm.Text) + ")";
+                executeMyQuery(insertQuery);
+
+
             }
             catch(Exception ex)
             {
