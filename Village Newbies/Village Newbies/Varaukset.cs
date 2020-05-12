@@ -246,25 +246,22 @@ namespace Village_Newbies
 
             try
             {
-
-                /*using (connection)
+                string strCon = "DSN=Village Newbies;MultipleActiveResultSets=True";
+                using (OdbcConnection con = new OdbcConnection(strCon))
                 {
                   OdbcCommand cmd = new OdbcCommand();
-                  connection.Open();
-                  cmd.Connection= connection;
+                  cmd.Connection= con;
                   cmd.CommandText = "INSERT INTO varauksen_palvelut VALUES (" + int.Parse(txtvarausid.Text) + ", " + cmbVarausPalveluValinta.SelectedValue + ", " + int.Parse(tbVarausPalveluLkm.Text) + ")";
                   cmd.CommandType = CommandType.Text;
-
                   cmd.ExecuteNonQuery();//Ei jostain syystä toimi
                   MessageBox.Show("Palvelu lisätty", "Ilmoitus");
-                  connection.Close();
-                }*/
+                }
                  
                 
             }
-            catch
+            catch(Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
 
             VarausPalveluTauluPaivitys();
