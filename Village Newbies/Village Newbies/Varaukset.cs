@@ -112,12 +112,18 @@ namespace Village_Newbies
         private void btnmokki_Click(object sender, EventArgs e)
         {
             tabVarausNakyma.SelectedTab = tabPageMokki;
+            //VarausToimiAlueet();
         }
 
         private void btnLisaaVarauksenMokki_Click(object sender, EventArgs e)
         {
             txtmokkiid.Text=tbVarausMokki.Text;
             tabVarausNakyma.SelectedTab = tabPageVaraus;
+        }
+
+        private void btnTabVarausPalvelut_Click(object sender, EventArgs e)
+        {
+            tabVarausNakyma.SelectedTab = tabPagePalvelut;
         }
 
         private void VarausPalveluTauluPaivitys()
@@ -138,6 +144,10 @@ namespace Village_Newbies
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                tbPalvelulkm.Text = dtgVarauksenPalvelut.Rows.Count.ToString();
             }
         }
 
@@ -255,7 +265,7 @@ namespace Village_Newbies
             }
         }
 
-        private void btnMuuta_Click(object sender, EventArgs e)
+        private void btnMuuta_Click(object sender, EventArgs e)//muuttaa valitun varauksen tietoja
         {
             if (dtgVarausTaulu.ColumnCount > 0)
             {
@@ -268,17 +278,10 @@ namespace Village_Newbies
 
                 varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
             }
-            /*int index = dtgVarausTaulu.CurrentRow.Index;
-            //String Sqlupdate = "UPDATE varaus SET asiakas_id = "+ int.Parse(txtasiakasid.Text) +", mokki_mokki_id = " + int.Parse(txtmokkiid.Text) + ", varattu_pvm = " + dtpvarattu.Value +", vahvistus_pvm = "+ dtpvahvistus.Value + ", varattu_alkupvm = " + dtpalku.Value +", varattu_loppupvm = "+ dtploppu.Value + " WHERE varaus_id = "+ txtvarausid.Text;
-            Validate();
-            varausBindingSource.EndEdit();
-            varausTableAdapter.Update(villageNewbiesDataSet);
-            varausTableAdapter.Update(int.Parse(txtasiakasid.Text), int.Parse(txtmokkiid.Text), dtpvarattu.Value, dtpvahvistus.Value, dtpalku.Value, dtploppu.Value, Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[0].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[1].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[2].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[3].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[4].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[5].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[6].Value));
             
-            varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);*/
         }
 
-        private void btnVarausPoista_Click(object sender, EventArgs e)//poisto ei toimi nyt koska varauksen palvelut käyttää varaus_id:tä
+        private void btnVarausPoista_Click(object sender, EventArgs e)//poistaa varauksen JA siihen liittyvät palvelut
         {
             if (dtgVarausTaulu.ColumnCount > 0)
             {
@@ -326,16 +329,22 @@ namespace Village_Newbies
             //Avataan päävalikko uudelleen
         }
 
-        private void tbVarausMokki_TextChanged(object sender, EventArgs e)//Jos mökki_id kirjoitetaan, valitaan mokki_id:n toiminta-alue
+        private void VarausToimiAlueet()
         {
-            try
-            {
-                cmbVarausToimialue.SelectedItem = 1;
-            }
-            catch
-            {
+            string strSqlb = "SELECT * FROM toimintaalue";
 
+            connection.ConnectionString = conString;
+            using (connection)
+            using (OdbcDataAdapter dadapter = new OdbcDataAdapter(strSqlb, connection))
+            {
+                DataTable table = new DataTable();
+                dadapter.Fill(table);
+                cmbVarausToimialue.DataSource = table;
+                cmbVarausToimialue.ValueMember = "toimintaalue_id";
+                cmbVarausToimialue.DisplayMember = "nimi";
             }
         }
+
+        
     }
 }
