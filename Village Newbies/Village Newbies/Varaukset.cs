@@ -329,7 +329,15 @@ namespace Village_Newbies
 
         private void btnPoistaVarausPalvelu_Click(object sender, EventArgs e)
         {
-            
+            int index = dtgVarauksenPalvelut.CurrentRow.Index;
+            try
+            {
+                string query = 
+            }
+            catch
+            {
+
+            }
         }
 
         private void Varaukset_FormClosing(object sender, FormClosingEventArgs e)
