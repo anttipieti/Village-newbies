@@ -68,6 +68,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.lbHakusana = new System.Windows.Forms.Label();
+            this.lbAsID = new System.Windows.Forms.Label();
+            this.tbAsID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgAsiakas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataSet)).BeginInit();
@@ -173,6 +175,8 @@
             // tab_muokkaa
             // 
             this.tab_muokkaa.BackColor = System.Drawing.Color.White;
+            this.tab_muokkaa.Controls.Add(this.tbAsID);
+            this.tab_muokkaa.Controls.Add(this.lbAsID);
             this.tab_muokkaa.Controls.Add(this.btnAsPoista);
             this.tab_muokkaa.Controls.Add(this.btnAsMuokkaa);
             this.tab_muokkaa.Controls.Add(this.btnAsLisaa);
@@ -214,6 +218,7 @@
             this.btnAsMuokkaa.TabIndex = 13;
             this.btnAsMuokkaa.Text = "Muokkaa";
             this.btnAsMuokkaa.UseVisualStyleBackColor = false;
+            this.btnAsMuokkaa.Click += new System.EventHandler(this.btnAsMuokkaa_Click);
             // 
             // btnAsLisaa
             // 
@@ -447,6 +452,23 @@
             this.lbHakusana.TabIndex = 20;
             this.lbHakusana.Text = "Hakusana";
             // 
+            // lbAsID
+            // 
+            this.lbAsID.AutoSize = true;
+            this.lbAsID.Location = new System.Drawing.Point(745, 38);
+            this.lbAsID.Name = "lbAsID";
+            this.lbAsID.Size = new System.Drawing.Size(60, 17);
+            this.lbAsID.TabIndex = 15;
+            this.lbAsID.Text = "Tunnus:";
+            // 
+            // tbAsID
+            // 
+            this.tbAsID.Location = new System.Drawing.Point(818, 35);
+            this.tbAsID.Name = "tbAsID";
+            this.tbAsID.ReadOnly = true;
+            this.tbAsID.Size = new System.Drawing.Size(55, 22);
+            this.tbAsID.TabIndex = 16;
+            // 
             // Asiakkaat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -512,5 +534,7 @@
         private System.Windows.Forms.Label lbHakusana;
         private System.Windows.Forms.CheckBox cbAsPuhNro;
         private System.Windows.Forms.GroupBox gbAsHae;
+        private System.Windows.Forms.Label lbAsID;
+        private System.Windows.Forms.TextBox tbAsID;
     }
 }

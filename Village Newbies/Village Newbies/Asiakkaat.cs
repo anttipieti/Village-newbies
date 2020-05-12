@@ -84,17 +84,27 @@ namespace Village_Newbies
 
         private void btnAsLisaa_Click(object sender, EventArgs e)
         {
-            
-            string Asiakastiedot =
+            //datan lisäys tauluun, datagrid päivitys
+            string asiakasAdd =
                 "insert into asiakas(postinro, etunimi, sukunimi, lahiosoite, email, puhelinnro) values('"+ tbAsPostinro.Text+ "','"+tbAsEtunimi.Text+"','"+tbAsSukunimi.Text+ "','"+tbAsLOsoite.Text+ "','"+tbAsEmail.Text+ "','"+tbAsPuhNro.Text+ "')";
-            ExecuteMyQuery(Asiakastiedot);
+            ExecuteMyQuery(asiakasAdd);
             this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
 
+        }
+
+        private void btnAsMuokkaa_Click(object sender, EventArgs e)
+        {
+            //päivitetään taulun data ja datagrid
+            string asiakasUpdate =
+                "UPDATE asiakas SET postinro='" +tbAsPostinro.Text+ "',etunimi='"+tbAsEtunimi.Text+ "',sukunimi='" +tbAsSukunimi.Text+"',lahiosoite='" +tbAsLOsoite.Text+"',email='" +tbAsEmail.Text+"',puhelinnro="+tbAsPuhNro.Text+" WHERE asiakas_id="+int.Parse(tbAsID.Text);
+            ExecuteMyQuery(asiakasUpdate);
+            this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
         }
 
         private void dgAsiakas_MouseClick(object sender, MouseEventArgs e)
         {
             //Tuodaan tiedot taulukosta textboxeihin
+            tbAsID.Text = dgAsiakas.CurrentRow.Cells[0].Value.ToString();
             tbAsPostinro.Text = dgAsiakas.CurrentRow.Cells[1].Value.ToString();
             tbAsEtunimi.Text = dgAsiakas.CurrentRow.Cells[2].Value.ToString();
             tbAsSukunimi.Text = dgAsiakas.CurrentRow.Cells[3].Value.ToString();
@@ -109,5 +119,9 @@ namespace Village_Newbies
             //Avataan päävalikko uudelleen
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
