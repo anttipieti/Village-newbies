@@ -122,6 +122,9 @@
             // 
             // tabVarausNakyma
             // 
+            this.tabVarausNakyma.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabVarausNakyma.Controls.Add(this.tabPageVaraus);
             this.tabVarausNakyma.Controls.Add(this.tabPageAsiakas);
             this.tabVarausNakyma.Controls.Add(this.tabPageMokki);
@@ -346,6 +349,9 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -511,6 +517,9 @@
             // 
             this.dtgVarausMokit.AllowUserToAddRows = false;
             this.dtgVarausMokit.AllowUserToDeleteRows = false;
+            this.dtgVarausMokit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgVarausMokit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgVarausMokit.Location = new System.Drawing.Point(35, 115);
             this.dtgVarausMokit.Name = "dtgVarausMokit";
@@ -527,6 +536,7 @@
             this.tbVarausMokki.Name = "tbVarausMokki";
             this.tbVarausMokki.Size = new System.Drawing.Size(185, 22);
             this.tbVarausMokki.TabIndex = 30;
+            this.tbVarausMokki.TextChanged += new System.EventHandler(this.tbVarausMokki_TextChanged);
             // 
             // btnVarausMokkiLisays
             // 
@@ -588,6 +598,9 @@
             // 
             this.dtgVarauksenPalvelut.AllowUserToAddRows = false;
             this.dtgVarauksenPalvelut.AllowUserToDeleteRows = false;
+            this.dtgVarauksenPalvelut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgVarauksenPalvelut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgVarauksenPalvelut.Location = new System.Drawing.Point(37, 135);
             this.dtgVarauksenPalvelut.Name = "dtgVarauksenPalvelut";
@@ -726,6 +739,9 @@
             // 
             this.dtgVarausTaulu.AllowUserToAddRows = false;
             this.dtgVarausTaulu.AllowUserToDeleteRows = false;
+            this.dtgVarausTaulu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgVarausTaulu.AutoGenerateColumns = false;
             this.dtgVarausTaulu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgVarausTaulu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
