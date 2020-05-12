@@ -332,7 +332,7 @@ namespace Village_Newbies
             int index = dtgVarauksenPalvelut.CurrentRow.Index;
             try
             {
-                string query = 
+                string query;
             }
             catch
             {
