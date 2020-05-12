@@ -37,5 +37,29 @@ namespace Village_Newbies
             newform.Show();
             this.Hide();
         }
+
+        private void btnMenuAlueet_Click(object sender, EventArgs e)
+        {
+            //Avaa Toiminta-alueet-lomake
+            Toiminta_alueet newform = new Toiminta_alueet(this);
+            newform.Show();
+            this.Hide();
+        }
+
+        private void btnMenuPalvelut_Click(object sender, EventArgs e)
+        {
+            //Avaa Palvelut-lomake
+            Palvelut newform = new Palvelut(this);
+            newform.Show();
+            this.Hide();
+        }
+
+        private void btnMenuLaskut_Click(object sender, EventArgs e)
+        {
+            //Avaa Palvelut-lomake
+           Laskut newform = new Laskut(this);
+            newform.Show();
+            this.Hide();
+        }
     }
 }
