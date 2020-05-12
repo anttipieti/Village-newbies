@@ -153,6 +153,7 @@ namespace Village_Newbies
             cbAsLOsoite.Checked = false;
             cbAsEmail.Checked = false;
             cbAsPuhNro.Checked = false;
+            //Testaan korjaako tämä kommentti mitään
         }
 
         private string luoHakustring()
