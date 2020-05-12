@@ -73,7 +73,8 @@
             this.btnVarausMokkiLisays = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tabPagePalvelut = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblvarauspalvelu = new System.Windows.Forms.Label();
+            this.btnPoistaVarausPalvelu = new System.Windows.Forms.Button();
             this.dtgVarauksenPalvelut = new System.Windows.Forms.DataGridView();
             this.btnLisaaVarausPalvelu = new System.Windows.Forms.Button();
             this.tbVarausPalveluLkm = new System.Windows.Forms.TextBox();
@@ -102,7 +103,6 @@
             this.toimintaalueTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.toimintaalueTableAdapter();
             this.palveluBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.palveluTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.palveluTableAdapter();
-            this.lblvarauspalvelu = new System.Windows.Forms.Label();
             this.tabVarausNakyma.SuspendLayout();
             this.tabPageVaraus.SuspendLayout();
             this.tabPageAsiakas.SuspendLayout();
@@ -550,7 +550,7 @@
             // tabPagePalvelut
             // 
             this.tabPagePalvelut.Controls.Add(this.lblvarauspalvelu);
-            this.tabPagePalvelut.Controls.Add(this.button1);
+            this.tabPagePalvelut.Controls.Add(this.btnPoistaVarausPalvelu);
             this.tabPagePalvelut.Controls.Add(this.dtgVarauksenPalvelut);
             this.tabPagePalvelut.Controls.Add(this.btnLisaaVarausPalvelu);
             this.tabPagePalvelut.Controls.Add(this.tbVarausPalveluLkm);
@@ -565,14 +565,24 @@
             this.tabPagePalvelut.Text = "Palvelut";
             this.tabPagePalvelut.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // lblvarauspalvelu
             // 
-            this.button1.Location = new System.Drawing.Point(439, 89);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(240, 28);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Poista varauksen palvelu";
-            this.button1.UseVisualStyleBackColor = true;
+            this.lblvarauspalvelu.AutoSize = true;
+            this.lblvarauspalvelu.Location = new System.Drawing.Point(37, 16);
+            this.lblvarauspalvelu.Name = "lblvarauspalvelu";
+            this.lblvarauspalvelu.Size = new System.Drawing.Size(203, 17);
+            this.lblvarauspalvelu.TabIndex = 13;
+            this.lblvarauspalvelu.Text = "Valitse ensin toimialue ja mökki";
+            // 
+            // btnPoistaVarausPalvelu
+            // 
+            this.btnPoistaVarausPalvelu.Location = new System.Drawing.Point(439, 89);
+            this.btnPoistaVarausPalvelu.Name = "btnPoistaVarausPalvelu";
+            this.btnPoistaVarausPalvelu.Size = new System.Drawing.Size(240, 28);
+            this.btnPoistaVarausPalvelu.TabIndex = 12;
+            this.btnPoistaVarausPalvelu.Text = "Poista varauksen palvelu";
+            this.btnPoistaVarausPalvelu.UseVisualStyleBackColor = true;
+            this.btnPoistaVarausPalvelu.Click += new System.EventHandler(this.btnPoistaVarausPalvelu_Click);
             // 
             // dtgVarauksenPalvelut
             // 
@@ -819,15 +829,6 @@
             // 
             this.palveluTableAdapter.ClearBeforeFill = true;
             // 
-            // lblvarauspalvelu
-            // 
-            this.lblvarauspalvelu.AutoSize = true;
-            this.lblvarauspalvelu.Location = new System.Drawing.Point(37, 16);
-            this.lblvarauspalvelu.Name = "lblvarauspalvelu";
-            this.lblvarauspalvelu.Size = new System.Drawing.Size(203, 17);
-            this.lblvarauspalvelu.TabIndex = 13;
-            this.lblvarauspalvelu.Text = "Valitse ensin toimialue ja mökki";
-            // 
             // Varaukset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -937,7 +938,7 @@
         private VillageNewbiesDataSetTableAdapters.toimintaalueTableAdapter toimintaalueTableAdapter;
         private System.Windows.Forms.BindingSource palveluBindingSource;
         private VillageNewbiesDataSetTableAdapters.palveluTableAdapter palveluTableAdapter;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPoistaVarausPalvelu;
         private System.Windows.Forms.Label lblvarauspalvelu;
     }
 }

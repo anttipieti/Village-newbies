@@ -307,14 +307,25 @@ namespace Village_Newbies
 
         private void btnMuuta_Click(object sender, EventArgs e)
         {
-            int index = dtgVarausTaulu.CurrentRow.Index;
+            if (dtgVarausTaulu.ColumnCount > 0)
+            {
+                int index = dtgVarausTaulu.CurrentRow.Index;
+                //String Sqlupdate = "UPDATE varaus SET asiakas_id = "+ int.Parse(txtasiakasid.Text) +", mokki_mokki_id = " + int.Parse(txtmokkiid.Text) + ", varattu_pvm = " + dtpvarattu.Value +", vahvistus_pvm = "+ dtpvahvistus.Value + ", varattu_alkupvm = " + dtpalku.Value +", varattu_loppupvm = "+ dtploppu.Value + " WHERE varaus_id = "+ txtvarausid.Text;
+                Validate();
+                varausBindingSource.EndEdit();
+                varausTableAdapter.Update(villageNewbiesDataSet);
+                varausTableAdapter.Update(int.Parse(txtasiakasid.Text), int.Parse(txtmokkiid.Text), dtpvarattu.Value, dtpvahvistus.Value, dtpalku.Value, dtploppu.Value, Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[0].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[1].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[2].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[3].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[4].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[5].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[6].Value));
+
+                varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
+            }
+            /*int index = dtgVarausTaulu.CurrentRow.Index;
             //String Sqlupdate = "UPDATE varaus SET asiakas_id = "+ int.Parse(txtasiakasid.Text) +", mokki_mokki_id = " + int.Parse(txtmokkiid.Text) + ", varattu_pvm = " + dtpvarattu.Value +", vahvistus_pvm = "+ dtpvahvistus.Value + ", varattu_alkupvm = " + dtpalku.Value +", varattu_loppupvm = "+ dtploppu.Value + " WHERE varaus_id = "+ txtvarausid.Text;
             Validate();
             varausBindingSource.EndEdit();
             varausTableAdapter.Update(villageNewbiesDataSet);
             varausTableAdapter.Update(int.Parse(txtasiakasid.Text), int.Parse(txtmokkiid.Text), dtpvarattu.Value, dtpvahvistus.Value, dtpalku.Value, dtploppu.Value, Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[0].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[1].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[2].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[3].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[4].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[5].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[6].Value));
             
-            varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
+            varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);*/
         }
 
         private void btnVarausPoista_Click(object sender, EventArgs e)//poisto ei toimi nyt koska varauksen palvelut käyttää varaus_id:tä
@@ -332,11 +343,12 @@ namespace Village_Newbies
             int index = dtgVarauksenPalvelut.CurrentRow.Index;
             try
             {
-                string query;
+                string query = "DELETE FROM varauksen_palvelut WHERE varaus_id ="+ Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[0].Value) + " AND palvelu_id = "+ Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[1].Value);
+                executeMyQuery(query);
             }
-            catch
+            catch(Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
