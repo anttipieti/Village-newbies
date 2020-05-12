@@ -70,26 +70,13 @@ namespace Village_Newbies
 
                     if (command.ExecuteNonQuery() == 1)
                     {
-                        MessageBox.Show("Query Executed");
+                        MessageBox.Show("Onnistui");
                     }
-
                     else
                     {
-                        MessageBox.Show("Query Not Executed");
+                        MessageBox.Show("Virhe syötteessä");
                     }
                 }
-                /*command = new OdbcCommand(query, connection);
-
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    MessageBox.Show("Query Executed");
-                }
-
-                else
-                {
-                    MessageBox.Show("Query Not Executed");
-                }*/
-
             }
             catch (Exception ex)
             {
@@ -100,10 +87,6 @@ namespace Village_Newbies
                 closeConnection();
             }
         }
-
-
-
-
 
         private void btnUusi_Click(object sender, EventArgs e)
         {
@@ -141,22 +124,20 @@ namespace Village_Newbies
         {
             try//Näyttää varaukseen liittyvät palvelut taulukossa
             {
-                //string strCon = "DSN=Village Newbies;MultipleActiveResultSets=True";
                 string strSql = "SELECT v.varaus_id, v.palvelu_id, v.lkm, p.nimi FROM varauksen_palvelut v JOIN palvelu p ON p.palvelu_id = v.palvelu_id WHERE varaus_id =";
 
+                connection.ConnectionString = conString;
                 using (connection)
                 using (OdbcDataAdapter dadapter = new OdbcDataAdapter(strSql + int.Parse(txtvarausid.Text), connection))
                 {
                     DataTable table = new DataTable();
                     dadapter.Fill(table);
-
                     dtgVarauksenPalvelut.DataSource = table;
                 }
-
             }
-            catch
+            catch(Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -164,28 +145,8 @@ namespace Village_Newbies
         private void cmbVarausPalveluValinta_SelectionChangeCommitted(object sender, EventArgs e)
         {
             VarausPalveluTauluPaivitys();
-            /*try//Näyttää varaukseen liittyvät palvelut taulukossa
-            {
-                string strCon = "DSN=Village Newbies;MultipleActiveResultSets=True";
-                string strSql = "SELECT v.varaus_id, v.palvelu_id, v.lkm, p.nimi FROM varauksen_palvelut v JOIN palvelu p ON p.palvelu_id = v.palvelu_id WHERE varaus_id =";
-
-                using (OdbcConnection con = new OdbcConnection(strCon))
-                using (OdbcDataAdapter dadapter = new OdbcDataAdapter(strSql+int.Parse(txtvarausid.Text), con))
-                {
-                    DataTable table = new DataTable();
-                    dadapter.Fill(table);
-
-                    dtgVarauksenPalvelut.DataSource = table;
-                }
-
-            }
-            catch
-            {
-
-            }*/
         }
 
-        
 
         private void cmbVarausToimialue_SelectionChangeCommitted(object sender, EventArgs e)
         {
@@ -229,38 +190,26 @@ namespace Village_Newbies
             {
 
             }
-
         }
-
-           
 
 
         private void btnLisaaVarausPalvelu_Click(object sender, EventArgs e)//lisää varauksen palvelut tietokantaan
         {
-            /*string varausid = txtvarausid.Text;
-            string palveluid = cmbVarausPalveluValinta.SelectedValue.ToString();
-            string palvelulkm = tbVarausPalveluLkm.Text;
-
-            string insertQuery = "INSERT INTO varauksen_palvelut VALUES (" + int.Parse(txtvarausid.Text) + ", " + cmbVarausPalveluValinta.SelectedValue + ", " + int.Parse(tbVarausPalveluLkm.Text) + ")";
-            executeMyQuery(insertQuery);
-            VarausPalveluTauluPaivitys();*/
-
-
-
             try
             {
-
                 string insertQuery = "INSERT INTO varauksen_palvelut VALUES (" + int.Parse(txtvarausid.Text) + ", " + cmbVarausPalveluValinta.SelectedValue + ", " + int.Parse(tbVarausPalveluLkm.Text) + ")";
                 executeMyQuery(insertQuery);
-
 
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                VarausPalveluTauluPaivitys();
+            }
 
-            VarausPalveluTauluPaivitys();
         }
 
         private void CustomTimeFormat()
@@ -290,9 +239,10 @@ namespace Village_Newbies
                 dtpalku.Value = Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[5].Value);
                 dtploppu.Value = Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[6].Value);
 
-                
+                tbAsiakasIdVarausValinta.Text = dtgVarausTaulu.Rows[index].Cells[1].Value.ToString();
+                tbVarausMokki.Text = dtgVarausTaulu.Rows[index].Cells[2].Value.ToString();
 
-                //VarausPalveluTauluPaivitys();
+                VarausPalveluTauluPaivitys();
             }
         }
 
@@ -307,43 +257,85 @@ namespace Village_Newbies
 
         private void btnMuuta_Click(object sender, EventArgs e)
         {
-            int index = dtgVarausTaulu.CurrentRow.Index;
+            if (dtgVarausTaulu.ColumnCount > 0)
+            {
+                int index = dtgVarausTaulu.CurrentRow.Index;
+                //String Sqlupdate = "UPDATE varaus SET asiakas_id = "+ int.Parse(txtasiakasid.Text) +", mokki_mokki_id = " + int.Parse(txtmokkiid.Text) + ", varattu_pvm = " + dtpvarattu.Value +", vahvistus_pvm = "+ dtpvahvistus.Value + ", varattu_alkupvm = " + dtpalku.Value +", varattu_loppupvm = "+ dtploppu.Value + " WHERE varaus_id = "+ txtvarausid.Text;
+                Validate();
+                varausBindingSource.EndEdit();
+                varausTableAdapter.Update(villageNewbiesDataSet);
+                varausTableAdapter.Update(int.Parse(txtasiakasid.Text), int.Parse(txtmokkiid.Text), dtpvarattu.Value, dtpvahvistus.Value, dtpalku.Value, dtploppu.Value, Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[0].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[1].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[2].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[3].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[4].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[5].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[6].Value));
+
+                varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
+            }
+            /*int index = dtgVarausTaulu.CurrentRow.Index;
             //String Sqlupdate = "UPDATE varaus SET asiakas_id = "+ int.Parse(txtasiakasid.Text) +", mokki_mokki_id = " + int.Parse(txtmokkiid.Text) + ", varattu_pvm = " + dtpvarattu.Value +", vahvistus_pvm = "+ dtpvahvistus.Value + ", varattu_alkupvm = " + dtpalku.Value +", varattu_loppupvm = "+ dtploppu.Value + " WHERE varaus_id = "+ txtvarausid.Text;
             Validate();
             varausBindingSource.EndEdit();
             varausTableAdapter.Update(villageNewbiesDataSet);
             varausTableAdapter.Update(int.Parse(txtasiakasid.Text), int.Parse(txtmokkiid.Text), dtpvarattu.Value, dtpvahvistus.Value, dtpalku.Value, dtploppu.Value, Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[0].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[1].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[2].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[3].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[4].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[5].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[6].Value));
             
-            varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
+            varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);*/
         }
 
         private void btnVarausPoista_Click(object sender, EventArgs e)//poisto ei toimi nyt koska varauksen palvelut käyttää varaus_id:tä
         {
-            int index = dtgVarausTaulu.CurrentRow.Index;
-            Validate();
-            varausBindingSource.EndEdit();
-            varausTableAdapter.Update(villageNewbiesDataSet);
-            varausTableAdapter.Delete(Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[0].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[1].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[2].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[3].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[4].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[5].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[6].Value));
-            varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
+            if (dtgVarausTaulu.ColumnCount > 0)
+            {
+                int index = dtgVarausTaulu.CurrentRow.Index;
+
+                string query = "DELETE FROM varauksen_palvelut WHERE varaus_id =" + Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[0].Value);
+                executeMyQuery(query);
+
+                Validate();
+                varausBindingSource.EndEdit();
+                varausTableAdapter.Update(villageNewbiesDataSet);
+                varausTableAdapter.Delete(Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[0].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[1].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[2].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[3].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[4].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[5].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[6].Value));
+                varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
+
+
+            }
+            
         }
 
         private void btnPoistaVarausPalvelu_Click(object sender, EventArgs e)
         {
-            int index = dtgVarauksenPalvelut.CurrentRow.Index;
-            try
+            if (dtgVarauksenPalvelut.ColumnCount > 0)
             {
-                string query;
+                int index = dtgVarauksenPalvelut.CurrentRow.Index;
+                try
+                {
+                    string query = "DELETE FROM varauksen_palvelut WHERE varaus_id =" + Convert.ToInt32(dtgVarauksenPalvelut.Rows[index].Cells[0].Value) + " AND palvelu_id = " + Convert.ToInt32(dtgVarauksenPalvelut.Rows[index].Cells[1].Value);
+                    executeMyQuery(query);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    VarausPalveluTauluPaivitys();
+                }
             }
-            catch
-            {
-
-            }
+            
         }
 
         private void Varaukset_FormClosing(object sender, FormClosingEventArgs e)
         {
             mainform.Show();
             //Avataan päävalikko uudelleen
+        }
+
+        private void tbVarausMokki_TextChanged(object sender, EventArgs e)//Jos mökki_id kirjoitetaan, valitaan mokki_id:n toiminta-alue
+        {
+            try
+            {
+                cmbVarausToimialue.SelectedItem = 1;
+            }
+            catch
+            {
+
+            }
         }
     }
 }

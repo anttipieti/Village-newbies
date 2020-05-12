@@ -73,7 +73,8 @@
             this.btnVarausMokkiLisays = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.tabPagePalvelut = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.lblvarauspalvelu = new System.Windows.Forms.Label();
+            this.btnPoistaVarausPalvelu = new System.Windows.Forms.Button();
             this.dtgVarauksenPalvelut = new System.Windows.Forms.DataGridView();
             this.btnLisaaVarausPalvelu = new System.Windows.Forms.Button();
             this.tbVarausPalveluLkm = new System.Windows.Forms.TextBox();
@@ -102,7 +103,6 @@
             this.toimintaalueTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.toimintaalueTableAdapter();
             this.palveluBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.palveluTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.palveluTableAdapter();
-            this.lblvarauspalvelu = new System.Windows.Forms.Label();
             this.tabVarausNakyma.SuspendLayout();
             this.tabPageVaraus.SuspendLayout();
             this.tabPageAsiakas.SuspendLayout();
@@ -122,6 +122,9 @@
             // 
             // tabVarausNakyma
             // 
+            this.tabVarausNakyma.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabVarausNakyma.Controls.Add(this.tabPageVaraus);
             this.tabVarausNakyma.Controls.Add(this.tabPageAsiakas);
             this.tabVarausNakyma.Controls.Add(this.tabPageMokki);
@@ -346,6 +349,9 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -511,6 +517,9 @@
             // 
             this.dtgVarausMokit.AllowUserToAddRows = false;
             this.dtgVarausMokit.AllowUserToDeleteRows = false;
+            this.dtgVarausMokit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgVarausMokit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgVarausMokit.Location = new System.Drawing.Point(35, 115);
             this.dtgVarausMokit.Name = "dtgVarausMokit";
@@ -527,6 +536,7 @@
             this.tbVarausMokki.Name = "tbVarausMokki";
             this.tbVarausMokki.Size = new System.Drawing.Size(185, 22);
             this.tbVarausMokki.TabIndex = 30;
+            this.tbVarausMokki.TextChanged += new System.EventHandler(this.tbVarausMokki_TextChanged);
             // 
             // btnVarausMokkiLisays
             // 
@@ -550,7 +560,7 @@
             // tabPagePalvelut
             // 
             this.tabPagePalvelut.Controls.Add(this.lblvarauspalvelu);
-            this.tabPagePalvelut.Controls.Add(this.button1);
+            this.tabPagePalvelut.Controls.Add(this.btnPoistaVarausPalvelu);
             this.tabPagePalvelut.Controls.Add(this.dtgVarauksenPalvelut);
             this.tabPagePalvelut.Controls.Add(this.btnLisaaVarausPalvelu);
             this.tabPagePalvelut.Controls.Add(this.tbVarausPalveluLkm);
@@ -565,19 +575,32 @@
             this.tabPagePalvelut.Text = "Palvelut";
             this.tabPagePalvelut.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // lblvarauspalvelu
             // 
-            this.button1.Location = new System.Drawing.Point(439, 89);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(240, 28);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Poista varauksen palvelu";
-            this.button1.UseVisualStyleBackColor = true;
+            this.lblvarauspalvelu.AutoSize = true;
+            this.lblvarauspalvelu.Location = new System.Drawing.Point(37, 16);
+            this.lblvarauspalvelu.Name = "lblvarauspalvelu";
+            this.lblvarauspalvelu.Size = new System.Drawing.Size(203, 17);
+            this.lblvarauspalvelu.TabIndex = 13;
+            this.lblvarauspalvelu.Text = "Valitse ensin toimialue ja mökki";
+            // 
+            // btnPoistaVarausPalvelu
+            // 
+            this.btnPoistaVarausPalvelu.Location = new System.Drawing.Point(439, 89);
+            this.btnPoistaVarausPalvelu.Name = "btnPoistaVarausPalvelu";
+            this.btnPoistaVarausPalvelu.Size = new System.Drawing.Size(240, 28);
+            this.btnPoistaVarausPalvelu.TabIndex = 12;
+            this.btnPoistaVarausPalvelu.Text = "Poista varauksen palvelu";
+            this.btnPoistaVarausPalvelu.UseVisualStyleBackColor = true;
+            this.btnPoistaVarausPalvelu.Click += new System.EventHandler(this.btnPoistaVarausPalvelu_Click);
             // 
             // dtgVarauksenPalvelut
             // 
             this.dtgVarauksenPalvelut.AllowUserToAddRows = false;
             this.dtgVarauksenPalvelut.AllowUserToDeleteRows = false;
+            this.dtgVarauksenPalvelut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgVarauksenPalvelut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgVarauksenPalvelut.Location = new System.Drawing.Point(37, 135);
             this.dtgVarauksenPalvelut.Name = "dtgVarauksenPalvelut";
@@ -716,6 +739,9 @@
             // 
             this.dtgVarausTaulu.AllowUserToAddRows = false;
             this.dtgVarausTaulu.AllowUserToDeleteRows = false;
+            this.dtgVarausTaulu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtgVarausTaulu.AutoGenerateColumns = false;
             this.dtgVarausTaulu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgVarausTaulu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -818,15 +844,6 @@
             // palveluTableAdapter
             // 
             this.palveluTableAdapter.ClearBeforeFill = true;
-            // 
-            // lblvarauspalvelu
-            // 
-            this.lblvarauspalvelu.AutoSize = true;
-            this.lblvarauspalvelu.Location = new System.Drawing.Point(37, 16);
-            this.lblvarauspalvelu.Name = "lblvarauspalvelu";
-            this.lblvarauspalvelu.Size = new System.Drawing.Size(203, 17);
-            this.lblvarauspalvelu.TabIndex = 13;
-            this.lblvarauspalvelu.Text = "Valitse ensin toimialue ja mökki";
             // 
             // Varaukset
             // 
@@ -937,7 +954,7 @@
         private VillageNewbiesDataSetTableAdapters.toimintaalueTableAdapter toimintaalueTableAdapter;
         private System.Windows.Forms.BindingSource palveluBindingSource;
         private VillageNewbiesDataSetTableAdapters.palveluTableAdapter palveluTableAdapter;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPoistaVarausPalvelu;
         private System.Windows.Forms.Label lblvarauspalvelu;
     }
 }
