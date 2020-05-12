@@ -145,6 +145,7 @@ namespace Village_Newbies
 
         private void btnAsNollaa_Click(object sender, EventArgs e)
         {
+            //Tyhjennetään sivu
             dgAsiakas.DataSource = asiakasBindingSource;
             tbAsHaku.Text = "";
             cbAsPostinro.Checked = false;
@@ -153,13 +154,24 @@ namespace Village_Newbies
             cbAsLOsoite.Checked = false;
             cbAsEmail.Checked = false;
             cbAsPuhNro.Checked = false;
-            //Testaan korjaako tämä kommentti mitään
+            
+        }
+        private void btnAsTyhj_Click(object sender, EventArgs e)
+        {
+            //Tyhjennetään sivu
+            tbAsID.Text = "";
+            tbAsPostinro.Text = "";
+            tbAsEtunimi.Text = "";
+            tbAsSukunimi.Text = "";
+            tbAsLOsoite.Text = "";
+            tbAsEmail.Text = "";
+            tbAsPuhNro.Text = "";
         }
 
         private string luoHakustring()
         {
             //Mitä haetaan
-            //ToDO: ilmoitus jos mitään ei löydy
+            //ToDO: ilmoitus sille, jos mitään ei löydy
 
             bool k = false;
             string valitut = "SELECT * FROM asiakas WHERE ";
@@ -250,5 +262,7 @@ namespace Village_Newbies
             mainform.Show();
             //Avataan päävalikko uudelleen
         }
+
+        
     }
 }

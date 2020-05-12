@@ -73,6 +73,7 @@
             this.tbAsHaku = new System.Windows.Forms.TextBox();
             this.lbHakusana = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.btnAsTyhj = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgAsiakas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataSet)).BeginInit();
@@ -179,6 +180,7 @@
             // tab_muokkaa
             // 
             this.tab_muokkaa.BackColor = System.Drawing.Color.White;
+            this.tab_muokkaa.Controls.Add(this.btnAsTyhj);
             this.tab_muokkaa.Controls.Add(this.tbAsID);
             this.tab_muokkaa.Controls.Add(this.lbAsID);
             this.tab_muokkaa.Controls.Add(this.btnAsPoista);
@@ -234,7 +236,7 @@
             // btnAsMuokkaa
             // 
             this.btnAsMuokkaa.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAsMuokkaa.Location = new System.Drawing.Point(748, 167);
+            this.btnAsMuokkaa.Location = new System.Drawing.Point(748, 141);
             this.btnAsMuokkaa.Name = "btnAsMuokkaa";
             this.btnAsMuokkaa.Size = new System.Drawing.Size(125, 25);
             this.btnAsMuokkaa.TabIndex = 13;
@@ -245,7 +247,7 @@
             // btnAsLisaa
             // 
             this.btnAsLisaa.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAsLisaa.Location = new System.Drawing.Point(748, 132);
+            this.btnAsLisaa.Location = new System.Drawing.Point(748, 110);
             this.btnAsLisaa.Name = "btnAsLisaa";
             this.btnAsLisaa.Size = new System.Drawing.Size(125, 25);
             this.btnAsLisaa.TabIndex = 12;
@@ -498,6 +500,17 @@
             this.lbHakusana.TabIndex = 20;
             this.lbHakusana.Text = "Hakusana";
             // 
+            // btnAsTyhj
+            // 
+            this.btnAsTyhj.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAsTyhj.Location = new System.Drawing.Point(748, 172);
+            this.btnAsTyhj.Name = "btnAsTyhj";
+            this.btnAsTyhj.Size = new System.Drawing.Size(125, 25);
+            this.btnAsTyhj.TabIndex = 17;
+            this.btnAsTyhj.Text = "Tyhjennä";
+            this.btnAsTyhj.UseVisualStyleBackColor = false;
+            this.btnAsTyhj.Click += new System.EventHandler(this.btnAsTyhj_Click);
+            // 
             // Asiakkaat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -569,5 +582,6 @@
         private System.Windows.Forms.CheckBox cbAsID;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.Button btnAsNollaa;
+        private System.Windows.Forms.Button btnAsTyhj;
     }
 }
