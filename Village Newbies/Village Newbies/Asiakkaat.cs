@@ -100,6 +100,14 @@ namespace Village_Newbies
             ExecuteMyQuery(asiakasUpdate);
             this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
         }
+        private void btnAsPoista_Click(object sender, EventArgs e)
+        {
+            //poistetaan asiakas taulusta ja päivitetään datagrid
+            string asiakasPoista =
+                "DELETE FROM asiakas WHERE asiakas_id= "+int.Parse(tbAsID.Text);
+            ExecuteMyQuery(asiakasPoista);
+            this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
+        }
 
         private void dgAsiakas_MouseClick(object sender, MouseEventArgs e)
         {
@@ -119,9 +127,8 @@ namespace Village_Newbies
             //Avataan päävalikko uudelleen
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+        
 
-        }
+        
     }
 }

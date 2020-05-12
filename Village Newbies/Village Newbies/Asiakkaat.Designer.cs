@@ -208,6 +208,7 @@
             this.btnAsPoista.TabIndex = 14;
             this.btnAsPoista.Text = "Poista";
             this.btnAsPoista.UseVisualStyleBackColor = false;
+            this.btnAsPoista.Click += new System.EventHandler(this.btnAsPoista_Click);
             // 
             // btnAsMuokkaa
             // 
