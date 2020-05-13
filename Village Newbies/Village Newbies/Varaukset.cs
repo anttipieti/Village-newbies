@@ -31,10 +31,10 @@ namespace Village_Newbies
             // TODO: This line of code loads data into the 'villageNewbiesDataSet.asiakas' table. You can move, or remove it, as needed.
             this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
             // TODO: This line of code loads data into the 'villageNewbiesDataSet.varaus' table. You can move, or remove it, as needed.
-            this.varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
+            //this.varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
 
+            paivitaDGV();
             CustomTimeFormat();
-
         }
 
         OdbcConnection connection = new OdbcConnection(@"DSN=Village Newbies;MultipleActiveResultSets=True");
@@ -56,6 +56,17 @@ namespace Village_Newbies
             {
                 connection.Close();
             }
+        }
+
+        public void paivitaDGV()
+        {
+            //Tuo kaikki varaukset datagridiin
+            string selectQuery = "SELECT * FROM varaus";
+            DataTable table = new DataTable();
+            connection.ConnectionString = conString;
+            OdbcDataAdapter adapter = new OdbcDataAdapter(selectQuery, connection);
+            adapter.Fill(table);
+            dtgVarausTaulu.DataSource = table;
         }
 
         public void executeMyQuery(string query)
@@ -90,45 +101,55 @@ namespace Village_Newbies
 
         private void btnUusi_Click(object sender, EventArgs e)
         {
-            Validate();
-            varausBindingSource.EndEdit();
-            varausTableAdapter.Update(villageNewbiesDataSet);
-            varausTableAdapter.Insert(int.Parse(txtasiakasid.Text), int.Parse(txtmokkiid.Text),dtpvarattu.Value, dtpvahvistus.Value, dtpalku.Value,dtploppu.Value);
-            varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
-            //varausTableAdapter.Update(villageNewbiesDataSet);
+            string varattu = dtpvarattu.Value.ToString("yyyy-MM-dd hh:mm:ss");
+            string vahvistus = dtpvahvistus.Value.ToString("yyyy-MM-dd hh:mm:ss");
+            string alku = dtpalku.Value.ToString("yyyy-MM-dd hh:mm:ss");
+            string loppu = dtploppu.Value.ToString("yyyy-MM-dd hh:mm:ss");
+            string insertQuery;
+            if (chbvarausvahvista.CheckState == CheckState.Checked)//Vahvistamattomaan varaukseen ei tule mukaan vahvistuspäivämäärää
+            {
+                insertQuery = "INSERT INTO varaus (asiakas_id, mokki_mokki_id, varattu_pvm, varattu_alkupvm, varattu_loppupvm) VALUES (" + int.Parse(txtasiakasid.Text) + " ," + int.Parse(txtmokkiid.Text) + " ,'" + varattu + "' ,'" + alku + "' ,'" + loppu + "')";
+            }
+            else
+            {
+                insertQuery = "INSERT INTO varaus (asiakas_id, mokki_mokki_id, varattu_pvm, vahvistus_pvm, varattu_alkupvm, varattu_loppupvm) VALUES (" + int.Parse(txtasiakasid.Text) + " ," + int.Parse(txtmokkiid.Text) + " ,'" + varattu + "' ,'" + vahvistus + "' ,'" + alku + "' ,'" + loppu + "')";
+            }
+
+            executeMyQuery(insertQuery);
+            paivitaDGV();
         }
 
-        private void btnVarausAsiakasLisays_Click(object sender, EventArgs e)
+        private void btnVarausAsiakasLisays_Click(object sender, EventArgs e)//Lisää asiakasID:n tekstilaatikkoon
         {
             txtasiakasid.Text = tbAsiakasIdVarausValinta.Text;
             tabVarausNakyma.SelectedTab = tabPageVaraus;
         }
 
-        private void btnasiakas_Click(object sender, EventArgs e)
+        private void btnasiakas_Click(object sender, EventArgs e)//Avaa asiakasvalinnan
         {
             tabVarausNakyma.SelectedTab = tabPageAsiakas;
         }
 
-        private void btnmokki_Click(object sender, EventArgs e)
+        private void btnmokki_Click(object sender, EventArgs e)//Avaa mökkivalinnan
         {
             tabVarausNakyma.SelectedTab = tabPageMokki;
             //VarausToimiAlueet();
         }
 
-        private void btnLisaaVarauksenMokki_Click(object sender, EventArgs e)
+        private void btnLisaaVarauksenMokki_Click(object sender, EventArgs e)//Lisää mökkiID:n tekstilaatikkoon
         {
             txtmokkiid.Text=tbVarausMokki.Text;
             tabVarausNakyma.SelectedTab = tabPageVaraus;
         }
 
-        private void btnTabVarausPalvelut_Click(object sender, EventArgs e)
+        private void btnTabVarausPalvelut_Click(object sender, EventArgs e)//Avaa palveluvalinnan
         {
             tabVarausNakyma.SelectedTab = tabPagePalvelut;
         }
 
-        private void VarausPalveluTauluPaivitys()
+        private void VarausPalveluTauluPaivitys()//Näyttää varaukseen liittyvät palvelut taulukossa
         {
-            try//Näyttää varaukseen liittyvät palvelut taulukossa
+            try
             {
                 string strSql = "SELECT v.varaus_id, v.palvelu_id, v.lkm, p.nimi FROM varauksen_palvelut v JOIN palvelu p ON p.palvelu_id = v.palvelu_id WHERE varaus_id =";
 
@@ -151,14 +172,12 @@ namespace Village_Newbies
             }
         }
 
-
-        private void cmbVarausPalveluValinta_SelectionChangeCommitted(object sender, EventArgs e)
+        private void cmbVarausPalveluValinta_SelectionChangeCommitted(object sender, EventArgs e)//Päivitetään palvelutaulua kun palvelu on valittu
         {
             VarausPalveluTauluPaivitys();
         }
 
-
-        private void cmbVarausToimialue_SelectionChangeCommitted(object sender, EventArgs e)
+        private void cmbVarausToimialue_SelectionChangeCommitted(object sender, EventArgs e)//Toimialueen valinta
         {
             string varaustoimialue = cmbVarausToimialue.SelectedValue.ToString();
             string strCon = "DSN=Village Newbies;MultipleActiveResultSets=True";
@@ -166,16 +185,15 @@ namespace Village_Newbies
             try//tämä osio hakee toimialueen mökit taulukkoon
             {
                 string strSql = "SELECT * FROM mokki WHERE toimintaalue_id = "+varaustoimialue;
-
-                using (OdbcConnection con = new OdbcConnection(strCon))
-                using (OdbcDataAdapter dadapter = new OdbcDataAdapter(strSql, con))
+                connection.ConnectionString = conString;
+                using (connection)
+                using (OdbcDataAdapter dadapter = new OdbcDataAdapter(strSql, connection))
                 {
                     DataTable table = new DataTable();
                     dadapter.Fill(table);
 
                     dtgVarausMokit.DataSource = table;
                 }
-
             }
             catch
             {
@@ -185,9 +203,9 @@ namespace Village_Newbies
             try//tämä osio hakee varauksen mökin toimialueen palvelut comboboxiin
             {
                 string strSqlb = "SELECT * FROM palvelu WHERE toimintaalue_id = " + varaustoimialue;
-
-                using (OdbcConnection con = new OdbcConnection(strCon))
-                using (OdbcDataAdapter dadapter = new OdbcDataAdapter(strSqlb, con))
+                connection.ConnectionString = conString;
+                using (connection)
+                using (OdbcDataAdapter dadapter = new OdbcDataAdapter(strSqlb, connection))
                 {
                     DataTable table = new DataTable();
                     dadapter.Fill(table);
@@ -202,14 +220,12 @@ namespace Village_Newbies
             }
         }
 
-
         private void btnLisaaVarausPalvelu_Click(object sender, EventArgs e)//lisää varauksen palvelut tietokantaan
         {
             try
             {
                 string insertQuery = "INSERT INTO varauksen_palvelut VALUES (" + int.Parse(txtvarausid.Text) + ", " + cmbVarausPalveluValinta.SelectedValue + ", " + int.Parse(tbVarausPalveluLkm.Text) + ")";
                 executeMyQuery(insertQuery);
-
             }
             catch(Exception ex)
             {
@@ -219,10 +235,9 @@ namespace Village_Newbies
             {
                 VarausPalveluTauluPaivitys();
             }
-
         }
 
-        private void CustomTimeFormat()
+        private void CustomTimeFormat()//datetimepickerin aikamuodon säätöä
         {
             dtpvarattu.Format = DateTimePickerFormat.Custom;
             dtpvarattu.CustomFormat = "ddd dd/MM/yyyy  HH:mm";
@@ -233,12 +248,10 @@ namespace Village_Newbies
             dtploppu.Format = DateTimePickerFormat.Custom;
             dtploppu.CustomFormat = "ddd dd/MM/yyyy  HH:mm";
             dtphakualku.Format = DateTimePickerFormat.Custom;
-            dtphakualku.CustomFormat = "ddd dd/MM/yyyy  HH:mm";
+            dtphakualku.CustomFormat = "ddd dd/MM/yyyy";
             dtphakupaattyy.Format = DateTimePickerFormat.Custom;
-            dtphakupaattyy.CustomFormat = "ddd dd/MM/yyyy  HH:mm";
+            dtphakupaattyy.CustomFormat = "ddd dd/MM/yyyy";
         }
-
-        
 
         private void dtgVarausTaulu_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
@@ -249,7 +262,16 @@ namespace Village_Newbies
                 txtasiakasid.Text = dtgVarausTaulu.Rows[index].Cells[1].Value.ToString();
                 txtmokkiid.Text = dtgVarausTaulu.Rows[index].Cells[2].Value.ToString();
                 dtpvarattu.Value = Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[3].Value);
-                dtpvahvistus.Value = Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[4].Value);
+                try//jos varaus on vahvistettu (ei ole NULL), pävitetään datetimepicker ja poistetaan ruudusta rasti
+                {
+                    dtpvahvistus.Value = Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[4].Value);
+                    chbvarausvahvista.CheckState = CheckState.Unchecked;
+                }
+                catch
+                {
+                    dtpvahvistus.Value = DateTime.Today;
+                    chbvarausvahvista.CheckState = CheckState.Checked;
+                }
                 dtpalku.Value = Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[5].Value);
                 dtploppu.Value = Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[6].Value);
 
@@ -274,15 +296,15 @@ namespace Village_Newbies
             if (dtgVarausTaulu.RowCount > 0)
             {
                 int index = dtgVarausTaulu.CurrentRow.Index;
-                //String Sqlupdate = "UPDATE varaus SET asiakas_id = "+ int.Parse(txtasiakasid.Text) +", mokki_mokki_id = " + int.Parse(txtmokkiid.Text) + ", varattu_pvm = " + dtpvarattu.Value +", vahvistus_pvm = "+ dtpvahvistus.Value + ", varattu_alkupvm = " + dtpalku.Value +", varattu_loppupvm = "+ dtploppu.Value + " WHERE varaus_id = "+ txtvarausid.Text;
-                Validate();
-                varausBindingSource.EndEdit();
-                varausTableAdapter.Update(villageNewbiesDataSet);
-                varausTableAdapter.Update(int.Parse(txtasiakasid.Text), int.Parse(txtmokkiid.Text), dtpvarattu.Value, dtpvahvistus.Value, dtpalku.Value, dtploppu.Value, Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[0].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[1].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[2].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[3].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[4].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[5].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[6].Value));
+                string varattu = dtpvarattu.Value.ToString("yyyy-MM-dd hh:mm:ss");
+                string vahvistus = dtpvahvistus.Value.ToString("yyyy-MM-dd hh:mm:ss");
+                string alku = dtpalku.Value.ToString("yyyy-MM-dd hh:mm:ss");
+                string loppu = dtploppu.Value.ToString("yyyy-MM-dd hh:mm:ss");
 
-                varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
-            }
-            
+                string updateQuery = "UPDATE varaus SET asiakas_id = " + int.Parse(txtasiakasid.Text) + ", mokki_mokki_id = " + int.Parse(txtmokkiid.Text) + ", varattu_pvm = '" + varattu + "', vahvistus_pvm = '" + vahvistus + "', varattu_alkupvm = '" + alku + "', varattu_loppupvm = '" + loppu + "' WHERE varaus_id = " + txtvarausid.Text;
+                executeMyQuery(updateQuery);
+                paivitaDGV();
+            } 
         }
 
         private void btnVarausPoista_Click(object sender, EventArgs e)//poistaa varauksen JA siihen liittyvät palvelut
@@ -291,21 +313,16 @@ namespace Village_Newbies
             {
                 int index = dtgVarausTaulu.CurrentRow.Index;
 
-                string query = "DELETE FROM varauksen_palvelut WHERE varaus_id =" + Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[0].Value);
+                string query = "DELETE FROM varauksen_palvelut WHERE varaus_id =" + int.Parse(txtvarausid.Text);
                 executeMyQuery(query);
 
-                Validate();
-                varausBindingSource.EndEdit();
-                varausTableAdapter.Update(villageNewbiesDataSet);
-                varausTableAdapter.Delete(Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[0].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[1].Value), Convert.ToInt32(dtgVarausTaulu.Rows[index].Cells[2].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[3].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[4].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[5].Value), Convert.ToDateTime(dtgVarausTaulu.Rows[index].Cells[6].Value));
-                varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
-
-
-            }
-            
+                string deleteQuery = "DELETE FROM varaus WHERE varaus_id = " + int.Parse(txtvarausid.Text);
+                executeMyQuery(deleteQuery);
+                paivitaDGV();
+            }     
         }
 
-        private void btnPoistaVarausPalvelu_Click(object sender, EventArgs e)
+        private void btnPoistaVarausPalvelu_Click(object sender, EventArgs e)//poistaa valitun palvelun varauksesta
         {
             if (dtgVarauksenPalvelut.RowCount > 0)
             {
@@ -324,7 +341,6 @@ namespace Village_Newbies
                     VarausPalveluTauluPaivitys();
                 }
             }
-            
         }
 
         private void Varaukset_FormClosing(object sender, FormClosingEventArgs e)
@@ -333,7 +349,7 @@ namespace Village_Newbies
             //Avataan päävalikko uudelleen
         }
 
-        private void VarausToimiAlueet()
+        private void VarausToimiAlueet()//Hakee toimialueet comboboxiin
         {
             string strSqlb = "SELECT * FROM toimintaalue";
 
@@ -349,14 +365,23 @@ namespace Village_Newbies
             }
         }
 
-        private void btnHaku_Click(object sender, EventArgs e)
+        private void btnHaku_Click(object sender, EventArgs e)//Hakee varaukset annetuilla hakuehdoilla
         {
-            DateTime alku = dtphakualku.Value;
-            DateTime loppu = dtphakupaattyy.Value;
+            string alku = dtphakualku.Value.ToString("yyyy-MM-dd hh:mm:ss");
+            string loppu = dtphakupaattyy.Value.ToString("yyyy-MM-dd hh:mm:ss");
+            string hakusana;
 
             if(cmbVarausHakuEhto.Text == "Voimassaolevat varaukset")
-            {//ongelma hakusanassa , datetime ei oikeasssa muodossa
-                string hakusana = "SELECT * FROM varaus WHERE(varattu_alkupvm BETWEEN " + alku + " AND " + loppu + ") OR (varattu_loppupvm between " + alku + " AND " + loppu + ")";
+            {
+                if(chbvarausvahvistetut.CheckState == CheckState.Checked)
+                {
+                    hakusana = @"SELECT * FROM varaus WHERE ((varattu_alkupvm BETWEEN '" + alku + "' AND '" + loppu + "') OR (varattu_loppupvm BETWEEN '" + alku + "' AND '" + loppu + "')) AND (vahvistus_pvm IS NOT NULL)";
+                }
+                else
+                {
+                    hakusana = @"SELECT * FROM varaus WHERE (varattu_alkupvm BETWEEN '" + alku + "' AND '" + loppu + "') OR (varattu_loppupvm BETWEEN '" + alku + "' AND '" + loppu + "')";
+                }
+
                 try
                 {
                     connection.ConnectionString = conString;
@@ -368,10 +393,25 @@ namespace Village_Newbies
                 catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }
-                
+                } 
+            } 
+        }
+
+        private void btnvVarausNaytaKaikki_Click(object sender, EventArgs e)//Näyttää kaikki varaukset
+        {
+            paivitaDGV();
+        }
+
+        private void chbvarausvahvista_CheckStateChanged(object sender, EventArgs e)//Poistaa datetimepickerin käytöstä jos varaus on vahvistamaton
+        {
+            if(chbvarausvahvista.CheckState == CheckState.Checked)
+            {
+                dtpvahvistus.Enabled = false;
             }
-            
+            else
+            {
+                dtpvahvistus.Enabled = true;
+            }
         }
     }
 }
