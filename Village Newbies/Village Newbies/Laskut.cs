@@ -26,7 +26,7 @@ namespace Village_Newbies
             //Avataan päävalikko uudelleen
         }
         
-        OdbcConnection connection = new OdbcConnection(@"DSN=Village Newbies;MultipleActiveResultSets=True");
+         OdbcConnection connection = new OdbcConnection(@"DSN=Village Newbies;MultipleActiveResultSets=True");
         OdbcCommand command;
         string conString = "DSN=Village Newbies;MultipleActiveResultSets=True";
 
@@ -161,5 +161,6 @@ namespace Village_Newbies
 
             closeConnection();
         }
+        
     }
 }
