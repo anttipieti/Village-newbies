@@ -32,6 +32,7 @@ namespace Village_Newbies
             this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
             // TODO: This line of code loads data into the 'villageNewbiesDataSet.varaus' table. You can move, or remove it, as needed.
             //this.varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
+            cmbVarausHakuEhto.SelectedIndex = 1;
 
             paivitaDGV();
             CustomTimeFormat();
@@ -191,7 +192,6 @@ namespace Village_Newbies
                 {
                     DataTable table = new DataTable();
                     dadapter.Fill(table);
-
                     dtgVarausMokit.DataSource = table;
                 }
             }
@@ -311,8 +311,7 @@ namespace Village_Newbies
         {
             if (dtgVarausTaulu.RowCount > 0)
             {
-                int index = dtgVarausTaulu.CurrentRow.Index;
-
+                
                 string query = "DELETE FROM varauksen_palvelut WHERE varaus_id =" + int.Parse(txtvarausid.Text);
                 executeMyQuery(query);
 
@@ -371,9 +370,9 @@ namespace Village_Newbies
             string loppu = dtphakupaattyy.Value.ToString("yyyy-MM-dd hh:mm:ss");
             string hakusana;
 
-            if(cmbVarausHakuEhto.Text == "Voimassaolevat varaukset")
+            if (cmbVarausHakuEhto.Text == "Voimassaolevat varaukset")
             {
-                if(chbvarausvahvistetut.CheckState == CheckState.Checked)
+                if (chbvarausvahvistetut.CheckState == CheckState.Checked)
                 {
                     hakusana = @"SELECT * FROM varaus WHERE ((varattu_alkupvm BETWEEN '" + alku + "' AND '" + loppu + "') OR (varattu_loppupvm BETWEEN '" + alku + "' AND '" + loppu + "')) AND (vahvistus_pvm IS NOT NULL)";
                 }
@@ -381,7 +380,18 @@ namespace Village_Newbies
                 {
                     hakusana = @"SELECT * FROM varaus WHERE (varattu_alkupvm BETWEEN '" + alku + "' AND '" + loppu + "') OR (varattu_loppupvm BETWEEN '" + alku + "' AND '" + loppu + "')";
                 }
-
+            }
+            else
+            {
+                if (chbvarausvahvistetut.CheckState == CheckState.Checked)
+                {
+                    hakusana = @"SELECT * FROM varaus WHERE (varattu_pvm BETWEEN '" + alku + "' AND '" + loppu + "') AND (vahvistus_pvm IS NOT NULL)";
+                }
+                else
+                {
+                    hakusana = @"SELECT * FROM varaus WHERE (varattu_pvm BETWEEN '" + alku + "' AND '" + loppu + "')";
+                }
+            }
                 try
                 {
                     connection.ConnectionString = conString;
@@ -394,7 +404,6 @@ namespace Village_Newbies
                 {
                     MessageBox.Show(ex.Message);
                 } 
-            } 
         }
 
         private void btnvVarausNaytaKaikki_Click(object sender, EventArgs e)//Näyttää kaikki varaukset
