@@ -300,8 +300,16 @@ namespace Village_Newbies
                 string vahvistus = dtpvahvistus.Value.ToString("yyyy-MM-dd hh:mm:ss");
                 string alku = dtpalku.Value.ToString("yyyy-MM-dd hh:mm:ss");
                 string loppu = dtploppu.Value.ToString("yyyy-MM-dd hh:mm:ss");
+                string updateQuery;
 
-                string updateQuery = "UPDATE varaus SET asiakas_id = " + int.Parse(txtasiakasid.Text) + ", mokki_mokki_id = " + int.Parse(txtmokkiid.Text) + ", varattu_pvm = '" + varattu + "', vahvistus_pvm = '" + vahvistus + "', varattu_alkupvm = '" + alku + "', varattu_loppupvm = '" + loppu + "' WHERE varaus_id = " + txtvarausid.Text;
+                if(chbvarausvahvista.CheckState == CheckState.Checked)//jos varausta ei ole vahvistettu, asetetaan varaus_pvm tyhjäksi
+                {
+                    updateQuery = "UPDATE varaus SET asiakas_id = " + int.Parse(txtasiakasid.Text) + ", mokki_mokki_id = " + int.Parse(txtmokkiid.Text) + ", varattu_pvm = '" + varattu + "', vahvistus_pvm = NULL, varattu_alkupvm = '" + alku + "', varattu_loppupvm = '" + loppu + "' WHERE varaus_id = " + txtvarausid.Text;
+                }
+                else
+                {
+                    updateQuery = "UPDATE varaus SET asiakas_id = " + int.Parse(txtasiakasid.Text) + ", mokki_mokki_id = " + int.Parse(txtmokkiid.Text) + ", varattu_pvm = '" + varattu + "', vahvistus_pvm = '" + vahvistus + "', varattu_alkupvm = '" + alku + "', varattu_loppupvm = '" + loppu + "' WHERE varaus_id = " + txtvarausid.Text;
+                }
                 executeMyQuery(updateQuery);
                 paivitaDGV();
             } 
