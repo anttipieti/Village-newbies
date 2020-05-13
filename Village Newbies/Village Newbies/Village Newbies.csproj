@@ -52,6 +52,12 @@
     <Compile Include="Asiakkaat.Designer.cs">
       <DependentUpon>Asiakkaat.cs</DependentUpon>
     </Compile>
+    <Compile Include="Lasku.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Lasku.Designer.cs">
+      <DependentUpon>Lasku.cs</DependentUpon>
+    </Compile>
     <Compile Include="Laskut.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </Compile>
     <EmbeddedResource Include="Asiakkaat.resx">
       <DependentUpon>Asiakkaat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lasku.resx">
+      <DependentUpon>Lasku.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Laskut.resx">
       <DependentUpon>Laskut.cs</DependentUpon>

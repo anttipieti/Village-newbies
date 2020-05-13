@@ -27,3 +27,4 @@ C:\Users\Meri\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Ne
 C:\Users\Antti\Documents\GitHub\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Laskut.resources
 C:\Users\Antti\Documents\GitHub\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Palvelut.resources
 C:\Users\Antti\Documents\GitHub\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Toiminta_alueet.resources
+C:\Users\Antti\Documents\GitHub\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Ohjelmistotuotanto_1.LaskuForm.resources
