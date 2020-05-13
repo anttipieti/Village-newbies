@@ -30,12 +30,15 @@ namespace Village_Newbies
 
         OdbcConnection connection = new OdbcConnection(@"DSN=Village Newbies;MultipleActiveResultSets=True");
         OdbcCommand command;
+        string conString = "DSN=Village Newbies;MultipleActiveResultSets=True";
+        private List<CheckBox> valitutcb;
 
         public void OpenConnection() //Tietokantayhteys auki
         {
             //Tietokantayhteys auki
             if (connection.State == ConnectionState.Closed)
             {
+                connection.ConnectionString = conString;
                 connection.Open();
             }
         }
@@ -100,6 +103,7 @@ namespace Village_Newbies
             ExecuteMyQuery(asiakasUpdate);
             this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
         }
+
         private void btnAsPoista_Click(object sender, EventArgs e)
         {
             //poistetaan asiakas taulusta ja päivitetään datagrid
@@ -109,6 +113,137 @@ namespace Village_Newbies
             this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
         }
 
+        private void btnAsHae_Click(object sender, EventArgs e)
+        {
+            //Haetaan halutut tiedot
+
+            if(cbAsPostinro.Checked != true && cbAsEtunimi.Checked != true && cbAsSukunimi.Checked != true && cbAsLOsoite.Checked != true && cbAsEmail.Checked != true && cbAsPuhNro.Checked != true)
+            {
+                MessageBox.Show("Valitse ainakin yksi hakualue");
+            }
+            else
+            {
+                string haku = luoHakustring();
+
+                try
+                {
+                    connection.ConnectionString = conString;
+                    using (connection)
+                    using (OdbcDataAdapter dadapter = new OdbcDataAdapter(haku, connection))
+                    {
+                        DataTable table = new DataTable();
+                        dadapter.Fill(table);
+                        dgAsiakas.DataSource = table;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void btnAsNollaa_Click(object sender, EventArgs e)
+        {
+            //Tyhjennetään sivu
+            dgAsiakas.DataSource = asiakasBindingSource;
+            tbAsHaku.Text = "";
+            cbAsPostinro.Checked = false;
+            cbAsEtunimi.Checked = false;
+            cbAsSukunimi.Checked = false;
+            cbAsLOsoite.Checked = false;
+            cbAsEmail.Checked = false;
+            cbAsPuhNro.Checked = false;
+            
+        }
+        private void btnAsTyhj_Click(object sender, EventArgs e)
+        {
+            //Tyhjennetään sivu
+            tbAsID.Text = "";
+            tbAsPostinro.Text = "";
+            tbAsEtunimi.Text = "";
+            tbAsSukunimi.Text = "";
+            tbAsLOsoite.Text = "";
+            tbAsEmail.Text = "";
+            tbAsPuhNro.Text = "";
+        }
+
+        private string luoHakustring()
+        {
+            //Mitä haetaan
+            //ToDO: ilmoitus sille, jos mitään ei löydy
+
+            bool k = false;
+            string valitut = "SELECT * FROM asiakas WHERE ";
+
+            valitutcb = new List<CheckBox>();
+            valitutcb.Add(this.cbAsPostinro);
+            valitutcb.Add(this.cbAsEtunimi);
+            valitutcb.Add(this.cbAsSukunimi);
+            valitutcb.Add(this.cbAsLOsoite);
+            valitutcb.Add(this.cbAsEmail);
+            valitutcb.Add(this.cbAsPuhNro);
+
+            
+
+            for (int i = 0; i < valitutcb.Count; ++i)
+            {
+                if (valitutcb[i].Checked)
+                {
+                    
+                    switch (i)
+                    {
+                        case 0:
+                            if (k == true)
+                            {
+                                valitut = valitut + " OR ";
+                            }
+                            else k = true;
+                            valitut = valitut + "postinro like '%" +tbAsHaku.Text+ "%'";
+                            break;
+                        case 1:
+                            if (k == true)
+                            {
+                                valitut = valitut + " OR ";
+                            } else k = true;
+                            valitut = valitut + "etunimi like '%" + tbAsHaku.Text + "%'";
+                            break;
+                        case 2:
+                            if (k == true)
+                            {
+                                valitut = valitut + " OR ";
+                            } else k = true;
+                            valitut = valitut + "sukunimi like '%" + tbAsHaku.Text + "%'";
+                            break;
+                        case 3:
+                            if (k == true)
+                            {
+                                valitut = valitut + " OR ";
+                            } else k = true;
+                            valitut = valitut + "lahiosoite like '%" + tbAsHaku.Text + "%'";
+                            break;
+                        case 4:
+                            if (k == true)
+                            {
+                                valitut = valitut + " OR ";
+                            } else k = true;
+                            valitut = valitut + "email like '%" + tbAsHaku.Text + "%'";
+                            break;
+                        case 5:
+                            if (k == true)
+                            {
+                                valitut = valitut + " OR ";
+                            } else k = true;
+                            valitut = valitut + "puhelinnro like '%" + tbAsHaku.Text + "%'";
+                            break;
+                    }
+                      
+                }
+            }
+
+            return valitut;
+        }
+        
         private void dgAsiakas_MouseClick(object sender, MouseEventArgs e)
         {
             //Tuodaan tiedot taulukosta textboxeihin
@@ -121,13 +256,12 @@ namespace Village_Newbies
             tbAsPuhNro.Text = dgAsiakas.CurrentRow.Cells[6].Value.ToString();
         }
 
+
         private void Asiakkaat_FormClosing(object sender, FormClosingEventArgs e)
         {
             mainform.Show();
             //Avataan päävalikko uudelleen
         }
-
-        
 
         
     }

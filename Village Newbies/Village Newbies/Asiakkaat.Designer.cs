@@ -41,6 +41,8 @@
             this.villageNewbiesDataSet = new Village_Newbies.VillageNewbiesDataSet();
             this.asiakasTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.asiakasTableAdapter();
             this.tab_muokkaa = new System.Windows.Forms.TabPage();
+            this.tbAsID = new System.Windows.Forms.TextBox();
+            this.lbAsID = new System.Windows.Forms.Label();
             this.btnAsPoista = new System.Windows.Forms.Button();
             this.btnAsMuokkaa = new System.Windows.Forms.Button();
             this.btnAsLisaa = new System.Windows.Forms.Button();
@@ -58,18 +60,20 @@
             this.lbAsEtunimi = new System.Windows.Forms.Label();
             this.tabAsiakkaat = new System.Windows.Forms.TabControl();
             this.tab_as_hae = new System.Windows.Forms.TabPage();
+            this.btnAsNollaa = new System.Windows.Forms.Button();
             this.gbAsHae = new System.Windows.Forms.GroupBox();
+            this.cbAsID = new System.Windows.Forms.CheckBox();
             this.cbAsPostinro = new System.Windows.Forms.CheckBox();
             this.cbAsPuhNro = new System.Windows.Forms.CheckBox();
             this.cbAsEtunimi = new System.Windows.Forms.CheckBox();
             this.cbAsEmail = new System.Windows.Forms.CheckBox();
             this.cbAsSukunimi = new System.Windows.Forms.CheckBox();
             this.cbAsLOsoite = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.btnAsHae = new System.Windows.Forms.Button();
+            this.tbAsHaku = new System.Windows.Forms.TextBox();
             this.lbHakusana = new System.Windows.Forms.Label();
-            this.lbAsID = new System.Windows.Forms.Label();
-            this.tbAsID = new System.Windows.Forms.TextBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.btnAsTyhj = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgAsiakas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataSet)).BeginInit();
@@ -77,6 +81,7 @@
             this.tabAsiakkaat.SuspendLayout();
             this.tab_as_hae.SuspendLayout();
             this.gbAsHae.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgAsiakas
@@ -175,6 +180,7 @@
             // tab_muokkaa
             // 
             this.tab_muokkaa.BackColor = System.Drawing.Color.White;
+            this.tab_muokkaa.Controls.Add(this.btnAsTyhj);
             this.tab_muokkaa.Controls.Add(this.tbAsID);
             this.tab_muokkaa.Controls.Add(this.lbAsID);
             this.tab_muokkaa.Controls.Add(this.btnAsPoista);
@@ -199,6 +205,23 @@
             this.tab_muokkaa.TabIndex = 0;
             this.tab_muokkaa.Text = "Muokkaa";
             // 
+            // tbAsID
+            // 
+            this.tbAsID.Location = new System.Drawing.Point(818, 35);
+            this.tbAsID.Name = "tbAsID";
+            this.tbAsID.ReadOnly = true;
+            this.tbAsID.Size = new System.Drawing.Size(55, 22);
+            this.tbAsID.TabIndex = 16;
+            // 
+            // lbAsID
+            // 
+            this.lbAsID.AutoSize = true;
+            this.lbAsID.Location = new System.Drawing.Point(745, 38);
+            this.lbAsID.Name = "lbAsID";
+            this.lbAsID.Size = new System.Drawing.Size(60, 17);
+            this.lbAsID.TabIndex = 15;
+            this.lbAsID.Text = "Tunnus:";
+            // 
             // btnAsPoista
             // 
             this.btnAsPoista.BackColor = System.Drawing.SystemColors.Control;
@@ -213,7 +236,7 @@
             // btnAsMuokkaa
             // 
             this.btnAsMuokkaa.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAsMuokkaa.Location = new System.Drawing.Point(748, 167);
+            this.btnAsMuokkaa.Location = new System.Drawing.Point(748, 141);
             this.btnAsMuokkaa.Name = "btnAsMuokkaa";
             this.btnAsMuokkaa.Size = new System.Drawing.Size(125, 25);
             this.btnAsMuokkaa.TabIndex = 13;
@@ -224,7 +247,7 @@
             // btnAsLisaa
             // 
             this.btnAsLisaa.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAsLisaa.Location = new System.Drawing.Point(748, 132);
+            this.btnAsLisaa.Location = new System.Drawing.Point(748, 110);
             this.btnAsLisaa.Name = "btnAsLisaa";
             this.btnAsLisaa.Size = new System.Drawing.Size(125, 25);
             this.btnAsLisaa.TabIndex = 12;
@@ -341,9 +364,10 @@
             // tab_as_hae
             // 
             this.tab_as_hae.BackColor = System.Drawing.Color.White;
+            this.tab_as_hae.Controls.Add(this.btnAsNollaa);
             this.tab_as_hae.Controls.Add(this.gbAsHae);
-            this.tab_as_hae.Controls.Add(this.button1);
-            this.tab_as_hae.Controls.Add(this.textBox5);
+            this.tab_as_hae.Controls.Add(this.btnAsHae);
+            this.tab_as_hae.Controls.Add(this.tbAsHaku);
             this.tab_as_hae.Controls.Add(this.lbHakusana);
             this.tab_as_hae.Location = new System.Drawing.Point(4, 25);
             this.tab_as_hae.Name = "tab_as_hae";
@@ -352,8 +376,20 @@
             this.tab_as_hae.TabIndex = 1;
             this.tab_as_hae.Text = "Hae";
             // 
+            // btnAsNollaa
+            // 
+            this.btnAsNollaa.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAsNollaa.Location = new System.Drawing.Point(755, 172);
+            this.btnAsNollaa.Name = "btnAsNollaa";
+            this.btnAsNollaa.Size = new System.Drawing.Size(125, 25);
+            this.btnAsNollaa.TabIndex = 38;
+            this.btnAsNollaa.Text = "Nollaa";
+            this.btnAsNollaa.UseVisualStyleBackColor = false;
+            this.btnAsNollaa.Click += new System.EventHandler(this.btnAsNollaa_Click);
+            // 
             // gbAsHae
             // 
+            this.gbAsHae.Controls.Add(this.cbAsID);
             this.gbAsHae.Controls.Add(this.cbAsPostinro);
             this.gbAsHae.Controls.Add(this.cbAsPuhNro);
             this.gbAsHae.Controls.Add(this.cbAsEtunimi);
@@ -362,15 +398,25 @@
             this.gbAsHae.Controls.Add(this.cbAsLOsoite);
             this.gbAsHae.Location = new System.Drawing.Point(280, 97);
             this.gbAsHae.Name = "gbAsHae";
-            this.gbAsHae.Size = new System.Drawing.Size(321, 127);
+            this.gbAsHae.Size = new System.Drawing.Size(321, 144);
             this.gbAsHae.TabIndex = 37;
             this.gbAsHae.TabStop = false;
             this.gbAsHae.Text = "Hae";
             // 
+            // cbAsID
+            // 
+            this.cbAsID.AutoSize = true;
+            this.cbAsID.Location = new System.Drawing.Point(15, 106);
+            this.cbAsID.Name = "cbAsID";
+            this.cbAsID.Size = new System.Drawing.Size(78, 21);
+            this.cbAsID.TabIndex = 37;
+            this.cbAsID.Text = "Tunnus";
+            this.cbAsID.UseVisualStyleBackColor = true;
+            // 
             // cbAsPostinro
             // 
             this.cbAsPostinro.AutoSize = true;
-            this.cbAsPostinro.Location = new System.Drawing.Point(182, 57);
+            this.cbAsPostinro.Location = new System.Drawing.Point(181, 52);
             this.cbAsPostinro.Name = "cbAsPostinro";
             this.cbAsPostinro.Size = new System.Drawing.Size(109, 21);
             this.cbAsPostinro.TabIndex = 34;
@@ -380,7 +426,7 @@
             // cbAsPuhNro
             // 
             this.cbAsPuhNro.AutoSize = true;
-            this.cbAsPuhNro.Location = new System.Drawing.Point(182, 84);
+            this.cbAsPuhNro.Location = new System.Drawing.Point(181, 79);
             this.cbAsPuhNro.Name = "cbAsPuhNro";
             this.cbAsPuhNro.Size = new System.Drawing.Size(125, 21);
             this.cbAsPuhNro.TabIndex = 36;
@@ -390,7 +436,7 @@
             // cbAsEtunimi
             // 
             this.cbAsEtunimi.AutoSize = true;
-            this.cbAsEtunimi.Location = new System.Drawing.Point(16, 30);
+            this.cbAsEtunimi.Location = new System.Drawing.Point(15, 25);
             this.cbAsEtunimi.Name = "cbAsEtunimi";
             this.cbAsEtunimi.Size = new System.Drawing.Size(76, 21);
             this.cbAsEtunimi.TabIndex = 28;
@@ -400,7 +446,7 @@
             // cbAsEmail
             // 
             this.cbAsEmail.AutoSize = true;
-            this.cbAsEmail.Location = new System.Drawing.Point(16, 84);
+            this.cbAsEmail.Location = new System.Drawing.Point(15, 79);
             this.cbAsEmail.Name = "cbAsEmail";
             this.cbAsEmail.Size = new System.Drawing.Size(100, 21);
             this.cbAsEmail.TabIndex = 35;
@@ -410,7 +456,7 @@
             // cbAsSukunimi
             // 
             this.cbAsSukunimi.AutoSize = true;
-            this.cbAsSukunimi.Location = new System.Drawing.Point(182, 30);
+            this.cbAsSukunimi.Location = new System.Drawing.Point(181, 25);
             this.cbAsSukunimi.Name = "cbAsSukunimi";
             this.cbAsSukunimi.Size = new System.Drawing.Size(87, 21);
             this.cbAsSukunimi.TabIndex = 32;
@@ -420,29 +466,30 @@
             // cbAsLOsoite
             // 
             this.cbAsLOsoite.AutoSize = true;
-            this.cbAsLOsoite.Location = new System.Drawing.Point(16, 57);
+            this.cbAsLOsoite.Location = new System.Drawing.Point(15, 52);
             this.cbAsLOsoite.Name = "cbAsLOsoite";
             this.cbAsLOsoite.Size = new System.Drawing.Size(95, 21);
             this.cbAsLOsoite.TabIndex = 33;
             this.cbAsLOsoite.Text = "Lähiosoite";
             this.cbAsLOsoite.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnAsHae
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(755, 208);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 25);
-            this.button1.TabIndex = 27;
-            this.button1.Text = "Poista";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnAsHae.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAsHae.Location = new System.Drawing.Point(755, 208);
+            this.btnAsHae.Name = "btnAsHae";
+            this.btnAsHae.Size = new System.Drawing.Size(125, 25);
+            this.btnAsHae.TabIndex = 27;
+            this.btnAsHae.Text = "Hae";
+            this.btnAsHae.UseVisualStyleBackColor = false;
+            this.btnAsHae.Click += new System.EventHandler(this.btnAsHae_Click);
             // 
-            // textBox5
+            // tbAsHaku
             // 
-            this.textBox5.Location = new System.Drawing.Point(280, 59);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(321, 22);
-            this.textBox5.TabIndex = 22;
+            this.tbAsHaku.Location = new System.Drawing.Point(280, 59);
+            this.tbAsHaku.Name = "tbAsHaku";
+            this.tbAsHaku.Size = new System.Drawing.Size(321, 22);
+            this.tbAsHaku.TabIndex = 22;
             // 
             // lbHakusana
             // 
@@ -453,22 +500,16 @@
             this.lbHakusana.TabIndex = 20;
             this.lbHakusana.Text = "Hakusana";
             // 
-            // lbAsID
+            // btnAsTyhj
             // 
-            this.lbAsID.AutoSize = true;
-            this.lbAsID.Location = new System.Drawing.Point(745, 38);
-            this.lbAsID.Name = "lbAsID";
-            this.lbAsID.Size = new System.Drawing.Size(60, 17);
-            this.lbAsID.TabIndex = 15;
-            this.lbAsID.Text = "Tunnus:";
-            // 
-            // tbAsID
-            // 
-            this.tbAsID.Location = new System.Drawing.Point(818, 35);
-            this.tbAsID.Name = "tbAsID";
-            this.tbAsID.ReadOnly = true;
-            this.tbAsID.Size = new System.Drawing.Size(55, 22);
-            this.tbAsID.TabIndex = 16;
+            this.btnAsTyhj.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAsTyhj.Location = new System.Drawing.Point(748, 172);
+            this.btnAsTyhj.Name = "btnAsTyhj";
+            this.btnAsTyhj.Size = new System.Drawing.Size(125, 25);
+            this.btnAsTyhj.TabIndex = 17;
+            this.btnAsTyhj.Text = "Tyhjennä";
+            this.btnAsTyhj.UseVisualStyleBackColor = false;
+            this.btnAsTyhj.Click += new System.EventHandler(this.btnAsTyhj_Click);
             // 
             // Asiakkaat
             // 
@@ -491,6 +532,7 @@
             this.tab_as_hae.PerformLayout();
             this.gbAsHae.ResumeLayout(false);
             this.gbAsHae.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -529,13 +571,17 @@
         private System.Windows.Forms.CheckBox cbAsPostinro;
         private System.Windows.Forms.CheckBox cbAsLOsoite;
         private System.Windows.Forms.CheckBox cbAsSukunimi;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAsHae;
         private System.Windows.Forms.CheckBox cbAsEtunimi;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox tbAsHaku;
         private System.Windows.Forms.Label lbHakusana;
         private System.Windows.Forms.CheckBox cbAsPuhNro;
         private System.Windows.Forms.GroupBox gbAsHae;
         private System.Windows.Forms.Label lbAsID;
         private System.Windows.Forms.TextBox tbAsID;
+        private System.Windows.Forms.CheckBox cbAsID;
+        private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.Button btnAsNollaa;
+        private System.Windows.Forms.Button btnAsTyhj;
     }
 }
