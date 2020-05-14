@@ -162,6 +162,7 @@ namespace Village_Newbies
 
         private void btnMuutaMokkia_Click(object sender, EventArgs e)
         {
+            
             if (dgvMokit.RowCount > 0)
             {
                 int index = dgvMokit.CurrentRow.Index;
