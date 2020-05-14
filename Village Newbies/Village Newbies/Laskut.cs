@@ -66,6 +66,7 @@ namespace Village_Newbies
             dataGridPoista.DataSource = table;
             dataGridViewMuokkaa.DataSource = table;
             dataGridViewHae.DataSource = table;
+            this.laskuTableAdapter.Fill(this.villageNewbiesDataSet.lasku);
         }
 
         public void executeMyQuery(string query)
@@ -136,7 +137,8 @@ namespace Village_Newbies
         {
             string deleteQuery = "DELETE FROM lasku WHERE lasku_id = " + int.Parse(TextBoxPoista.Text);
             executeMyQuery(deleteQuery);
-            populateDGV(); 
+            populateDGV();
+            this.laskuTableAdapter.Fill(this.villageNewbiesDataSet.lasku);
         }
 
         private void BtnMuokkaa_Click(object sender, EventArgs e)
@@ -145,6 +147,7 @@ namespace Village_Newbies
                 + TextBoxALVMuokkaa.Text + " WHERE lasku_id =" + int.Parse(TextBoxLaskuIDMuokkaa.Text);
             executeMyQuery(updateQuery);
             populateDGV();
+            this.laskuTableAdapter.Fill(this.villageNewbiesDataSet.lasku);
         }
 
         private void BtnHae_Click(object sender, EventArgs e)
