@@ -119,7 +119,7 @@ namespace Village_Newbies
         private void dgvToimiAlue_CellEnter(object sender, DataGridViewCellEventArgs e)
         {
             int index = dgvToimiAlue.CurrentRow.Index;
-            if (dgvToimiAlue.RowCount > 0)//Jos datagridistä valitaan varaus sen nimi menee tekstikenttään
+            if (dgvToimiAlue.RowCount > 0)//Jos datagridistä valitaan joku niin sen nimi menee tekstikenttään
             {
                 tbToimAlueNimi.Text = dgvToimiAlue.Rows[index].Cells[1].Value.ToString();
 
@@ -166,13 +166,28 @@ namespace Village_Newbies
             if (dgvMokit.RowCount > 0)
             {
                 int index = dgvMokit.CurrentRow.Index;
-                
                 string updateQuery;
-
-                updateQuery = "UPDATE varaus SET toimintaalue_id = " + cmbMokkiToimialue.SelectedValue + ", postinro = '" + tbPostinro.Text + "', mokkinimi = '" + tbMokkiNimi.Text + "', katuosoite ='" + tbKatuosoite.Text + "', kuvaus = '" + tbKuvaus.Text + "', henkilomaara = " + int.Parse(tbHloMaara.Text) + ", varustelu = '" + tbVarustelu.Text + "', hinta = " + Double.Parse(tbHinta.Text) + " WHERE varaus_id = " + int.Parse(tbMokkiID.Text);
-
+                updateQuery = "UPDATE mokki SET toimintaalue_id = " + cmbMokkiToimialue.SelectedValue + ", postinro = '" + tbPostinro.Text + "', mokkinimi = '" + tbMokkiNimi.Text + "', katuosoite ='" + tbKatuosoite.Text + "', kuvaus = '" + tbKuvaus.Text + "', henkilomaara = " + int.Parse(tbHloMaara.Text) + ", varustelu = '" + tbVarustelu.Text + "', hinta = " + Double.Parse(tbHinta.Text) + " WHERE (mokki_id = " + int.Parse(tbMokkiID.Text) + ")";
                 executeMyQuery(updateQuery);
                 paivitaDGV();
+            }
+        }
+
+        private void btnPoistaMokki_Click(object sender, EventArgs e)
+        {
+            if (dgvMokit.RowCount > 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Poistetaanko mökki?", "Varmistus", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    string deleteQuery = "DELETE FROM mokki WHERE mokki_id = " + int.Parse(tbMokkiID.Text);
+                    executeMyQuery(deleteQuery);
+                    paivitaDGV();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+
+                }
             }
         }
     }

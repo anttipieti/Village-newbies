@@ -31,6 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.tabToimintaAlue = new System.Windows.Forms.TabControl();
             this.tabToimiAluePage1 = new System.Windows.Forms.TabPage();
+            this.dgvToimiAlue = new System.Windows.Forms.DataGridView();
+            this.toimintaalueidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nimiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toimintaalueBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.villageNewbiesDataSet = new Village_Newbies.VillageNewbiesDataSet();
             this.lblLisaaToiminta = new System.Windows.Forms.Label();
             this.btnToimAluePoista = new System.Windows.Forms.Button();
             this.tbToimiAlue = new System.Windows.Forms.TextBox();
@@ -39,6 +44,9 @@
             this.lbltoimNimi = new System.Windows.Forms.Label();
             this.tbToimAlueNimi = new System.Windows.Forms.TextBox();
             this.tabToimiAluePage2 = new System.Windows.Forms.TabPage();
+            this.btnPoistaMokki = new System.Windows.Forms.Button();
+            this.btnMuutaMokkia = new System.Windows.Forms.Button();
+            this.btnUusiMokki = new System.Windows.Forms.Button();
             this.tbPostinro = new System.Windows.Forms.TextBox();
             this.lblpostinro = new System.Windows.Forms.Label();
             this.tbHinta = new System.Windows.Forms.TextBox();
@@ -57,24 +65,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.tbMokkiID = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.dgvToimiAlue = new System.Windows.Forms.DataGridView();
-            this.dgvMokit = new System.Windows.Forms.DataGridView();
             this.tabToimiAluePage3 = new System.Windows.Forms.TabPage();
-            this.villageNewbiesDataSet = new Village_Newbies.VillageNewbiesDataSet();
-            this.toimintaalueBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dgvMokit = new System.Windows.Forms.DataGridView();
             this.toimintaalueTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.toimintaalueTableAdapter();
-            this.toimintaalueidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nimiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnUusiMokki = new System.Windows.Forms.Button();
-            this.btnMuutaMokkia = new System.Windows.Forms.Button();
-            this.btnPoistaMokki = new System.Windows.Forms.Button();
             this.tabToimintaAlue.SuspendLayout();
             this.tabToimiAluePage1.SuspendLayout();
-            this.tabToimiAluePage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvToimiAlue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMokit)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.toimintaalueBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataSet)).BeginInit();
+            this.tabToimiAluePage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMokit)).BeginInit();
             this.SuspendLayout();
             // 
             // tabToimintaAlue
@@ -105,6 +105,53 @@
             this.tabToimiAluePage1.TabIndex = 0;
             this.tabToimiAluePage1.Text = "Toiminta-alueet";
             this.tabToimiAluePage1.UseVisualStyleBackColor = true;
+            // 
+            // dgvToimiAlue
+            // 
+            this.dgvToimiAlue.AllowUserToAddRows = false;
+            this.dgvToimiAlue.AllowUserToDeleteRows = false;
+            this.dgvToimiAlue.AutoGenerateColumns = false;
+            this.dgvToimiAlue.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvToimiAlue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvToimiAlue.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.toimintaalueidDataGridViewTextBoxColumn,
+            this.nimiDataGridViewTextBoxColumn});
+            this.dgvToimiAlue.DataSource = this.toimintaalueBindingSource;
+            this.dgvToimiAlue.Location = new System.Drawing.Point(38, 90);
+            this.dgvToimiAlue.Name = "dgvToimiAlue";
+            this.dgvToimiAlue.ReadOnly = true;
+            this.dgvToimiAlue.RowHeadersVisible = false;
+            this.dgvToimiAlue.RowHeadersWidth = 51;
+            this.dgvToimiAlue.RowTemplate.Height = 24;
+            this.dgvToimiAlue.Size = new System.Drawing.Size(591, 171);
+            this.dgvToimiAlue.TabIndex = 8;
+            this.dgvToimiAlue.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvToimiAlue_CellEnter);
+            // 
+            // toimintaalueidDataGridViewTextBoxColumn
+            // 
+            this.toimintaalueidDataGridViewTextBoxColumn.DataPropertyName = "toimintaalue_id";
+            this.toimintaalueidDataGridViewTextBoxColumn.HeaderText = "toimintaalue_id";
+            this.toimintaalueidDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.toimintaalueidDataGridViewTextBoxColumn.Name = "toimintaalueidDataGridViewTextBoxColumn";
+            this.toimintaalueidDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nimiDataGridViewTextBoxColumn
+            // 
+            this.nimiDataGridViewTextBoxColumn.DataPropertyName = "nimi";
+            this.nimiDataGridViewTextBoxColumn.HeaderText = "nimi";
+            this.nimiDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.nimiDataGridViewTextBoxColumn.Name = "nimiDataGridViewTextBoxColumn";
+            this.nimiDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // toimintaalueBindingSource
+            // 
+            this.toimintaalueBindingSource.DataMember = "toimintaalue";
+            this.toimintaalueBindingSource.DataSource = this.villageNewbiesDataSet;
+            // 
+            // villageNewbiesDataSet
+            // 
+            this.villageNewbiesDataSet.DataSetName = "VillageNewbiesDataSet";
+            this.villageNewbiesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblLisaaToiminta
             // 
@@ -199,6 +246,36 @@
             this.tabToimiAluePage2.TabIndex = 1;
             this.tabToimiAluePage2.Text = "Mökit";
             this.tabToimiAluePage2.UseVisualStyleBackColor = true;
+            // 
+            // btnPoistaMokki
+            // 
+            this.btnPoistaMokki.Location = new System.Drawing.Point(645, 256);
+            this.btnPoistaMokki.Name = "btnPoistaMokki";
+            this.btnPoistaMokki.Size = new System.Drawing.Size(244, 31);
+            this.btnPoistaMokki.TabIndex = 55;
+            this.btnPoistaMokki.Text = "Poista Mökki";
+            this.btnPoistaMokki.UseVisualStyleBackColor = true;
+            this.btnPoistaMokki.Click += new System.EventHandler(this.btnPoistaMokki_Click);
+            // 
+            // btnMuutaMokkia
+            // 
+            this.btnMuutaMokkia.Location = new System.Drawing.Point(361, 256);
+            this.btnMuutaMokkia.Name = "btnMuutaMokkia";
+            this.btnMuutaMokkia.Size = new System.Drawing.Size(244, 31);
+            this.btnMuutaMokkia.TabIndex = 54;
+            this.btnMuutaMokkia.Text = "Muuta Mökin tietoja";
+            this.btnMuutaMokkia.UseVisualStyleBackColor = true;
+            this.btnMuutaMokkia.Click += new System.EventHandler(this.btnMuutaMokkia_Click);
+            // 
+            // btnUusiMokki
+            // 
+            this.btnUusiMokki.Location = new System.Drawing.Point(62, 256);
+            this.btnUusiMokki.Name = "btnUusiMokki";
+            this.btnUusiMokki.Size = new System.Drawing.Size(244, 31);
+            this.btnUusiMokki.TabIndex = 53;
+            this.btnUusiMokki.Text = "Lisää Mökki";
+            this.btnUusiMokki.UseVisualStyleBackColor = true;
+            this.btnUusiMokki.Click += new System.EventHandler(this.btnUusiMokki_Click);
             // 
             // tbPostinro
             // 
@@ -349,26 +426,15 @@
             this.label7.TabIndex = 35;
             this.label7.Text = "mokkiID";
             // 
-            // dgvToimiAlue
+            // tabToimiAluePage3
             // 
-            this.dgvToimiAlue.AllowUserToAddRows = false;
-            this.dgvToimiAlue.AllowUserToDeleteRows = false;
-            this.dgvToimiAlue.AutoGenerateColumns = false;
-            this.dgvToimiAlue.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvToimiAlue.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvToimiAlue.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.toimintaalueidDataGridViewTextBoxColumn,
-            this.nimiDataGridViewTextBoxColumn});
-            this.dgvToimiAlue.DataSource = this.toimintaalueBindingSource;
-            this.dgvToimiAlue.Location = new System.Drawing.Point(38, 90);
-            this.dgvToimiAlue.Name = "dgvToimiAlue";
-            this.dgvToimiAlue.ReadOnly = true;
-            this.dgvToimiAlue.RowHeadersVisible = false;
-            this.dgvToimiAlue.RowHeadersWidth = 51;
-            this.dgvToimiAlue.RowTemplate.Height = 24;
-            this.dgvToimiAlue.Size = new System.Drawing.Size(591, 171);
-            this.dgvToimiAlue.TabIndex = 8;
-            this.dgvToimiAlue.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvToimiAlue_CellEnter);
+            this.tabToimiAluePage3.Location = new System.Drawing.Point(4, 25);
+            this.tabToimiAluePage3.Name = "tabToimiAluePage3";
+            this.tabToimiAluePage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabToimiAluePage3.Size = new System.Drawing.Size(1014, 301);
+            this.tabToimiAluePage3.TabIndex = 2;
+            this.tabToimiAluePage3.Text = "Haku";
+            this.tabToimiAluePage3.UseVisualStyleBackColor = true;
             // 
             // dgvMokit
             // 
@@ -385,74 +451,9 @@
             this.dgvMokit.Size = new System.Drawing.Size(1014, 242);
             this.dgvMokit.TabIndex = 53;
             // 
-            // tabToimiAluePage3
-            // 
-            this.tabToimiAluePage3.Location = new System.Drawing.Point(4, 25);
-            this.tabToimiAluePage3.Name = "tabToimiAluePage3";
-            this.tabToimiAluePage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabToimiAluePage3.Size = new System.Drawing.Size(1014, 301);
-            this.tabToimiAluePage3.TabIndex = 2;
-            this.tabToimiAluePage3.Text = "Haku";
-            this.tabToimiAluePage3.UseVisualStyleBackColor = true;
-            // 
-            // villageNewbiesDataSet
-            // 
-            this.villageNewbiesDataSet.DataSetName = "VillageNewbiesDataSet";
-            this.villageNewbiesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // toimintaalueBindingSource
-            // 
-            this.toimintaalueBindingSource.DataMember = "toimintaalue";
-            this.toimintaalueBindingSource.DataSource = this.villageNewbiesDataSet;
-            // 
             // toimintaalueTableAdapter
             // 
             this.toimintaalueTableAdapter.ClearBeforeFill = true;
-            // 
-            // toimintaalueidDataGridViewTextBoxColumn
-            // 
-            this.toimintaalueidDataGridViewTextBoxColumn.DataPropertyName = "toimintaalue_id";
-            this.toimintaalueidDataGridViewTextBoxColumn.HeaderText = "toimintaalue_id";
-            this.toimintaalueidDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.toimintaalueidDataGridViewTextBoxColumn.Name = "toimintaalueidDataGridViewTextBoxColumn";
-            this.toimintaalueidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nimiDataGridViewTextBoxColumn
-            // 
-            this.nimiDataGridViewTextBoxColumn.DataPropertyName = "nimi";
-            this.nimiDataGridViewTextBoxColumn.HeaderText = "nimi";
-            this.nimiDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.nimiDataGridViewTextBoxColumn.Name = "nimiDataGridViewTextBoxColumn";
-            this.nimiDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // btnUusiMokki
-            // 
-            this.btnUusiMokki.Location = new System.Drawing.Point(62, 256);
-            this.btnUusiMokki.Name = "btnUusiMokki";
-            this.btnUusiMokki.Size = new System.Drawing.Size(244, 31);
-            this.btnUusiMokki.TabIndex = 53;
-            this.btnUusiMokki.Text = "Lisää Mökki";
-            this.btnUusiMokki.UseVisualStyleBackColor = true;
-            this.btnUusiMokki.Click += new System.EventHandler(this.btnUusiMokki_Click);
-            // 
-            // btnMuutaMokkia
-            // 
-            this.btnMuutaMokkia.Location = new System.Drawing.Point(361, 256);
-            this.btnMuutaMokkia.Name = "btnMuutaMokkia";
-            this.btnMuutaMokkia.Size = new System.Drawing.Size(244, 31);
-            this.btnMuutaMokkia.TabIndex = 54;
-            this.btnMuutaMokkia.Text = "Muuta Mökin tietoja";
-            this.btnMuutaMokkia.UseVisualStyleBackColor = true;
-            this.btnMuutaMokkia.Click += new System.EventHandler(this.btnMuutaMokkia_Click);
-            // 
-            // btnPoistaMokki
-            // 
-            this.btnPoistaMokki.Location = new System.Drawing.Point(645, 256);
-            this.btnPoistaMokki.Name = "btnPoistaMokki";
-            this.btnPoistaMokki.Size = new System.Drawing.Size(244, 31);
-            this.btnPoistaMokki.TabIndex = 55;
-            this.btnPoistaMokki.Text = "Poista Mökki";
-            this.btnPoistaMokki.UseVisualStyleBackColor = true;
             // 
             // Toiminta_alueet
             // 
@@ -468,12 +469,12 @@
             this.tabToimintaAlue.ResumeLayout(false);
             this.tabToimiAluePage1.ResumeLayout(false);
             this.tabToimiAluePage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvToimiAlue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.toimintaalueBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataSet)).EndInit();
             this.tabToimiAluePage2.ResumeLayout(false);
             this.tabToimiAluePage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvToimiAlue)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMokit)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toimintaalueBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

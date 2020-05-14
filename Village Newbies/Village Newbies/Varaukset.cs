@@ -339,12 +339,6 @@ namespace Village_Newbies
                     
                 }
 
-                /*string query = "DELETE FROM varauksen_palvelut WHERE varaus_id =" + int.Parse(txtvarausid.Text);
-                executeMyQuery(query);
-
-                string deleteQuery = "DELETE FROM varaus WHERE varaus_id = " + int.Parse(txtvarausid.Text);
-                executeMyQuery(deleteQuery);
-                paivitaDGV();*/
             }     
         }
 
