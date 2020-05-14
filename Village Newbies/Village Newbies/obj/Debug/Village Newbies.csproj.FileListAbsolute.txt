@@ -57,3 +57,4 @@ C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village N
 C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.csproj.CoreCompileInputs.cache
 C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.exe
 C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.pdb
+C:\Users\Meri\source\repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.LblMokkihakuID.resources
