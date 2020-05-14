@@ -47,7 +47,7 @@ namespace Village_Newbies
             }
         }
 
-        public void populateDGV()
+        /*public void populateDGV()
         {
             //Tuo kaikki laskut datagridiin
             string selectQuery = "SELECT * FROM varaus";
@@ -160,7 +160,7 @@ namespace Village_Newbies
             }
 
             closeConnection();
-        }
+        }*/
         
     }
 }

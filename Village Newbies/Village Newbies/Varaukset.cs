@@ -82,11 +82,11 @@ namespace Village_Newbies
 
                     if (command.ExecuteNonQuery() == 1)
                     {
-                        MessageBox.Show("Onnistui");
+                        MessageBox.Show("Suoritettu");
                     }
                     else
                     {
-                        MessageBox.Show("Virhe syötteessä");
+                        //MessageBox.Show("Virhe syötteessä");
                     }
                 }
             }
@@ -319,13 +319,27 @@ namespace Village_Newbies
         {
             if (dtgVarausTaulu.RowCount > 0)
             {
-                
-                string query = "DELETE FROM varauksen_palvelut WHERE varaus_id =" + int.Parse(txtvarausid.Text);
+                DialogResult dialogResult = MessageBox.Show("Poistetaanko varaus ja sen palvelut?", "Varmistus", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    string query = "DELETE FROM varauksen_palvelut WHERE varaus_id =" + int.Parse(txtvarausid.Text);
+                    executeMyQuery(query);
+
+                    string deleteQuery = "DELETE FROM varaus WHERE varaus_id = " + int.Parse(txtvarausid.Text);
+                    executeMyQuery(deleteQuery);
+                    paivitaDGV();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    
+                }
+
+                /*string query = "DELETE FROM varauksen_palvelut WHERE varaus_id =" + int.Parse(txtvarausid.Text);
                 executeMyQuery(query);
 
                 string deleteQuery = "DELETE FROM varaus WHERE varaus_id = " + int.Parse(txtvarausid.Text);
                 executeMyQuery(deleteQuery);
-                paivitaDGV();
+                paivitaDGV();*/
             }     
         }
 
