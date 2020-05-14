@@ -286,6 +286,7 @@
             this.btnPoistaMokki.TabIndex = 55;
             this.btnPoistaMokki.Text = "Poista Mökki";
             this.btnPoistaMokki.UseVisualStyleBackColor = true;
+            this.btnPoistaMokki.Click += new System.EventHandler(this.btnPoistaMokki_Click);
             // 
             // btnMuutaMokkia
             // 
