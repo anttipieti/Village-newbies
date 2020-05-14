@@ -30,6 +30,8 @@ namespace Village_Newbies
 
         private void Toiminta_alueet_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'villageNewbiesDataSet.posti' table. You can move, or remove it, as needed.
+            this.postiTableAdapter.Fill(this.villageNewbiesDataSet.posti);
             // TODO: This line of code loads data into the 'villageNewbiesDataSet.mokki' table. You can move, or remove it, as needed.
             this.mokkiTableAdapter.Fill(this.villageNewbiesDataSet.mokki);
             // TODO: This line of code loads data into the 'villageNewbiesDataSet.toimintaalue' table. You can move, or remove it, as needed.
@@ -163,8 +165,26 @@ namespace Village_Newbies
             }
         }
 
+        private void viePostiNro()//Vie postinumeron tietokantaan
+        {
+            try
+            {
+                string posti;
+                posti = "INSERT INTO posti (postinro, toimipaikka) VALUES ('" + tbPostinro.Text + "', '" + tbPostitmiPaikka.Text + "')";
+                executeMyQuery(posti);
+            }
+            catch
+            {
+
+            }
+        }
+
+
+
         private void btnUusiMokki_Click(object sender, EventArgs e)
         {
+            viePostiNro();
+
             string insertQuery;
             insertQuery = "INSERT INTO mokki (toimintaalue_id, postinro, mokkinimi, katuosoite, kuvaus, henkilomaara, varustelu, hinta) VALUES (" + cmbMokkiToimialue.SelectedValue + " ,'" + tbPostinro.Text + "' ,'" + tbMokkiNimi.Text + "' ,'" + tbKatuosoite.Text + "' ,'" + tbKuvaus.Text + "' ," + int.Parse(tbHloMaara.Text) + " ,'" + tbVarustelu.Text + "'," + tbHinta.Text + ")";
 
@@ -176,6 +196,7 @@ namespace Village_Newbies
         {
             if (dgvMokit.RowCount > 0)
             {
+                viePostiNro();
                 int index = dgvMokit.CurrentRow.Index;
                 string updateQuery;
                 updateQuery = "UPDATE mokki SET toimintaalue_id = " + cmbMokkiToimialue.SelectedValue + ", postinro = '" + tbPostinro.Text + "', mokkinimi = '" + tbMokkiNimi.Text + "', katuosoite ='" + tbKatuosoite.Text + "', kuvaus = '" + tbKuvaus.Text + "', henkilomaara = " + int.Parse(tbHloMaara.Text) + ", varustelu = '" + tbVarustelu.Text + "', hinta = " + tbHinta.Text + " WHERE (mokki_id = " + int.Parse(tbMokkiID.Text) + ")";
@@ -207,15 +228,15 @@ namespace Village_Newbies
             int index = dgvMokit.CurrentRow.Index;
             if (dgvMokit.RowCount > 0)//Jos datagridistä valitaan varaus sen id menee tekstikenttään
             {
-                tbMokkiID.Text = dgvMokit.Rows[index].Cells[0].Value.ToString();
-                cmbMokkiToimialue.SelectedValue = dgvMokit.Rows[index].Cells[1].Value;
-                tbMokkiNimi.Text = dgvMokit.Rows[index].Cells[2].Value.ToString();
-                tbKatuosoite.Text = dgvMokit.Rows[index].Cells[3].Value.ToString();
-                tbPostinro.Text = dgvMokit.Rows[index].Cells[4].Value.ToString();
-                tbKuvaus.Text = dgvMokit.Rows[index].Cells[5].Value.ToString();
-                tbHloMaara.Text = dgvMokit.Rows[index].Cells[6].Value.ToString();
-                tbVarustelu.Text = dgvMokit.Rows[index].Cells[7].Value.ToString();
-                tbHinta.Text = dgvMokit.Rows[index].Cells[8].Value.ToString();
+                tbMokkiID.Text = Convert.ToString(dgvMokit.Rows[index].Cells[0].Value);
+                cmbMokkiToimialue.SelectedValue = Convert.ToString(dgvMokit.Rows[index].Cells[1].Value);
+                tbMokkiNimi.Text = Convert.ToString(dgvMokit.Rows[index].Cells[3].Value);
+                tbKatuosoite.Text = Convert.ToString(dgvMokit.Rows[index].Cells[4].Value);
+                tbPostinro.Text = Convert.ToString(dgvMokit.Rows[index].Cells[2].Value);
+                tbKuvaus.Text = Convert.ToString(dgvMokit.Rows[index].Cells[5].Value);
+                tbHloMaara.Text = Convert.ToString(dgvMokit.Rows[index].Cells[6].Value);
+                tbVarustelu.Text = Convert.ToString(dgvMokit.Rows[index].Cells[7].Value);
+                tbHinta.Text = Convert.ToString(dgvMokit.Rows[index].Cells[8].Value);
             }
         }
 
@@ -238,8 +259,18 @@ namespace Village_Newbies
             {
                 MessageBox.Show(ex.Message);
             }
+        }
 
-            
+        private void btnNollaa_Click(object sender, EventArgs e)
+        {
+            //Tyhjennetään
+            paivitaDGV();
+            tbMokkihakuID.Text = "";
+            tbMokkihakuKOsoite.Text = "";
+            tbMokkihakuHlomaara.Text = "";
+            tbMokkihakuNimi.Text = "";
+            tbMokkihakuPostiNro.Text = "";
+            tbMokkihakuVarustelu.Text = "";
         }
 
         private string luoHakustring()
@@ -334,6 +365,33 @@ namespace Village_Newbies
         private void selvitaHinta()
         {
             //ToDo textbocin luokat tekstiksi/sql-lausekkeeksi
+        }
+
+        private void cmbMokkiToimialue_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            string toimialue = cmbMokkiToimialue.SelectedValue.ToString();
+
+            try//tämä osio hakee toimialueen mökit taulukkoon
+            {
+                string strSql = "SELECT * FROM mokki WHERE toimintaalue_id = " + toimialue;
+                connection.ConnectionString = conString;
+                using (connection)
+                using (OdbcDataAdapter dadapter = new OdbcDataAdapter(strSql, connection))
+                {
+                    DataTable table = new DataTable();
+                    dadapter.Fill(table);
+                    dgvMokit.DataSource = table;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void tbPostinro_Leave(object sender, EventArgs e)
+        {
+
         }
     }
 }

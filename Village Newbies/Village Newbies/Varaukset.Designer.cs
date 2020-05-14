@@ -702,7 +702,7 @@
             this.dtgVarausMokit.RowHeadersVisible = false;
             this.dtgVarausMokit.RowHeadersWidth = 51;
             this.dtgVarausMokit.RowTemplate.Height = 24;
-            this.dtgVarausMokit.Size = new System.Drawing.Size(848, 244);
+            this.dtgVarausMokit.Size = new System.Drawing.Size(848, 199);
             this.dtgVarausMokit.TabIndex = 32;
             this.dtgVarausMokit.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgVarausMokit_CellEnter);
             // 
@@ -954,13 +954,13 @@
             this.varattualkupvmDataGridViewTextBoxColumn,
             this.varattuloppupvmDataGridViewTextBoxColumn});
             this.dtgVarausTaulu.DataSource = this.varausBindingSource;
-            this.dtgVarausTaulu.Location = new System.Drawing.Point(47, 403);
+            this.dtgVarausTaulu.Location = new System.Drawing.Point(51, 403);
             this.dtgVarausTaulu.Name = "dtgVarausTaulu";
             this.dtgVarausTaulu.ReadOnly = true;
             this.dtgVarausTaulu.RowHeadersVisible = false;
             this.dtgVarausTaulu.RowHeadersWidth = 51;
             this.dtgVarausTaulu.RowTemplate.Height = 24;
-            this.dtgVarausTaulu.Size = new System.Drawing.Size(925, 259);
+            this.dtgVarausTaulu.Size = new System.Drawing.Size(917, 259);
             this.dtgVarausTaulu.TabIndex = 1;
             this.dtgVarausTaulu.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgVarausTaulu_CellEnter);
             // 
