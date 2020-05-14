@@ -159,10 +159,14 @@ namespace Village_Newbies
             }
             else
             {
-            string asiakasPoista =
-                "DELETE FROM asiakas WHERE asiakas_id= "+int.Parse(tbAsID.Text);
-            ExecuteMyQuery(asiakasPoista);
-            this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
+                DialogResult dialogResult = MessageBox.Show("Haluatko varmasti poistaa asiakkaan " + tbAsEtunimi.Text + " " + tbAsSukunimi.Text + "?", "Varmistus", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    string asiakasPoista =
+                        "DELETE FROM asiakas WHERE asiakas_id= " + int.Parse(tbAsID.Text);
+                    ExecuteMyQuery(asiakasPoista);
+                    this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
+                }
             }
             
         }
