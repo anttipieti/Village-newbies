@@ -42,3 +42,18 @@ C:\Users\hamal\Music\Village Newbies\Village Newbies\obj\Debug\Village Newbies.c
 C:\Users\hamal\Music\Village Newbies\Village Newbies\obj\Debug\Village Newbies.csproj.CoreCompileInputs.cache
 C:\Users\hamal\Music\Village Newbies\Village Newbies\obj\Debug\Village Newbies.exe
 C:\Users\hamal\Music\Village Newbies\Village Newbies\obj\Debug\Village Newbies.pdb
+C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\bin\Debug\Village Newbies.exe.config
+C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\bin\Debug\Village Newbies.exe
+C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\bin\Debug\Village Newbies.pdb
+C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.csprojAssemblyReference.cache
+C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Asiakkaat.resources
+C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Laskut.resources
+C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.MainMenu.resources
+C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Palvelut.resources
+C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Properties.Resources.resources
+C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Toiminta_alueet.resources
+C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Varaukset.resources
+C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.csproj.GenerateResource.cache
+C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.csproj.CoreCompileInputs.cache
+C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.exe
+C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.pdb
