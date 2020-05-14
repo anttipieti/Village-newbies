@@ -41,6 +41,7 @@
             this.villageNewbiesDataSet = new Village_Newbies.VillageNewbiesDataSet();
             this.asiakasTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.asiakasTableAdapter();
             this.tab_muokkaa = new System.Windows.Forms.TabPage();
+            this.btnAsTyhj = new System.Windows.Forms.Button();
             this.tbAsID = new System.Windows.Forms.TextBox();
             this.lbAsID = new System.Windows.Forms.Label();
             this.btnAsPoista = new System.Windows.Forms.Button();
@@ -73,7 +74,6 @@
             this.tbAsHaku = new System.Windows.Forms.TextBox();
             this.lbHakusana = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.btnAsTyhj = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgAsiakas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataSet)).BeginInit();
@@ -204,6 +204,17 @@
             this.tab_muokkaa.Size = new System.Drawing.Size(944, 277);
             this.tab_muokkaa.TabIndex = 0;
             this.tab_muokkaa.Text = "Muokkaa";
+            // 
+            // btnAsTyhj
+            // 
+            this.btnAsTyhj.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAsTyhj.Location = new System.Drawing.Point(748, 172);
+            this.btnAsTyhj.Name = "btnAsTyhj";
+            this.btnAsTyhj.Size = new System.Drawing.Size(125, 25);
+            this.btnAsTyhj.TabIndex = 17;
+            this.btnAsTyhj.Text = "Tyhjennä";
+            this.btnAsTyhj.UseVisualStyleBackColor = false;
+            this.btnAsTyhj.Click += new System.EventHandler(this.btnAsTyhj_Click);
             // 
             // tbAsID
             // 
@@ -499,17 +510,6 @@
             this.lbHakusana.Size = new System.Drawing.Size(72, 17);
             this.lbHakusana.TabIndex = 20;
             this.lbHakusana.Text = "Hakusana";
-            // 
-            // btnAsTyhj
-            // 
-            this.btnAsTyhj.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAsTyhj.Location = new System.Drawing.Point(748, 172);
-            this.btnAsTyhj.Name = "btnAsTyhj";
-            this.btnAsTyhj.Size = new System.Drawing.Size(125, 25);
-            this.btnAsTyhj.TabIndex = 17;
-            this.btnAsTyhj.Text = "Tyhjennä";
-            this.btnAsTyhj.UseVisualStyleBackColor = false;
-            this.btnAsTyhj.Click += new System.EventHandler(this.btnAsTyhj_Click);
             // 
             // Asiakkaat
             // 
