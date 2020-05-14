@@ -154,7 +154,8 @@ namespace Village_Newbies
         {
             
             string insertQuery;
-            insertQuery = "INSERT INTO mokki (toimintaalue_id, postinro, mokkinimi, katuosoite, kuvaus, henkilomaara, varustelu, hinta) VALUES (" + cmbMokkiToimialue.SelectedValue + " ,'" + tbPostinro.Text + "' ,'" + tbMokkiNimi.Text + "' ,'" + tbKatuosoite.Text + "' ,'" + tbKuvaus.Text + "' ," + int.Parse(tbHloMaara.Text) + " ,'" + tbVarustelu.Text + "'," + Double.Parse(tbHinta.Text) + ")";
+            //Double hinta = Double.Parse(tbHinta.Text);
+            insertQuery = "INSERT INTO mokki (toimintaalue_id, postinro, mokkinimi, katuosoite, kuvaus, henkilomaara, varustelu, hinta) VALUES (" + cmbMokkiToimialue.SelectedValue + " ,'" + tbPostinro.Text + "' ,'" + tbMokkiNimi.Text + "' ,'" + tbKatuosoite.Text + "' ,'" + tbKuvaus.Text + "' ," + int.Parse(tbHloMaara.Text) + " ,'" + tbVarustelu.Text + "'," + tbHinta.Text + ")";
 
             executeMyQuery(insertQuery);
             paivitaDGV();
@@ -167,7 +168,7 @@ namespace Village_Newbies
             {
                 int index = dgvMokit.CurrentRow.Index;
                 string updateQuery;
-                updateQuery = "UPDATE mokki SET toimintaalue_id = " + cmbMokkiToimialue.SelectedValue + ", postinro = '" + tbPostinro.Text + "', mokkinimi = '" + tbMokkiNimi.Text + "', katuosoite ='" + tbKatuosoite.Text + "', kuvaus = '" + tbKuvaus.Text + "', henkilomaara = " + int.Parse(tbHloMaara.Text) + ", varustelu = '" + tbVarustelu.Text + "', hinta = " + Double.Parse(tbHinta.Text) + " WHERE (mokki_id = " + int.Parse(tbMokkiID.Text) + ")";
+                updateQuery = "UPDATE mokki SET toimintaalue_id = " + cmbMokkiToimialue.SelectedValue + ", postinro = '" + tbPostinro.Text + "', mokkinimi = '" + tbMokkiNimi.Text + "', katuosoite ='" + tbKatuosoite.Text + "', kuvaus = '" + tbKuvaus.Text + "', henkilomaara = " + int.Parse(tbHloMaara.Text) + ", varustelu = '" + tbVarustelu.Text + "', hinta = " + tbHinta.Text + " WHERE (mokki_id = " + int.Parse(tbMokkiID.Text) + ")";
                 executeMyQuery(updateQuery);
                 paivitaDGV();
             }
