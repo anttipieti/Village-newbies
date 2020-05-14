@@ -47,6 +47,13 @@ namespace Village_Newbies
             }
         }
 
+        private void Laskut_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'villageNewbiesDataSet.lasku' table. You can move, or remove it, as needed.
+            this.laskuTableAdapter.Fill(this.villageNewbiesDataSet.lasku);
+
+        }
+
         /*public void populateDGV()
         {
             //Tuo kaikki laskut datagridiin
@@ -161,6 +168,6 @@ namespace Village_Newbies
 
             closeConnection();
         }*/
-        
+
     }
 }

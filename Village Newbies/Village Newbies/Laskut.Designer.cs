@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.TCtrl = new System.Windows.Forms.TabControl();
             this.LisääSivuTPage = new System.Windows.Forms.TabPage();
             this.dataGridViewLisää = new System.Windows.Forms.DataGridView();
@@ -67,6 +68,26 @@
             this.LblVarausIDHae = new System.Windows.Forms.Label();
             this.LblLaskuIDHae = new System.Windows.Forms.Label();
             this.dataGridViewHae = new System.Windows.Forms.DataGridView();
+            this.villageNewbiesDataSet = new Village_Newbies.VillageNewbiesDataSet();
+            this.villageNewbiesDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.laskuBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.laskuTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.laskuTableAdapter();
+            this.laskuidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.varausidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.summaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.alvDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.laskuidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.varausidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.summaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.alvDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.laskuidDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.varausidDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.summaDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.alvDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.laskuidDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.varausidDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.summaDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.alvDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TCtrl.SuspendLayout();
             this.LisääSivuTPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewLisää)).BeginInit();
@@ -76,6 +97,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridPoista)).BeginInit();
             this.HaeSivuTPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHae)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.laskuBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TCtrl
@@ -113,7 +137,14 @@
             // 
             // dataGridViewLisää
             // 
+            this.dataGridViewLisää.AutoGenerateColumns = false;
             this.dataGridViewLisää.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewLisää.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.laskuidDataGridViewTextBoxColumn1,
+            this.varausidDataGridViewTextBoxColumn1,
+            this.summaDataGridViewTextBoxColumn1,
+            this.alvDataGridViewTextBoxColumn1});
+            this.dataGridViewLisää.DataSource = this.laskuBindingSource;
             this.dataGridViewLisää.Location = new System.Drawing.Point(6, 273);
             this.dataGridViewLisää.Name = "dataGridViewLisää";
             this.dataGridViewLisää.Size = new System.Drawing.Size(444, 115);
@@ -297,7 +328,14 @@
             // 
             // dataGridViewMuokkaa
             // 
+            this.dataGridViewMuokkaa.AutoGenerateColumns = false;
             this.dataGridViewMuokkaa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMuokkaa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.laskuidDataGridViewTextBoxColumn,
+            this.varausidDataGridViewTextBoxColumn,
+            this.summaDataGridViewTextBoxColumn,
+            this.alvDataGridViewTextBoxColumn});
+            this.dataGridViewMuokkaa.DataSource = this.laskuBindingSource;
             this.dataGridViewMuokkaa.Location = new System.Drawing.Point(6, 273);
             this.dataGridViewMuokkaa.Name = "dataGridViewMuokkaa";
             this.dataGridViewMuokkaa.Size = new System.Drawing.Size(444, 115);
@@ -348,7 +386,14 @@
             // 
             // dataGridPoista
             // 
+            this.dataGridPoista.AutoGenerateColumns = false;
             this.dataGridPoista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridPoista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.laskuidDataGridViewTextBoxColumn2,
+            this.varausidDataGridViewTextBoxColumn2,
+            this.summaDataGridViewTextBoxColumn2,
+            this.alvDataGridViewTextBoxColumn2});
+            this.dataGridPoista.DataSource = this.laskuBindingSource;
             this.dataGridPoista.Location = new System.Drawing.Point(6, 273);
             this.dataGridPoista.Name = "dataGridPoista";
             this.dataGridPoista.Size = new System.Drawing.Size(444, 115);
@@ -459,11 +504,133 @@
             // 
             // dataGridViewHae
             // 
+            this.dataGridViewHae.AutoGenerateColumns = false;
             this.dataGridViewHae.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewHae.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.laskuidDataGridViewTextBoxColumn3,
+            this.varausidDataGridViewTextBoxColumn3,
+            this.summaDataGridViewTextBoxColumn3,
+            this.alvDataGridViewTextBoxColumn3});
+            this.dataGridViewHae.DataSource = this.laskuBindingSource;
             this.dataGridViewHae.Location = new System.Drawing.Point(6, 273);
             this.dataGridViewHae.Name = "dataGridViewHae";
             this.dataGridViewHae.Size = new System.Drawing.Size(444, 115);
             this.dataGridViewHae.TabIndex = 10;
+            // 
+            // villageNewbiesDataSet
+            // 
+            this.villageNewbiesDataSet.DataSetName = "VillageNewbiesDataSet";
+            this.villageNewbiesDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // villageNewbiesDataSetBindingSource
+            // 
+            this.villageNewbiesDataSetBindingSource.DataSource = this.villageNewbiesDataSet;
+            this.villageNewbiesDataSetBindingSource.Position = 0;
+            // 
+            // laskuBindingSource
+            // 
+            this.laskuBindingSource.DataMember = "lasku";
+            this.laskuBindingSource.DataSource = this.villageNewbiesDataSet;
+            // 
+            // laskuTableAdapter
+            // 
+            this.laskuTableAdapter.ClearBeforeFill = true;
+            // 
+            // laskuidDataGridViewTextBoxColumn
+            // 
+            this.laskuidDataGridViewTextBoxColumn.DataPropertyName = "lasku_id";
+            this.laskuidDataGridViewTextBoxColumn.HeaderText = "lasku_id";
+            this.laskuidDataGridViewTextBoxColumn.Name = "laskuidDataGridViewTextBoxColumn";
+            // 
+            // varausidDataGridViewTextBoxColumn
+            // 
+            this.varausidDataGridViewTextBoxColumn.DataPropertyName = "varaus_id";
+            this.varausidDataGridViewTextBoxColumn.HeaderText = "varaus_id";
+            this.varausidDataGridViewTextBoxColumn.Name = "varausidDataGridViewTextBoxColumn";
+            // 
+            // summaDataGridViewTextBoxColumn
+            // 
+            this.summaDataGridViewTextBoxColumn.DataPropertyName = "summa";
+            this.summaDataGridViewTextBoxColumn.HeaderText = "summa";
+            this.summaDataGridViewTextBoxColumn.Name = "summaDataGridViewTextBoxColumn";
+            // 
+            // alvDataGridViewTextBoxColumn
+            // 
+            this.alvDataGridViewTextBoxColumn.DataPropertyName = "alv";
+            this.alvDataGridViewTextBoxColumn.HeaderText = "alv";
+            this.alvDataGridViewTextBoxColumn.Name = "alvDataGridViewTextBoxColumn";
+            // 
+            // laskuidDataGridViewTextBoxColumn1
+            // 
+            this.laskuidDataGridViewTextBoxColumn1.DataPropertyName = "lasku_id";
+            this.laskuidDataGridViewTextBoxColumn1.HeaderText = "lasku_id";
+            this.laskuidDataGridViewTextBoxColumn1.Name = "laskuidDataGridViewTextBoxColumn1";
+            // 
+            // varausidDataGridViewTextBoxColumn1
+            // 
+            this.varausidDataGridViewTextBoxColumn1.DataPropertyName = "varaus_id";
+            this.varausidDataGridViewTextBoxColumn1.HeaderText = "varaus_id";
+            this.varausidDataGridViewTextBoxColumn1.Name = "varausidDataGridViewTextBoxColumn1";
+            // 
+            // summaDataGridViewTextBoxColumn1
+            // 
+            this.summaDataGridViewTextBoxColumn1.DataPropertyName = "summa";
+            this.summaDataGridViewTextBoxColumn1.HeaderText = "summa";
+            this.summaDataGridViewTextBoxColumn1.Name = "summaDataGridViewTextBoxColumn1";
+            // 
+            // alvDataGridViewTextBoxColumn1
+            // 
+            this.alvDataGridViewTextBoxColumn1.DataPropertyName = "alv";
+            this.alvDataGridViewTextBoxColumn1.HeaderText = "alv";
+            this.alvDataGridViewTextBoxColumn1.Name = "alvDataGridViewTextBoxColumn1";
+            // 
+            // laskuidDataGridViewTextBoxColumn2
+            // 
+            this.laskuidDataGridViewTextBoxColumn2.DataPropertyName = "lasku_id";
+            this.laskuidDataGridViewTextBoxColumn2.HeaderText = "lasku_id";
+            this.laskuidDataGridViewTextBoxColumn2.Name = "laskuidDataGridViewTextBoxColumn2";
+            // 
+            // varausidDataGridViewTextBoxColumn2
+            // 
+            this.varausidDataGridViewTextBoxColumn2.DataPropertyName = "varaus_id";
+            this.varausidDataGridViewTextBoxColumn2.HeaderText = "varaus_id";
+            this.varausidDataGridViewTextBoxColumn2.Name = "varausidDataGridViewTextBoxColumn2";
+            // 
+            // summaDataGridViewTextBoxColumn2
+            // 
+            this.summaDataGridViewTextBoxColumn2.DataPropertyName = "summa";
+            this.summaDataGridViewTextBoxColumn2.HeaderText = "summa";
+            this.summaDataGridViewTextBoxColumn2.Name = "summaDataGridViewTextBoxColumn2";
+            // 
+            // alvDataGridViewTextBoxColumn2
+            // 
+            this.alvDataGridViewTextBoxColumn2.DataPropertyName = "alv";
+            this.alvDataGridViewTextBoxColumn2.HeaderText = "alv";
+            this.alvDataGridViewTextBoxColumn2.Name = "alvDataGridViewTextBoxColumn2";
+            // 
+            // laskuidDataGridViewTextBoxColumn3
+            // 
+            this.laskuidDataGridViewTextBoxColumn3.DataPropertyName = "lasku_id";
+            this.laskuidDataGridViewTextBoxColumn3.HeaderText = "lasku_id";
+            this.laskuidDataGridViewTextBoxColumn3.Name = "laskuidDataGridViewTextBoxColumn3";
+            // 
+            // varausidDataGridViewTextBoxColumn3
+            // 
+            this.varausidDataGridViewTextBoxColumn3.DataPropertyName = "varaus_id";
+            this.varausidDataGridViewTextBoxColumn3.HeaderText = "varaus_id";
+            this.varausidDataGridViewTextBoxColumn3.Name = "varausidDataGridViewTextBoxColumn3";
+            // 
+            // summaDataGridViewTextBoxColumn3
+            // 
+            this.summaDataGridViewTextBoxColumn3.DataPropertyName = "summa";
+            this.summaDataGridViewTextBoxColumn3.HeaderText = "summa";
+            this.summaDataGridViewTextBoxColumn3.Name = "summaDataGridViewTextBoxColumn3";
+            // 
+            // alvDataGridViewTextBoxColumn3
+            // 
+            this.alvDataGridViewTextBoxColumn3.DataPropertyName = "alv";
+            this.alvDataGridViewTextBoxColumn3.HeaderText = "alv";
+            this.alvDataGridViewTextBoxColumn3.Name = "alvDataGridViewTextBoxColumn3";
             // 
             // Laskut
             // 
@@ -475,6 +642,7 @@
             this.Name = "Laskut";
             this.Text = "Laskut";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Laskut_FormClosing);
+            this.Load += new System.EventHandler(this.Laskut_Load);
             this.TCtrl.ResumeLayout(false);
             this.LisääSivuTPage.ResumeLayout(false);
             this.LisääSivuTPage.PerformLayout();
@@ -488,6 +656,9 @@
             this.HaeSivuTPage.ResumeLayout(false);
             this.HaeSivuTPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHae)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.laskuBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -533,5 +704,25 @@
         private System.Windows.Forms.Label LblVarausIDHae;
         private System.Windows.Forms.Label LblLaskuIDHae;
         private System.Windows.Forms.DataGridView dataGridViewHae;
+        private System.Windows.Forms.BindingSource villageNewbiesDataSetBindingSource;
+        private VillageNewbiesDataSet villageNewbiesDataSet;
+        private System.Windows.Forms.BindingSource laskuBindingSource;
+        private VillageNewbiesDataSetTableAdapters.laskuTableAdapter laskuTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn laskuidDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn varausidDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn summaDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn alvDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn laskuidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn varausidDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn summaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn alvDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn laskuidDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn varausidDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn summaDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn alvDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn laskuidDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn varausidDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn summaDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn alvDataGridViewTextBoxColumn3;
     }
 }
