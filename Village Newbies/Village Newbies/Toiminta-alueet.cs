@@ -25,15 +25,7 @@ namespace Village_Newbies
             InitializeComponent();
             mainform = f1;
 
-            hakulista = new List<string>();
-            hakulista.Add(this.tbMokkihakuID.Text);
-            hakulista.Add(this.tbMokkihakuNimi.Text);
-            hakulista.Add(this.tbMokkihakuKOsoite.Text);
-            hakulista.Add(this.tbMokkihakuPostiNro.Text);
-            hakulista.Add(this.tbMokkihakuHlomaara.Text);
-            hakulista.Add(this.tbMokkihakuVarustelu.Text);
-            hakulista.Add(this.cbMokkihakuAlue.Text);
-            hakulista.Add(this.cbMokkihakuHinta.Text);
+            
         }
 
         private void Toiminta_alueet_Load(object sender, EventArgs e)
@@ -43,6 +35,16 @@ namespace Village_Newbies
             // TODO: This line of code loads data into the 'villageNewbiesDataSet.toimintaalue' table. You can move, or remove it, as needed.
             this.toimintaalueTableAdapter.Fill(this.villageNewbiesDataSet.toimintaalue);
             paivitaDGV();
+
+            hakulista = new List<string>();
+            hakulista.Add(this.tbMokkihakuID.Text);
+            hakulista.Add(this.tbMokkihakuNimi.Text);
+            hakulista.Add(this.tbMokkihakuKOsoite.Text);
+            hakulista.Add(this.tbMokkihakuPostiNro.Text);
+            hakulista.Add(this.tbMokkihakuHlomaara.Text);
+            hakulista.Add(this.tbMokkihakuVarustelu.Text);
+            hakulista.Add(this.cbMokkihakuAlue.Text);
+            hakulista.Add(this.cbMokkihakuHinta.Text);
 
         }
 
@@ -236,7 +238,7 @@ namespace Village_Newbies
 
             for (int i = 0; i < hakulista.Count; ++i)
             {
-                if (hakulista[i] == "")
+                if (hakulista[i] != "")
                 {
 
                     switch (i)
