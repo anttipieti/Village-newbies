@@ -26,16 +26,32 @@ namespace Village_Newbies
             // Tuodaan tiedot datagridiin
             this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
 
+            //Listat joita käytetään tarkistamaan, että käyttäjä ei vain painele mitä sattuu antamatta tietoja :)
+            cblista = new List<CheckBox>();
+            cblista.Add(this.cbAsPostinro);
+            cblista.Add(this.cbAsEtunimi);
+            cblista.Add(this.cbAsSukunimi);
+            cblista.Add(this.cbAsLOsoite);
+            cblista.Add(this.cbAsEmail);
+            cblista.Add(this.cbAsPuhNro);
+
+            tblista = new List<TextBox>();
+            tblista.Add(this.tbAsPostinro);
+            tblista.Add(this.tbAsEtunimi);
+            tblista.Add(this.tbAsSukunimi);
+            tblista.Add(this.tbAsLOsoite);
+            tblista.Add(this.tbAsEmail);
+            tblista.Add(this.tbAsPuhNro);
         }
 
         OdbcConnection connection = new OdbcConnection(@"DSN=Village Newbies;MultipleActiveResultSets=True");
         OdbcCommand command;
         string conString = "DSN=Village Newbies;MultipleActiveResultSets=True";
-        private List<CheckBox> valitutcb;
+        private List<CheckBox> cblista;
+        private List<TextBox> tblista;
 
-        public void OpenConnection() //Tietokantayhteys auki
+        public void OpenConnection()//Tietokantayhteys auki
         {
-            //Tietokantayhteys auki
             if (connection.State == ConnectionState.Closed)
             {
                 connection.ConnectionString = conString;
@@ -43,20 +59,16 @@ namespace Village_Newbies
             }
         }
 
-        public void CloseConnection() 
+        public void CloseConnection() //Tietokantayhteys kiinni
         {
-            //Tietokantayhteys kiinni
             if (connection.State == ConnectionState.Open)
             {
                 connection.Close();
             }
         }
 
-
-
-        public void ExecuteMyQuery(string query)
+        public void ExecuteMyQuery(string query)//sql-komentojen suoritus
         {
-            //sql-komentojen suoritus
             try
             {
                 OpenConnection();
@@ -82,42 +94,82 @@ namespace Village_Newbies
                 CloseConnection();
             }
         }
-    
-
 
         private void btnAsLisaa_Click(object sender, EventArgs e)
         {
             //datan lisäys tauluun, datagrid päivitys
+            bool tarkistus = tbTarkistus();
+
+            if (tarkistus == true)
+            {
             string asiakasAdd =
                 "insert into asiakas(postinro, etunimi, sukunimi, lahiosoite, email, puhelinnro) values('"+ tbAsPostinro.Text+ "','"+tbAsEtunimi.Text+"','"+tbAsSukunimi.Text+ "','"+tbAsLOsoite.Text+ "','"+tbAsEmail.Text+ "','"+tbAsPuhNro.Text+ "')";
             ExecuteMyQuery(asiakasAdd);
             this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
+            } 
+            else
+            {
+                MessageBox.Show("Kaikki kentät ovat pakollisia"); //oikeasti vaan postinumero on pakollinen
+            }
+            
 
         }
 
         private void btnAsMuokkaa_Click(object sender, EventArgs e)
         {
             //päivitetään taulun data ja datagrid
+            bool tarkistus = tbTarkistus();
+
+            if (tarkistus == true)
+            {
             string asiakasUpdate =
                 "UPDATE asiakas SET postinro='" +tbAsPostinro.Text+ "',etunimi='"+tbAsEtunimi.Text+ "',sukunimi='" +tbAsSukunimi.Text+"',lahiosoite='" +tbAsLOsoite.Text+"',email='" +tbAsEmail.Text+"',puhelinnro="+tbAsPuhNro.Text+" WHERE asiakas_id="+int.Parse(tbAsID.Text);
             ExecuteMyQuery(asiakasUpdate);
             this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
+            }
+            else
+            {
+                MessageBox.Show("Kaikki kentät ovat pakollisia"); //oikeasti vaan postinumero on pakollinen
+            }
+
+
         }
 
         private void btnAsPoista_Click(object sender, EventArgs e)
         {
             //poistetaan asiakas taulusta ja päivitetään datagrid
-            string asiakasPoista =
-                "DELETE FROM asiakas WHERE asiakas_id= "+int.Parse(tbAsID.Text);
-            ExecuteMyQuery(asiakasPoista);
-            this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
+            bool tarkistus = tbTarkistus();
+
+            if (tbAsID.Text == "")
+            {
+                MessageBox.Show("Ei asiakasta valittuna");
+            }
+            else if (tarkistus == false)
+            {
+                /*Estetään vahinkopoistot jos teksti on pyyhitty manuaalisesti eikä käyttämällä nappia
+                  Asiakasnumeroa ei nimittäin pysty poistamaan muuten kuin napilla + tätä kautta*/
+
+                MessageBox.Show("Osa ruuduista on tyhjiä, valitse asiakas uudelleen");
+                tyhjMuokkaa();
+            }
+            else
+            {
+                DialogResult dialogResult = MessageBox.Show("Haluatko varmasti poistaa asiakkaan " + tbAsEtunimi.Text + " " + tbAsSukunimi.Text + "?", "Varmistus", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    string asiakasPoista =
+                        "DELETE FROM asiakas WHERE asiakas_id= " + int.Parse(tbAsID.Text);
+                    ExecuteMyQuery(asiakasPoista);
+                    this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
+                }
+            }
+            
         }
 
         private void btnAsHae_Click(object sender, EventArgs e)
         {
             //Haetaan halutut tiedot
-
-            if(cbAsPostinro.Checked != true && cbAsEtunimi.Checked != true && cbAsSukunimi.Checked != true && cbAsLOsoite.Checked != true && cbAsEmail.Checked != true && cbAsPuhNro.Checked != true)
+            if (cbAsPostinro.Checked != true && cbAsEtunimi.Checked != true && cbAsSukunimi.Checked != true && cbAsLOsoite.Checked != true && cbAsEmail.Checked != true && cbAsPuhNro.Checked != true)
             {
                 MessageBox.Show("Valitse ainakin yksi hakualue");
             }
@@ -145,27 +197,11 @@ namespace Village_Newbies
 
         private void btnAsNollaa_Click(object sender, EventArgs e)
         {
-            //Tyhjennetään sivu
-            dgAsiakas.DataSource = asiakasBindingSource;
-            tbAsHaku.Text = "";
-            cbAsPostinro.Checked = false;
-            cbAsEtunimi.Checked = false;
-            cbAsSukunimi.Checked = false;
-            cbAsLOsoite.Checked = false;
-            cbAsEmail.Checked = false;
-            cbAsPuhNro.Checked = false;
-            
+            tyhjHae();
         }
         private void btnAsTyhj_Click(object sender, EventArgs e)
         {
-            //Tyhjennetään sivu
-            tbAsID.Text = "";
-            tbAsPostinro.Text = "";
-            tbAsEtunimi.Text = "";
-            tbAsSukunimi.Text = "";
-            tbAsLOsoite.Text = "";
-            tbAsEmail.Text = "";
-            tbAsPuhNro.Text = "";
+            tyhjMuokkaa();
         }
 
         private string luoHakustring()
@@ -176,19 +212,9 @@ namespace Village_Newbies
             bool k = false;
             string valitut = "SELECT * FROM asiakas WHERE ";
 
-            valitutcb = new List<CheckBox>();
-            valitutcb.Add(this.cbAsPostinro);
-            valitutcb.Add(this.cbAsEtunimi);
-            valitutcb.Add(this.cbAsSukunimi);
-            valitutcb.Add(this.cbAsLOsoite);
-            valitutcb.Add(this.cbAsEmail);
-            valitutcb.Add(this.cbAsPuhNro);
-
-            
-
-            for (int i = 0; i < valitutcb.Count; ++i)
+            for (int i = 0; i < cblista.Count; ++i)
             {
-                if (valitutcb[i].Checked)
+                if (cblista[i].Checked)
                 {
                     
                     switch (i)
@@ -257,12 +283,46 @@ namespace Village_Newbies
         }
 
 
+        private bool tbTarkistus()
+        {
+            //Tarkistetaan, että textboxit eivät ole tyhjiä
+            for (int i = 0; i < tblista.Count; ++i)
+            {
+                if (tblista[i].Text == "")
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void tyhjMuokkaa ()
+        {
+            //Tyhjennetään Muokkaa-sivu
+            tbAsID.Text = "";
+            tbAsPostinro.Text = "";
+            tbAsEtunimi.Text = "";
+            tbAsSukunimi.Text = "";
+            tbAsLOsoite.Text = "";
+            tbAsEmail.Text = "";
+            tbAsPuhNro.Text = "";
+        }
+        private void tyhjHae()
+        {
+            //Tyhjennetään Hae-sivu
+            dgAsiakas.DataSource = asiakasBindingSource;
+            tbAsHaku.Text = "";
+            cbAsPostinro.Checked = false;
+            cbAsEtunimi.Checked = false;
+            cbAsSukunimi.Checked = false;
+            cbAsLOsoite.Checked = false;
+            cbAsEmail.Checked = false;
+            cbAsPuhNro.Checked = false;
+        }
         private void Asiakkaat_FormClosing(object sender, FormClosingEventArgs e)
         {
             mainform.Show();
             //Avataan päävalikko uudelleen
         }
-
-        
     }
 }
