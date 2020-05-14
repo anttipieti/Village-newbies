@@ -47,7 +47,14 @@ namespace Village_Newbies
             }
         }
 
-        /*public void populateDGV()
+        private void Laskut_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'villageNewbiesDataSet.lasku' table. You can move, or remove it, as needed.
+            this.laskuTableAdapter.Fill(this.villageNewbiesDataSet.lasku);
+
+        }
+
+        public void populateDGV()
         {
             //Tuo kaikki laskut datagridiin
             string selectQuery = "SELECT * FROM varaus";
@@ -91,10 +98,10 @@ namespace Village_Newbies
             }
         }
 
-        public LaskuForm()
+        /*public LaskuForm()
         {
             InitializeComponent();
-        }
+        }*/
 
         private void TPage1_Click(object sender, EventArgs e)
         {
@@ -104,7 +111,7 @@ namespace Village_Newbies
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'dataSetLasku.lasku' table. You can move, or remove it, as needed.
-            this.laskuTableAdapter.Fill(this.dataSetLasku.lasku);
+            this.laskuTableAdapter.Fill(this.villageNewbiesDataSet.lasku);
 
         }
 
@@ -112,9 +119,9 @@ namespace Village_Newbies
         {
             Validate();
             laskuBindingSource.EndEdit();
-            laskuTableAdapter.Update(dataSetLasku);
+            laskuTableAdapter.Update(villageNewbiesDataSet);
             laskuTableAdapter.Insert(int.Parse(TextBoxLaskuIDLisää.Text), int.Parse(TextBoxVarausIDLisää.Text), double.Parse(TextBoxSummaLisää.Text), double.Parse(TextBoxALVLisää.Text));
-            laskuTableAdapter.Fill(this.dataSetLasku.lasku);
+            laskuTableAdapter.Fill(this.villageNewbiesDataSet.lasku);
         }
 
         private void dataGridViewLisää_Click(object sender, EventArgs e)
@@ -160,7 +167,7 @@ namespace Village_Newbies
             }
 
             closeConnection();
-        }*/
-        
+        }
+
     }
 }
