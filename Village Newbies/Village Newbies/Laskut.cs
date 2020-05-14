@@ -136,7 +136,7 @@ namespace Village_Newbies
         {
             string deleteQuery = "DELETE FROM lasku WHERE lasku_id = " + int.Parse(TextBoxPoista.Text);
             executeMyQuery(deleteQuery);
-            populateDGV(); 
+            this.laskuTableAdapter.Fill(this.villageNewbiesDataSet.lasku);
         }
 
         private void BtnMuokkaa_Click(object sender, EventArgs e)
