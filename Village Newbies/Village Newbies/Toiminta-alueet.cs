@@ -149,5 +149,30 @@ namespace Village_Newbies
 
             }
         }
+
+        private void btnUusiMokki_Click(object sender, EventArgs e)
+        {
+            
+            string insertQuery;
+            insertQuery = "INSERT INTO mokki (toimintaalue_id, postinro, mokkinimi, katuosoite, kuvaus, henkilomaara, varustelu, hinta) VALUES (" + cmbMokkiToimialue.SelectedValue + " ,'" + tbPostinro.Text + "' ,'" + tbMokkiNimi.Text + "' ,'" + tbKatuosoite.Text + "' ,'" + tbKuvaus.Text + "' ," + int.Parse(tbHloMaara.Text) + " ,'" + tbVarustelu.Text + "'," + Double.Parse(tbHinta.Text) + ")";
+
+            executeMyQuery(insertQuery);
+            paivitaDGV();
+        }
+
+        private void btnMuutaMokkia_Click(object sender, EventArgs e)
+        {
+            if (dgvMokit.RowCount > 0)
+            {
+                int index = dgvMokit.CurrentRow.Index;
+                
+                string updateQuery;
+
+                updateQuery = "UPDATE varaus SET toimintaalue_id = " + cmbMokkiToimialue.SelectedValue + ", postinro = '" + tbPostinro.Text + "', mokkinimi = '" + tbMokkiNimi.Text + "', katuosoite ='" + tbKatuosoite.Text + "', kuvaus = '" + tbKuvaus.Text + "', henkilomaara = " + int.Parse(tbHloMaara.Text) + ", varustelu = '" + tbVarustelu.Text + "', hinta = " + Double.Parse(tbHinta.Text) + " WHERE varaus_id = " + int.Parse(tbMokkiID.Text);
+
+                executeMyQuery(updateQuery);
+                paivitaDGV();
+            }
+        }
     }
 }

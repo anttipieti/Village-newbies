@@ -315,6 +315,7 @@
             // 
             // cmbMokkiToimialue
             // 
+            this.cmbMokkiToimialue.DataSource = this.toimintaalueBindingSource;
             this.cmbMokkiToimialue.DisplayMember = "nimi";
             this.cmbMokkiToimialue.FormattingEnabled = true;
             this.cmbMokkiToimialue.Location = new System.Drawing.Point(220, 25);
@@ -432,6 +433,7 @@
             this.btnUusiMokki.TabIndex = 53;
             this.btnUusiMokki.Text = "Lisää Mökki";
             this.btnUusiMokki.UseVisualStyleBackColor = true;
+            this.btnUusiMokki.Click += new System.EventHandler(this.btnUusiMokki_Click);
             // 
             // btnMuutaMokkia
             // 
@@ -441,6 +443,7 @@
             this.btnMuutaMokkia.TabIndex = 54;
             this.btnMuutaMokkia.Text = "Muuta Mökin tietoja";
             this.btnMuutaMokkia.UseVisualStyleBackColor = true;
+            this.btnMuutaMokkia.Click += new System.EventHandler(this.btnMuutaMokkia_Click);
             // 
             // btnPoistaMokki
             // 
