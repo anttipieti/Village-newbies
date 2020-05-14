@@ -477,7 +477,7 @@ namespace Village_Newbies
 
         private void btnAsNollaa_Click(object sender, EventArgs e)
         {
-            //Tyhjennetään sivu
+            //Tyhjennetään
             dgvVarausAsiakkaat.DataSource = asiakasBindingSource;
             tbAsHaku.Text = "";
             cbAsPostinro.Checked = false;
