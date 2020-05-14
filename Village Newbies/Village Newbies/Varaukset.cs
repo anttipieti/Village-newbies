@@ -34,6 +34,11 @@ namespace Village_Newbies
             //this.varausTableAdapter.Fill(this.villageNewbiesDataSet.varaus);
             cmbVarausHakuEhto.SelectedIndex = 1;
 
+            //dtpvarattu.Value = DateTime.Now;
+            //dtpvahvistus.Value = DateTime.Now;
+            //dtpalku.Value = DateTime.Now;
+            //dtploppu.Value = DateTime.Now;
+
             paivitaDGV();
             CustomTimeFormat();
         }
