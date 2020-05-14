@@ -98,10 +98,10 @@ namespace Village_Newbies
             }
         }
 
-        public Laskut()
+        /*public LaskuForm()
         {
             InitializeComponent();
-        }
+        }*/
 
         private void TPage1_Click(object sender, EventArgs e)
         {
@@ -168,5 +168,6 @@ namespace Village_Newbies
 
             closeConnection();
         }
+
     }
 }
