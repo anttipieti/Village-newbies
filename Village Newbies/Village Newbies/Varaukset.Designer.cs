@@ -55,6 +55,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPageAsiakas = new System.Windows.Forms.TabPage();
+            this.btnAsNollaa = new System.Windows.Forms.Button();
+            this.btnAsHae = new System.Windows.Forms.Button();
+            this.gbAsHae = new System.Windows.Forms.GroupBox();
+            this.cbAsPostinro = new System.Windows.Forms.CheckBox();
+            this.cbAsPuhNro = new System.Windows.Forms.CheckBox();
+            this.cbAsEtunimi = new System.Windows.Forms.CheckBox();
+            this.cbAsEmail = new System.Windows.Forms.CheckBox();
+            this.cbAsSukunimi = new System.Windows.Forms.CheckBox();
+            this.cbAsLOsoite = new System.Windows.Forms.CheckBox();
+            this.tbAsHaku = new System.Windows.Forms.TextBox();
+            this.lbHakusana = new System.Windows.Forms.Label();
             this.dgvVarausAsiakkaat = new System.Windows.Forms.DataGridView();
             this.asiakasidDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.postinroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,20 +120,10 @@
             this.toimintaalueTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.toimintaalueTableAdapter();
             this.palveluBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.palveluTableAdapter = new Village_Newbies.VillageNewbiesDataSetTableAdapters.palveluTableAdapter();
-            this.gbAsHae = new System.Windows.Forms.GroupBox();
-            this.cbAsPostinro = new System.Windows.Forms.CheckBox();
-            this.cbAsPuhNro = new System.Windows.Forms.CheckBox();
-            this.cbAsEtunimi = new System.Windows.Forms.CheckBox();
-            this.cbAsEmail = new System.Windows.Forms.CheckBox();
-            this.cbAsSukunimi = new System.Windows.Forms.CheckBox();
-            this.cbAsLOsoite = new System.Windows.Forms.CheckBox();
-            this.tbAsHaku = new System.Windows.Forms.TextBox();
-            this.lbHakusana = new System.Windows.Forms.Label();
-            this.btnAsNollaa = new System.Windows.Forms.Button();
-            this.btnAsHae = new System.Windows.Forms.Button();
             this.tabVarausNakyma.SuspendLayout();
             this.tabPageVaraus.SuspendLayout();
             this.tabPageAsiakas.SuspendLayout();
+            this.gbAsHae.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVarausAsiakkaat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataSet)).BeginInit();
@@ -135,7 +136,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgVarausTaulu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.varausBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.palveluBindingSource)).BeginInit();
-            this.gbAsHae.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabVarausNakyma
@@ -190,7 +190,7 @@
             // chbvarausvahvista
             // 
             this.chbvarausvahvista.AutoSize = true;
-            this.chbvarausvahvista.Location = new System.Drawing.Point(417, 132);
+            this.chbvarausvahvista.Location = new System.Drawing.Point(417, 121);
             this.chbvarausvahvista.Name = "chbvarausvahvista";
             this.chbvarausvahvista.Size = new System.Drawing.Size(114, 21);
             this.chbvarausvahvista.TabIndex = 43;
@@ -200,7 +200,7 @@
             // 
             // tbPalvelulkm
             // 
-            this.tbPalvelulkm.Location = new System.Drawing.Point(115, 249);
+            this.tbPalvelulkm.Location = new System.Drawing.Point(115, 235);
             this.tbPalvelulkm.Name = "tbPalvelulkm";
             this.tbPalvelulkm.ReadOnly = true;
             this.tbPalvelulkm.Size = new System.Drawing.Size(117, 22);
@@ -209,7 +209,7 @@
             // lblValitutPalvelut
             // 
             this.lblValitutPalvelut.AutoSize = true;
-            this.lblValitutPalvelut.Location = new System.Drawing.Point(45, 252);
+            this.lblValitutPalvelut.Location = new System.Drawing.Point(45, 238);
             this.lblValitutPalvelut.Name = "lblValitutPalvelut";
             this.lblValitutPalvelut.Size = new System.Drawing.Size(62, 17);
             this.lblValitutPalvelut.TabIndex = 41;
@@ -217,7 +217,7 @@
             // 
             // btnTabVarausPalvelut
             // 
-            this.btnTabVarausPalvelut.Location = new System.Drawing.Point(115, 284);
+            this.btnTabVarausPalvelut.Location = new System.Drawing.Point(115, 270);
             this.btnTabVarausPalvelut.Name = "btnTabVarausPalvelut";
             this.btnTabVarausPalvelut.Size = new System.Drawing.Size(117, 30);
             this.btnTabVarausPalvelut.TabIndex = 40;
@@ -227,14 +227,14 @@
             // 
             // txtmokkiid
             // 
-            this.txtmokkiid.Location = new System.Drawing.Point(115, 173);
+            this.txtmokkiid.Location = new System.Drawing.Point(115, 159);
             this.txtmokkiid.Name = "txtmokkiid";
             this.txtmokkiid.Size = new System.Drawing.Size(117, 22);
             this.txtmokkiid.TabIndex = 27;
             // 
             // btnmokki
             // 
-            this.btnmokki.Location = new System.Drawing.Point(115, 208);
+            this.btnmokki.Location = new System.Drawing.Point(115, 194);
             this.btnmokki.Name = "btnmokki";
             this.btnmokki.Size = new System.Drawing.Size(117, 28);
             this.btnmokki.TabIndex = 28;
@@ -254,7 +254,7 @@
             // 
             // btnasiakas
             // 
-            this.btnasiakas.Location = new System.Drawing.Point(115, 132);
+            this.btnasiakas.Location = new System.Drawing.Point(115, 118);
             this.btnasiakas.Name = "btnasiakas";
             this.btnasiakas.Size = new System.Drawing.Size(117, 28);
             this.btnasiakas.TabIndex = 25;
@@ -293,7 +293,7 @@
             // lblmokkiid
             // 
             this.lblmokkiid.AutoSize = true;
-            this.lblmokkiid.Location = new System.Drawing.Point(45, 176);
+            this.lblmokkiid.Location = new System.Drawing.Point(45, 162);
             this.lblmokkiid.Name = "lblmokkiid";
             this.lblmokkiid.Size = new System.Drawing.Size(57, 17);
             this.lblmokkiid.TabIndex = 26;
@@ -310,7 +310,7 @@
             // 
             // txtasiakasid
             // 
-            this.txtasiakasid.Location = new System.Drawing.Point(115, 97);
+            this.txtasiakasid.Location = new System.Drawing.Point(115, 83);
             this.txtasiakasid.Name = "txtasiakasid";
             this.txtasiakasid.Size = new System.Drawing.Size(117, 22);
             this.txtasiakasid.TabIndex = 24;
@@ -318,7 +318,7 @@
             // lblasiakasID
             // 
             this.lblasiakasID.AutoSize = true;
-            this.lblasiakasID.Location = new System.Drawing.Point(40, 100);
+            this.lblasiakasID.Location = new System.Drawing.Point(40, 86);
             this.lblasiakasID.Name = "lblasiakasID";
             this.lblasiakasID.Size = new System.Drawing.Size(69, 17);
             this.lblasiakasID.TabIndex = 23;
@@ -327,7 +327,7 @@
             // dtploppu
             // 
             this.dtploppu.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtploppu.Location = new System.Drawing.Point(418, 252);
+            this.dtploppu.Location = new System.Drawing.Point(418, 241);
             this.dtploppu.Name = "dtploppu";
             this.dtploppu.Size = new System.Drawing.Size(244, 22);
             this.dtploppu.TabIndex = 39;
@@ -343,7 +343,7 @@
             // dtpalku
             // 
             this.dtpalku.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpalku.Location = new System.Drawing.Point(418, 178);
+            this.dtpalku.Location = new System.Drawing.Point(418, 167);
             this.dtpalku.Name = "dtpalku";
             this.dtpalku.Size = new System.Drawing.Size(244, 22);
             this.dtpalku.TabIndex = 38;
@@ -360,7 +360,7 @@
             // dtpvahvistus
             // 
             this.dtpvahvistus.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpvahvistus.Location = new System.Drawing.Point(417, 95);
+            this.dtpvahvistus.Location = new System.Drawing.Point(417, 84);
             this.dtpvahvistus.Name = "dtpvahvistus";
             this.dtpvahvistus.Size = new System.Drawing.Size(244, 22);
             this.dtpvahvistus.TabIndex = 37;
@@ -368,7 +368,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(296, 97);
+            this.label1.Location = new System.Drawing.Point(296, 86);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 17);
             this.label1.TabIndex = 33;
@@ -377,7 +377,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(296, 178);
+            this.label2.Location = new System.Drawing.Point(296, 167);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(91, 17);
             this.label2.TabIndex = 34;
@@ -386,7 +386,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(296, 249);
+            this.label3.Location = new System.Drawing.Point(296, 238);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 17);
             this.label3.TabIndex = 35;
@@ -406,10 +406,123 @@
             this.tabPageAsiakas.Location = new System.Drawing.Point(4, 25);
             this.tabPageAsiakas.Name = "tabPageAsiakas";
             this.tabPageAsiakas.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageAsiakas.Size = new System.Drawing.Size(917, 390);
+            this.tabPageAsiakas.Size = new System.Drawing.Size(917, 329);
             this.tabPageAsiakas.TabIndex = 1;
             this.tabPageAsiakas.Text = "Asiakas";
             this.tabPageAsiakas.UseVisualStyleBackColor = true;
+            // 
+            // btnAsNollaa
+            // 
+            this.btnAsNollaa.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAsNollaa.Location = new System.Drawing.Point(754, 18);
+            this.btnAsNollaa.Name = "btnAsNollaa";
+            this.btnAsNollaa.Size = new System.Drawing.Size(105, 25);
+            this.btnAsNollaa.TabIndex = 42;
+            this.btnAsNollaa.Text = "Nollaa";
+            this.btnAsNollaa.UseVisualStyleBackColor = false;
+            this.btnAsNollaa.Click += new System.EventHandler(this.btnAsNollaa_Click);
+            // 
+            // btnAsHae
+            // 
+            this.btnAsHae.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAsHae.Location = new System.Drawing.Point(640, 18);
+            this.btnAsHae.Name = "btnAsHae";
+            this.btnAsHae.Size = new System.Drawing.Size(100, 25);
+            this.btnAsHae.TabIndex = 41;
+            this.btnAsHae.Text = "Hae";
+            this.btnAsHae.UseVisualStyleBackColor = false;
+            this.btnAsHae.Click += new System.EventHandler(this.btnAsHae_Click);
+            // 
+            // gbAsHae
+            // 
+            this.gbAsHae.Controls.Add(this.cbAsPostinro);
+            this.gbAsHae.Controls.Add(this.cbAsPuhNro);
+            this.gbAsHae.Controls.Add(this.cbAsEtunimi);
+            this.gbAsHae.Controls.Add(this.cbAsEmail);
+            this.gbAsHae.Controls.Add(this.cbAsSukunimi);
+            this.gbAsHae.Controls.Add(this.cbAsLOsoite);
+            this.gbAsHae.Location = new System.Drawing.Point(329, 66);
+            this.gbAsHae.Name = "gbAsHae";
+            this.gbAsHae.Size = new System.Drawing.Size(550, 86);
+            this.gbAsHae.TabIndex = 40;
+            this.gbAsHae.TabStop = false;
+            this.gbAsHae.Text = "Hae";
+            // 
+            // cbAsPostinro
+            // 
+            this.cbAsPostinro.AutoSize = true;
+            this.cbAsPostinro.Location = new System.Drawing.Point(155, 52);
+            this.cbAsPostinro.Name = "cbAsPostinro";
+            this.cbAsPostinro.Size = new System.Drawing.Size(109, 21);
+            this.cbAsPostinro.TabIndex = 34;
+            this.cbAsPostinro.Text = "Postinumero";
+            this.cbAsPostinro.UseVisualStyleBackColor = true;
+            // 
+            // cbAsPuhNro
+            // 
+            this.cbAsPuhNro.AutoSize = true;
+            this.cbAsPuhNro.Location = new System.Drawing.Point(296, 25);
+            this.cbAsPuhNro.Name = "cbAsPuhNro";
+            this.cbAsPuhNro.Size = new System.Drawing.Size(125, 21);
+            this.cbAsPuhNro.TabIndex = 36;
+            this.cbAsPuhNro.Text = "Puhelinnumero";
+            this.cbAsPuhNro.UseVisualStyleBackColor = true;
+            // 
+            // cbAsEtunimi
+            // 
+            this.cbAsEtunimi.AutoSize = true;
+            this.cbAsEtunimi.Location = new System.Drawing.Point(15, 25);
+            this.cbAsEtunimi.Name = "cbAsEtunimi";
+            this.cbAsEtunimi.Size = new System.Drawing.Size(76, 21);
+            this.cbAsEtunimi.TabIndex = 28;
+            this.cbAsEtunimi.Text = "Etunimi";
+            this.cbAsEtunimi.UseVisualStyleBackColor = true;
+            // 
+            // cbAsEmail
+            // 
+            this.cbAsEmail.AutoSize = true;
+            this.cbAsEmail.Location = new System.Drawing.Point(296, 52);
+            this.cbAsEmail.Name = "cbAsEmail";
+            this.cbAsEmail.Size = new System.Drawing.Size(100, 21);
+            this.cbAsEmail.TabIndex = 35;
+            this.cbAsEmail.Text = "Sähköposti";
+            this.cbAsEmail.UseVisualStyleBackColor = true;
+            // 
+            // cbAsSukunimi
+            // 
+            this.cbAsSukunimi.AutoSize = true;
+            this.cbAsSukunimi.Location = new System.Drawing.Point(155, 25);
+            this.cbAsSukunimi.Name = "cbAsSukunimi";
+            this.cbAsSukunimi.Size = new System.Drawing.Size(87, 21);
+            this.cbAsSukunimi.TabIndex = 32;
+            this.cbAsSukunimi.Text = "Sukunimi";
+            this.cbAsSukunimi.UseVisualStyleBackColor = true;
+            // 
+            // cbAsLOsoite
+            // 
+            this.cbAsLOsoite.AutoSize = true;
+            this.cbAsLOsoite.Location = new System.Drawing.Point(15, 52);
+            this.cbAsLOsoite.Name = "cbAsLOsoite";
+            this.cbAsLOsoite.Size = new System.Drawing.Size(95, 21);
+            this.cbAsLOsoite.TabIndex = 33;
+            this.cbAsLOsoite.Text = "Lähiosoite";
+            this.cbAsLOsoite.UseVisualStyleBackColor = true;
+            // 
+            // tbAsHaku
+            // 
+            this.tbAsHaku.Location = new System.Drawing.Point(424, 21);
+            this.tbAsHaku.Name = "tbAsHaku";
+            this.tbAsHaku.Size = new System.Drawing.Size(185, 22);
+            this.tbAsHaku.TabIndex = 39;
+            // 
+            // lbHakusana
+            // 
+            this.lbHakusana.AutoSize = true;
+            this.lbHakusana.Location = new System.Drawing.Point(326, 24);
+            this.lbHakusana.Name = "lbHakusana";
+            this.lbHakusana.Size = new System.Drawing.Size(72, 17);
+            this.lbHakusana.TabIndex = 38;
+            this.lbHakusana.Text = "Hakusana";
             // 
             // dgvVarausAsiakkaat
             // 
@@ -543,7 +656,7 @@
             this.tabPageMokki.Location = new System.Drawing.Point(4, 25);
             this.tabPageMokki.Name = "tabPageMokki";
             this.tabPageMokki.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMokki.Size = new System.Drawing.Size(917, 390);
+            this.tabPageMokki.Size = new System.Drawing.Size(917, 329);
             this.tabPageMokki.TabIndex = 2;
             this.tabPageMokki.Text = "Mökki";
             this.tabPageMokki.UseVisualStyleBackColor = true;
@@ -581,6 +694,7 @@
             this.dtgVarausMokit.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgVarausMokit.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgVarausMokit.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgVarausMokit.Location = new System.Drawing.Point(35, 115);
             this.dtgVarausMokit.Name = "dtgVarausMokit";
@@ -631,7 +745,7 @@
             this.tabPagePalvelut.Location = new System.Drawing.Point(4, 25);
             this.tabPagePalvelut.Name = "tabPagePalvelut";
             this.tabPagePalvelut.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPagePalvelut.Size = new System.Drawing.Size(917, 390);
+            this.tabPagePalvelut.Size = new System.Drawing.Size(917, 329);
             this.tabPagePalvelut.TabIndex = 3;
             this.tabPagePalvelut.Text = "Palvelut";
             this.tabPagePalvelut.UseVisualStyleBackColor = true;
@@ -662,6 +776,7 @@
             this.dtgVarauksenPalvelut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtgVarauksenPalvelut.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgVarauksenPalvelut.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgVarauksenPalvelut.Location = new System.Drawing.Point(37, 135);
             this.dtgVarauksenPalvelut.Name = "dtgVarauksenPalvelut";
@@ -931,119 +1046,6 @@
             // 
             this.palveluTableAdapter.ClearBeforeFill = true;
             // 
-            // gbAsHae
-            // 
-            this.gbAsHae.Controls.Add(this.cbAsPostinro);
-            this.gbAsHae.Controls.Add(this.cbAsPuhNro);
-            this.gbAsHae.Controls.Add(this.cbAsEtunimi);
-            this.gbAsHae.Controls.Add(this.cbAsEmail);
-            this.gbAsHae.Controls.Add(this.cbAsSukunimi);
-            this.gbAsHae.Controls.Add(this.cbAsLOsoite);
-            this.gbAsHae.Location = new System.Drawing.Point(329, 66);
-            this.gbAsHae.Name = "gbAsHae";
-            this.gbAsHae.Size = new System.Drawing.Size(550, 86);
-            this.gbAsHae.TabIndex = 40;
-            this.gbAsHae.TabStop = false;
-            this.gbAsHae.Text = "Hae";
-            // 
-            // cbAsPostinro
-            // 
-            this.cbAsPostinro.AutoSize = true;
-            this.cbAsPostinro.Location = new System.Drawing.Point(155, 52);
-            this.cbAsPostinro.Name = "cbAsPostinro";
-            this.cbAsPostinro.Size = new System.Drawing.Size(109, 21);
-            this.cbAsPostinro.TabIndex = 34;
-            this.cbAsPostinro.Text = "Postinumero";
-            this.cbAsPostinro.UseVisualStyleBackColor = true;
-            // 
-            // cbAsPuhNro
-            // 
-            this.cbAsPuhNro.AutoSize = true;
-            this.cbAsPuhNro.Location = new System.Drawing.Point(296, 25);
-            this.cbAsPuhNro.Name = "cbAsPuhNro";
-            this.cbAsPuhNro.Size = new System.Drawing.Size(125, 21);
-            this.cbAsPuhNro.TabIndex = 36;
-            this.cbAsPuhNro.Text = "Puhelinnumero";
-            this.cbAsPuhNro.UseVisualStyleBackColor = true;
-            // 
-            // cbAsEtunimi
-            // 
-            this.cbAsEtunimi.AutoSize = true;
-            this.cbAsEtunimi.Location = new System.Drawing.Point(15, 25);
-            this.cbAsEtunimi.Name = "cbAsEtunimi";
-            this.cbAsEtunimi.Size = new System.Drawing.Size(76, 21);
-            this.cbAsEtunimi.TabIndex = 28;
-            this.cbAsEtunimi.Text = "Etunimi";
-            this.cbAsEtunimi.UseVisualStyleBackColor = true;
-            // 
-            // cbAsEmail
-            // 
-            this.cbAsEmail.AutoSize = true;
-            this.cbAsEmail.Location = new System.Drawing.Point(296, 52);
-            this.cbAsEmail.Name = "cbAsEmail";
-            this.cbAsEmail.Size = new System.Drawing.Size(100, 21);
-            this.cbAsEmail.TabIndex = 35;
-            this.cbAsEmail.Text = "Sähköposti";
-            this.cbAsEmail.UseVisualStyleBackColor = true;
-            // 
-            // cbAsSukunimi
-            // 
-            this.cbAsSukunimi.AutoSize = true;
-            this.cbAsSukunimi.Location = new System.Drawing.Point(155, 25);
-            this.cbAsSukunimi.Name = "cbAsSukunimi";
-            this.cbAsSukunimi.Size = new System.Drawing.Size(87, 21);
-            this.cbAsSukunimi.TabIndex = 32;
-            this.cbAsSukunimi.Text = "Sukunimi";
-            this.cbAsSukunimi.UseVisualStyleBackColor = true;
-            // 
-            // cbAsLOsoite
-            // 
-            this.cbAsLOsoite.AutoSize = true;
-            this.cbAsLOsoite.Location = new System.Drawing.Point(15, 52);
-            this.cbAsLOsoite.Name = "cbAsLOsoite";
-            this.cbAsLOsoite.Size = new System.Drawing.Size(95, 21);
-            this.cbAsLOsoite.TabIndex = 33;
-            this.cbAsLOsoite.Text = "Lähiosoite";
-            this.cbAsLOsoite.UseVisualStyleBackColor = true;
-            // 
-            // tbAsHaku
-            // 
-            this.tbAsHaku.Location = new System.Drawing.Point(424, 21);
-            this.tbAsHaku.Name = "tbAsHaku";
-            this.tbAsHaku.Size = new System.Drawing.Size(185, 22);
-            this.tbAsHaku.TabIndex = 39;
-            // 
-            // lbHakusana
-            // 
-            this.lbHakusana.AutoSize = true;
-            this.lbHakusana.Location = new System.Drawing.Point(326, 24);
-            this.lbHakusana.Name = "lbHakusana";
-            this.lbHakusana.Size = new System.Drawing.Size(72, 17);
-            this.lbHakusana.TabIndex = 38;
-            this.lbHakusana.Text = "Hakusana";
-            // 
-            // btnAsNollaa
-            // 
-            this.btnAsNollaa.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAsNollaa.Location = new System.Drawing.Point(754, 18);
-            this.btnAsNollaa.Name = "btnAsNollaa";
-            this.btnAsNollaa.Size = new System.Drawing.Size(105, 25);
-            this.btnAsNollaa.TabIndex = 42;
-            this.btnAsNollaa.Text = "Nollaa";
-            this.btnAsNollaa.UseVisualStyleBackColor = false;
-            this.btnAsNollaa.Click += new System.EventHandler(this.btnAsNollaa_Click);
-            // 
-            // btnAsHae
-            // 
-            this.btnAsHae.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAsHae.Location = new System.Drawing.Point(640, 18);
-            this.btnAsHae.Name = "btnAsHae";
-            this.btnAsHae.Size = new System.Drawing.Size(100, 25);
-            this.btnAsHae.TabIndex = 41;
-            this.btnAsHae.Text = "Hae";
-            this.btnAsHae.UseVisualStyleBackColor = false;
-            this.btnAsHae.Click += new System.EventHandler(this.btnAsHae_Click);
-            // 
             // Varaukset
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1060,6 +1062,8 @@
             this.tabPageVaraus.PerformLayout();
             this.tabPageAsiakas.ResumeLayout(false);
             this.tabPageAsiakas.PerformLayout();
+            this.gbAsHae.ResumeLayout(false);
+            this.gbAsHae.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVarausAsiakkaat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.asiakasBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.villageNewbiesDataSet)).EndInit();
@@ -1075,8 +1079,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgVarausTaulu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.varausBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.palveluBindingSource)).EndInit();
-            this.gbAsHae.ResumeLayout(false);
-            this.gbAsHae.PerformLayout();
             this.ResumeLayout(false);
 
         }
