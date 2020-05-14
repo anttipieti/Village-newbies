@@ -292,7 +292,8 @@ namespace Village_Newbies
             int index = dtgVarausMokit.CurrentRow.Index;
             if (dtgVarausMokit.Rows[index].Cells[1].Value != null)//Jos datagridistä valitaan mökki sen id menee tekstikenttään
             {
-                tbVarausMokki.Text = dtgVarausMokit.Rows[index].Cells[1].Value.ToString();
+                tbVarausMokki.Text = dtgVarausMokit.Rows[index].Cells[0].Value.ToString();
+                cmbVarausToimialue.SelectedValue = dtgVarausMokit.Rows[index].Cells[1].Value;
             }
         }
 

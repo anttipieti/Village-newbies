@@ -25,7 +25,6 @@ C:\Users\Meri\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Ne
 C:\Users\Meri\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Palvelut.resources
 C:\Users\Antti\Documents\GitHub\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Laskut.resources
 C:\Users\Antti\Documents\GitHub\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Palvelut.resources
-C:\Users\Antti\Documents\GitHub\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Toiminta_alueet.resources
 C:\Users\hamal\Music\Village Newbies\Village Newbies\bin\Debug\Village Newbies.exe.config
 C:\Users\hamal\Music\Village Newbies\Village Newbies\bin\Debug\Village Newbies.exe
 C:\Users\hamal\Music\Village Newbies\Village Newbies\bin\Debug\Village Newbies.pdb
@@ -57,3 +56,4 @@ C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village N
 C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.exe
 C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.pdb
 C:\Users\Meri\source\repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.LblMokkihakuID.resources
+C:\Users\Antti\Documents\GitHub\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.LblMokkihakuID.resources

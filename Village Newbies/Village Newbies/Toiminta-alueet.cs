@@ -160,15 +160,12 @@ namespace Village_Newbies
                 {
 
                 }
-
             }
         }
 
         private void btnUusiMokki_Click(object sender, EventArgs e)
         {
-            
             string insertQuery;
-            //Double hinta = Double.Parse(tbHinta.Text);
             insertQuery = "INSERT INTO mokki (toimintaalue_id, postinro, mokkinimi, katuosoite, kuvaus, henkilomaara, varustelu, hinta) VALUES (" + cmbMokkiToimialue.SelectedValue + " ,'" + tbPostinro.Text + "' ,'" + tbMokkiNimi.Text + "' ,'" + tbKatuosoite.Text + "' ,'" + tbKuvaus.Text + "' ," + int.Parse(tbHloMaara.Text) + " ,'" + tbVarustelu.Text + "'," + tbHinta.Text + ")";
 
             executeMyQuery(insertQuery);
@@ -177,7 +174,6 @@ namespace Village_Newbies
 
         private void btnMuutaMokkia_Click(object sender, EventArgs e)
         {
-            
             if (dgvMokit.RowCount > 0)
             {
                 int index = dgvMokit.CurrentRow.Index;
@@ -203,6 +199,23 @@ namespace Village_Newbies
                 {
 
                 }
+            }
+        }
+
+        private void dgvMokit_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = dgvMokit.CurrentRow.Index;
+            if (dgvMokit.RowCount > 0)//Jos datagridistä valitaan varaus sen id menee tekstikenttään
+            {
+                tbMokkiID.Text = dgvMokit.Rows[index].Cells[0].Value.ToString();
+                cmbMokkiToimialue.SelectedValue = dgvMokit.Rows[index].Cells[1].Value;
+                tbMokkiNimi.Text = dgvMokit.Rows[index].Cells[2].Value.ToString();
+                tbKatuosoite.Text = dgvMokit.Rows[index].Cells[3].Value.ToString();
+                tbPostinro.Text = dgvMokit.Rows[index].Cells[4].Value.ToString();
+                tbKuvaus.Text = dgvMokit.Rows[index].Cells[5].Value.ToString();
+                tbHloMaara.Text = dgvMokit.Rows[index].Cells[6].Value.ToString();
+                tbVarustelu.Text = dgvMokit.Rows[index].Cells[7].Value.ToString();
+                tbHinta.Text = dgvMokit.Rows[index].Cells[8].Value.ToString();
             }
         }
 
