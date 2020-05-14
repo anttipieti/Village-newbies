@@ -41,7 +41,7 @@ namespace Village_Newbies
         private void btnMenuAlueet_Click(object sender, EventArgs e)
         {
             //Avaa Toiminta-alueet-lomake
-            Toiminta_alueet newform = new Toiminta_alueet(this);
+            LblMokkihakuID newform = new LblMokkihakuID(this);
             newform.Show();
             this.Hide();
         }

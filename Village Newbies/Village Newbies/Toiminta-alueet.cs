@@ -11,26 +11,40 @@ using System.Windows.Forms;
 
 namespace Village_Newbies
 {
-    public partial class Toiminta_alueet : Form
+    public partial class LblMokkihakuID : Form
     {
         MainMenu mainform;
 
         OdbcConnection connection = new OdbcConnection(@"DSN=Village Newbies;MultipleActiveResultSets=True");
         OdbcCommand command;
         string conString = "DSN=Village Newbies;MultipleActiveResultSets=True";
+        private List<string> hakulista;
 
-
-        public Toiminta_alueet(MainMenu f1)
+        public LblMokkihakuID(MainMenu f1)
         {
             InitializeComponent();
             mainform = f1;
+
+            
         }
 
         private void Toiminta_alueet_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'villageNewbiesDataSet.mokki' table. You can move, or remove it, as needed.
+            this.mokkiTableAdapter.Fill(this.villageNewbiesDataSet.mokki);
             // TODO: This line of code loads data into the 'villageNewbiesDataSet.toimintaalue' table. You can move, or remove it, as needed.
             this.toimintaalueTableAdapter.Fill(this.villageNewbiesDataSet.toimintaalue);
             paivitaDGV();
+
+            hakulista = new List<string>();
+            hakulista.Add(this.tbMokkihakuID.Text);
+            hakulista.Add(this.tbMokkihakuNimi.Text);
+            hakulista.Add(this.tbMokkihakuKOsoite.Text);
+            hakulista.Add(this.tbMokkihakuPostiNro.Text);
+            hakulista.Add(this.tbMokkihakuHlomaara.Text);
+            hakulista.Add(this.tbMokkihakuVarustelu.Text);
+            hakulista.Add(this.cbMokkihakuAlue.Text);
+            hakulista.Add(this.cbMokkihakuHinta.Text);
 
         }
 
@@ -190,6 +204,123 @@ namespace Village_Newbies
 
                 }
             }
+        }
+
+        private void BtnMokkiHae_Click(object sender, EventArgs e)
+        {
+            string haku = luoHakustring();
+
+            try
+            {
+                connection.ConnectionString = conString;
+                using (connection)
+                using (OdbcDataAdapter dadapter = new OdbcDataAdapter(haku, connection))
+                {
+                    DataTable table = new DataTable();
+                    dadapter.Fill(table);
+                    dgvMokit.DataSource = table;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            
+        }
+
+        private string luoHakustring()
+        {
+            //Mitä haetaan
+            //ToDO: ilmoitus sille, jos mitään ei löydy
+
+            bool k = false;
+            string valitut = "SELECT * FROM mokki WHERE ";
+
+            for (int i = 0; i < hakulista.Count; ++i)
+            {
+                if (hakulista[i] != "")
+                {
+
+                    switch (i)
+                    {
+                        case 0:
+                            if (k == true)
+                            {
+                                valitut = valitut + " OR ";
+                            }
+                            else k = true;
+                            valitut = valitut + "mokki_id like '%" + tbMokkihakuID.Text + "%'";
+                            break;
+                        case 1:
+                            if (k == true)
+                            {
+                                valitut = valitut + " OR ";
+                            }
+                            else k = true;
+                            valitut = valitut + "mokkinimi like '%" + tbMokkihakuNimi.Text + "%'";
+                            break;
+                        case 2:
+                            if (k == true)
+                            {
+                                valitut = valitut + " OR ";
+                            }
+                            else k = true;
+                            valitut = valitut + "katuosoite like '%" + tbMokkihakuKOsoite.Text + "%'";
+                            break;
+                        case 3:
+                            if (k == true)
+                            {
+                                valitut = valitut + " OR ";
+                            }
+                            else k = true;
+                            valitut = valitut + "postinro like '%" + tbMokkihakuPostiNro.Text + "%'";
+                            break;
+                        case 4:
+                            if (k == true)
+                            {
+                                valitut = valitut + " OR ";
+                            }
+                            else k = true;
+                            valitut = valitut + "henkilomaara like '" + tbMokkihakuHlomaara.Text + "'";
+                            break;
+                        case 5:
+                            if (k == true)
+                            {
+                                valitut = valitut + " OR ";
+                            }
+                            else k = true;
+                            valitut = valitut + "varustelu like '%" + tbMokkihakuVarustelu.Text + "%'";
+                            break;
+                        case 6:
+                            if (k == true)
+                            {
+                                valitut = valitut + " OR ";
+                            }
+                            else k = true;
+                            valitut = valitut + "toimintaalue_id like '%" + cbMokkihakuAlue.Text + "%'";
+                            break;
+                        /*case 7:
+                            if (k == true)
+                            {
+                                valitut = valitut + " OR ";
+                            }
+                            else k = true;
+                            valitut = valitut + "hinta like '%" + cbMokkihakuAlue.Text + "%'";
+                            break;*/
+
+
+
+                    }
+                }
+            }
+
+            return valitut;
+        }
+
+        private void selvitaHinta()
+        {
+            //ToDo textbocin luokat tekstiksi/sql-lausekkeeksi
         }
     }
 }
