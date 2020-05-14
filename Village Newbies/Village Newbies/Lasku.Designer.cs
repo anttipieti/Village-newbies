@@ -37,7 +37,7 @@
             this.summaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.alvDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.laskuBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            //this.dataSetLasku = new Ohjelmistotuotanto_1.DataSetLasku();
+            this.dataSetLasku = new Ohjelmistotuotanto_1.DataSetLasku();
             this.BtnLisää = new System.Windows.Forms.Button();
             this.TextBoxALVLisää = new System.Windows.Forms.TextBox();
             this.TextBoxSummaLisää = new System.Windows.Forms.TextBox();
@@ -86,7 +86,7 @@
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            //this.laskuTableAdapter = new Ohjelmistotuotanto_1.DataSetLaskuTableAdapters.laskuTableAdapter();
+            this.laskuTableAdapter = new Ohjelmistotuotanto_1.DataSetLaskuTableAdapters.laskuTableAdapter();
             this.dataSetLaskuBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.laskuBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.laskuBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
@@ -187,8 +187,8 @@
             // 
             // dataSetLasku
             // 
-            //this.dataSetLasku.DataSetName = "DataSetLasku";
-            //this.dataSetLasku.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dataSetLasku.DataSetName = "DataSetLasku";
+            this.dataSetLasku.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // BtnLisää
             // 
@@ -634,7 +634,7 @@
             // 
             // laskuTableAdapter
             // 
-            //this.laskuTableAdapter.ClearBeforeFill = true;
+            this.laskuTableAdapter.ClearBeforeFill = true;
             // 
             // dataSetLaskuBindingSource
             // 

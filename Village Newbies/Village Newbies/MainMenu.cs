@@ -1,5 +1,4 @@
-﻿using Ohjelmistotuotanto_1;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -58,7 +57,7 @@ namespace Village_Newbies
         private void btnMenuLaskut_Click(object sender, EventArgs e)
         {
             //Avaa Palvelut-lomake
-            LaskuForm newform = new LaskuForm(this);
+           Laskut newform = new Laskut(this);
             newform.Show();
             this.Hide();
         }

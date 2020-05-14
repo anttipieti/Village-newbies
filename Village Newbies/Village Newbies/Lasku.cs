@@ -13,11 +13,9 @@ namespace Ohjelmistotuotanto_1
 {
     public partial class LaskuForm : Form
     {
-        System.Windows.Forms.MainMenu mainform;
         OdbcConnection connection = new OdbcConnection(@"DSN=Village Newbies;MultipleActiveResultSets=True");
         OdbcCommand command;
         string conString = "DSN=Village Newbies;MultipleActiveResultSets=True";
-        private Village_Newbies.MainMenu mainMenu;
 
         public void openConnection()
         {
@@ -80,15 +78,9 @@ namespace Ohjelmistotuotanto_1
             }
         }
 
-        public LaskuForm(System.Windows.Forms.MainMenu f1)
+        public LaskuForm()
         {
             InitializeComponent();
-            mainform = f1;
-        }
-
-        public LaskuForm(Village_Newbies.MainMenu mainMenu)
-        {
-            this.mainMenu = mainMenu;
         }
 
         private void TPage1_Click(object sender, EventArgs e)
@@ -155,14 +147,6 @@ namespace Ohjelmistotuotanto_1
             }
 
             closeConnection();
-
-
-        }
-
-        private void Laskut_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            //mainform.Show();
-            //Avataan päävalikko uudelleen
         }
     }
 }
