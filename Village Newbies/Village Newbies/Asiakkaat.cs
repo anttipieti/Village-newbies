@@ -26,6 +26,7 @@ namespace Village_Newbies
             // Tuodaan tiedot datagridiin
             this.asiakasTableAdapter.Fill(this.villageNewbiesDataSet.asiakas);
 
+            //Listat joita käytetään tarkistamaan, että käyttäjä ei vain painele mitä sattuu antamatta tietoja :)
             cblista = new List<CheckBox>();
             cblista.Add(this.cbAsPostinro);
             cblista.Add(this.cbAsEtunimi);
@@ -49,9 +50,8 @@ namespace Village_Newbies
         private List<CheckBox> cblista;
         private List<TextBox> tblista;
 
-        public void OpenConnection() //Tietokantayhteys auki
+        public void OpenConnection()//Tietokantayhteys auki
         {
-            //Tietokantayhteys auki
             if (connection.State == ConnectionState.Closed)
             {
                 connection.ConnectionString = conString;
@@ -59,20 +59,16 @@ namespace Village_Newbies
             }
         }
 
-        public void CloseConnection() 
+        public void CloseConnection() //Tietokantayhteys kiinni
         {
-            //Tietokantayhteys kiinni
             if (connection.State == ConnectionState.Open)
             {
                 connection.Close();
             }
         }
 
-
-
-        public void ExecuteMyQuery(string query)
+        public void ExecuteMyQuery(string query)//sql-komentojen suoritus
         {
-            //sql-komentojen suoritus
             try
             {
                 OpenConnection();
@@ -98,13 +94,10 @@ namespace Village_Newbies
                 CloseConnection();
             }
         }
-    
-
 
         private void btnAsLisaa_Click(object sender, EventArgs e)
         {
             //datan lisäys tauluun, datagrid päivitys
-
             bool tarkistus = tbTarkistus();
 
             if (tarkistus == true)
@@ -116,7 +109,7 @@ namespace Village_Newbies
             } 
             else
             {
-                MessageBox.Show("Kaikki kentät ovat pakollisia");
+                MessageBox.Show("Kaikki kentät ovat pakollisia"); //oikeasti vaan postinumero on pakollinen
             }
             
 
@@ -125,7 +118,6 @@ namespace Village_Newbies
         private void btnAsMuokkaa_Click(object sender, EventArgs e)
         {
             //päivitetään taulun data ja datagrid
-
             bool tarkistus = tbTarkistus();
 
             if (tarkistus == true)
@@ -137,7 +129,7 @@ namespace Village_Newbies
             }
             else
             {
-                MessageBox.Show("Kaikki kentät ovat pakollisia");
+                MessageBox.Show("Kaikki kentät ovat pakollisia"); //oikeasti vaan postinumero on pakollinen
             }
 
 
@@ -154,6 +146,9 @@ namespace Village_Newbies
             }
             else if (tarkistus == false)
             {
+                /*Estetään vahinkopoistot jos teksti on pyyhitty manuaalisesti eikä käyttämällä nappia
+                  Asiakasnumeroa ei nimittäin pysty poistamaan muuten kuin napilla + tätä kautta*/
+
                 MessageBox.Show("Osa ruuduista on tyhjiä, valitse asiakas uudelleen");
                 tyhjMuokkaa();
             }
@@ -174,8 +169,7 @@ namespace Village_Newbies
         private void btnAsHae_Click(object sender, EventArgs e)
         {
             //Haetaan halutut tiedot
-
-            if(cbAsPostinro.Checked != true && cbAsEtunimi.Checked != true && cbAsSukunimi.Checked != true && cbAsLOsoite.Checked != true && cbAsEmail.Checked != true && cbAsPuhNro.Checked != true)
+            if (cbAsPostinro.Checked != true && cbAsEtunimi.Checked != true && cbAsSukunimi.Checked != true && cbAsLOsoite.Checked != true && cbAsEmail.Checked != true && cbAsPuhNro.Checked != true)
             {
                 MessageBox.Show("Valitse ainakin yksi hakualue");
             }
@@ -291,6 +285,7 @@ namespace Village_Newbies
 
         private bool tbTarkistus()
         {
+            //Tarkistetaan, että textboxit eivät ole tyhjiä
             for (int i = 0; i < tblista.Count; ++i)
             {
                 if (tblista[i].Text == "")
@@ -303,7 +298,7 @@ namespace Village_Newbies
 
         private void tyhjMuokkaa ()
         {
-            //Tyhjennetään sivu
+            //Tyhjennetään Muokkaa-sivu
             tbAsID.Text = "";
             tbAsPostinro.Text = "";
             tbAsEtunimi.Text = "";
@@ -314,7 +309,7 @@ namespace Village_Newbies
         }
         private void tyhjHae()
         {
-            //Tyhjennetään sivu
+            //Tyhjennetään Hae-sivu
             dgAsiakas.DataSource = asiakasBindingSource;
             tbAsHaku.Text = "";
             cbAsPostinro.Checked = false;
