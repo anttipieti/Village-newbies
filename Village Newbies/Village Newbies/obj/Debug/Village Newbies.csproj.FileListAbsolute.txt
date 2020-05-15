@@ -57,3 +57,18 @@ C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village N
 C:\Users\Ville\Source\Repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village Newbies.pdb
 C:\Users\Meri\source\repos\anttipieti\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.LblMokkihakuID.resources
 C:\Users\Antti\Documents\GitHub\Village-newbies\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.LblMokkihakuID.resources
+C:\Users\hamal\Desktop\Village Newbies\Village Newbies\bin\Debug\Village Newbies.exe.config
+C:\Users\hamal\Desktop\Village Newbies\Village Newbies\bin\Debug\Village Newbies.exe
+C:\Users\hamal\Desktop\Village Newbies\Village Newbies\bin\Debug\Village Newbies.pdb
+C:\Users\hamal\Desktop\Village Newbies\Village Newbies\obj\Debug\Village Newbies.csprojAssemblyReference.cache
+C:\Users\hamal\Desktop\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Asiakkaat.resources
+C:\Users\hamal\Desktop\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Laskut.resources
+C:\Users\hamal\Desktop\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.MainMenu.resources
+C:\Users\hamal\Desktop\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Palvelut.resources
+C:\Users\hamal\Desktop\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Properties.Resources.resources
+C:\Users\hamal\Desktop\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.LblMokkihakuID.resources
+C:\Users\hamal\Desktop\Village Newbies\Village Newbies\obj\Debug\Village_Newbies.Varaukset.resources
+C:\Users\hamal\Desktop\Village Newbies\Village Newbies\obj\Debug\Village Newbies.csproj.GenerateResource.cache
+C:\Users\hamal\Desktop\Village Newbies\Village Newbies\obj\Debug\Village Newbies.csproj.CoreCompileInputs.cache
+C:\Users\hamal\Desktop\Village Newbies\Village Newbies\obj\Debug\Village Newbies.exe
+C:\Users\hamal\Desktop\Village Newbies\Village Newbies\obj\Debug\Village Newbies.pdb

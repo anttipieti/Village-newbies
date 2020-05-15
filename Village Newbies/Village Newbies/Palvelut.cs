@@ -94,9 +94,9 @@ namespace Village_Newbies
         private void btnLisaa_Click(object sender, EventArgs e)
         {
 
-            string asiakasAdd =
-                "insert into palvelu (palvelu_id, toimintaalue_id, nimi, tyyppi, kuvaus, hinta, alv) values('" + tbPalveluID.Text + "','" + tbToimintaalueID.Text + "','" + tbNimi.Text + "','" + tbTyyppi.Text + "','" + tbKuvaus.Text + "'," + double.Parse(tbHinta.Text) + "," + double.Parse(tbAlv.Text) + ")";
-            ExecuteMyQuery(asiakasAdd);
+            string palveluAdd =
+                "insert into palvelu (palvelu_id, toimintaalue_id, nimi, tyyppi, kuvaus, hinta, alv) values('" + tbPalveluID.Text + "','" + tbToimintaalueID.Text + "','" + tbNimi.Text + "','" + tbTyyppi.Text + "','" + tbKuvaus.Text + "'," + tbHinta.Text + "," + tbAlv.Text + ")";
+            ExecuteMyQuery(palveluAdd);
             this.palveluTableAdapter.Fill(this.villageNewbiesDataSet.palvelu);
 
         }
@@ -104,18 +104,18 @@ namespace Village_Newbies
         private void btnMuokkaa_Click(object sender, EventArgs e)
         {
 
-            string asiakasUpdate =
+            string palveluUpdate =
                 "UPDATE palvelu SET toimintaalue_id='" + tbToimintaalueID.Text + "',nimi='" + tbNimi.Text + "',tyyppi='" + tbTyyppi.Text + "',kuvaus='" + tbKuvaus.Text + "',hinta='" + tbHinta.Text + "',alv=" + tbAlv.Text + " WHERE palvelu_id=" + int.Parse(tbPalveluID.Text);
-            ExecuteMyQuery(asiakasUpdate);
+            ExecuteMyQuery(palveluUpdate);
             this.palveluTableAdapter.Fill(this.villageNewbiesDataSet.palvelu);
         }
 
         private void btnPoista_Click(object sender, EventArgs e)
         {
 
-            string asiakasPoista =
+            string palveluPoista =
                 "DELETE FROM palvelu WHERE palvelu_id= " + int.Parse(tbPalveluID.Text);
-            ExecuteMyQuery(asiakasPoista);
+            ExecuteMyQuery(palveluPoista);
             this.palveluTableAdapter.Fill(this.villageNewbiesDataSet.palvelu);
         }
 
