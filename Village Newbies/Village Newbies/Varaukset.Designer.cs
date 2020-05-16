@@ -551,6 +551,7 @@
             this.dgvVarausAsiakkaat.RowTemplate.Height = 24;
             this.dgvVarausAsiakkaat.Size = new System.Drawing.Size(851, 206);
             this.dgvVarausAsiakkaat.TabIndex = 29;
+            this.dgvVarausAsiakkaat.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVarausAsiakkaat_CellEnter);
             // 
             // asiakasidDataGridViewTextBoxColumn1
             // 
@@ -630,7 +631,6 @@
             // 
             // tbAsiakasIdVarausValinta
             // 
-            this.tbAsiakasIdVarausValinta.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.asiakasBindingSource, "asiakas_id", true));
             this.tbAsiakasIdVarausValinta.Location = new System.Drawing.Point(107, 26);
             this.tbAsiakasIdVarausValinta.Name = "tbAsiakasIdVarausValinta";
             this.tbAsiakasIdVarausValinta.Size = new System.Drawing.Size(151, 22);

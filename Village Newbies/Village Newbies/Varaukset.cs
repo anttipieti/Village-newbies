@@ -564,5 +564,14 @@ namespace Village_Newbies
 
             return valitut;
         }
+
+        private void dgvVarausAsiakkaat_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvVarausAsiakkaat.RowCount > 0)
+            {
+                int index = dgvVarausAsiakkaat.CurrentRow.Index;
+                tbAsiakasIdVarausValinta.Text = dgvVarausAsiakkaat.Rows[index].Cells[0].Value.ToString();
+            }
+        }
     }
 }
